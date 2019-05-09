@@ -13,7 +13,7 @@
  '(mediawiki-site-default "ERacing")
  '(package-selected-packages
    (quote
-    (xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
+    (dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -84,6 +84,21 @@
 
 ;; Font for GTK
 (set-frame-font "Monospace-11" nil t)
+(set-cursor-color "LightGoldenrod1")
+
+;; Configure dumb-jump
+(dumb-jump-mode)
+(global-set-key (kbd "M-g j") 'dumb-jump-back)
+(global-set-key (kbd "M-g k") 'dumb-jump-go)
+(global-set-key (kbd "M-g C-k") 'dumb-jump-quick-look)
+(global-set-key (kbd "M-g i") 'dumb-jump-go-prompt)
+(setq dumb-jump-prefer-searcher 'rg)
+
+;; Configure jump between functions
+(global-set-key (kbd "C-M-p") 'backward-list)
+
+;; Change yes-or-no to y-or-n
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Enables company and company-irony
 ;; (eval-after-load 'company

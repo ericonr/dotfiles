@@ -3,6 +3,8 @@ alias kl='ls -1'
 
 alias weather='curl wttr.in/'
 
+#alias info='info --vi-keys'
+
 function pdfunlock
     # command taken from https://mandrivausers.org/index.php?/topic/79354-saving-pdf-file-without-password-solved/
     echo "Password: $argv[1]"
