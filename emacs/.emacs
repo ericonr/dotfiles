@@ -82,9 +82,21 @@
   (ispell-hunspell-add-multi-dic "pt_BR,en_US-large"))
 (ispell-minor-mode 1)
 
-;; Font for GTK
+;; Position configs
+(line-number-mode 1)
+(column-number-mode 1)
+(global-linum-mode 1)
+(setq linum-format "%4d|")
+;;(global-display-line-numbers-mode 1)
+;;(setq display-line-numbers-type "%d|")
+
+;; Configs for GTK
 (set-frame-font "Monospace-11" nil t)
 (set-cursor-color "LightGoldenrod1")
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(menu-bar-mode 0)
+(server-start)
 
 ;; Configure dumb-jump
 (dumb-jump-mode)

@@ -1,0 +1,48 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "tabbed",
+    "percent": null,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 50,
+               "y": 50
+            },
+            "name": "open multiple applications at startup on different workspaces : i3wm - qutebrowser",
+            "percent": 0.5,
+            "swallows": [
+               {
+		   "class": "^qutebrowser$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 709,
+               "width": 338,
+               "x": 0,
+               "y": 0
+            },
+            "name": "jceb/dex: DesktopEntry Execution - Mozilla Firefox",
+            "percent": 0.5,
+            "swallows": [
+               {
+		   "class": "^Firefox$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

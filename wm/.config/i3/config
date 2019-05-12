@@ -11,9 +11,6 @@
 
 set $mod Mod4
 
-# execs
-exec --no-startup-id ~/.fehbg
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -28,6 +25,22 @@ font pango:monospace 8
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
+
+# gaps conf
+for_window [class=".*"] border pixel 0
+gaps outer 2
+gaps inner 4
+smart_gaps on
+
+# init environment
+exec i3_init
+
+# layout
+exec --no-startup-id i3_apps
+
+# quick launch
+bindsym $mod+t exec --no-startup-id alacritty -e tmux
+bindsym $mod+Shift+f exec --no-startup-id launch_browsers
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -168,20 +181,18 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
+#bar {
+        #status_command i3status
 	#status_command polybar example
-}
+#}
 
-bindsym $mod+u border pixel 2
-
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [title="Desktop — Plasma"] kill;
 for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
+for_window [class="Plasma"] floating enable;
+for_window [title="plasma-desktop"] floating enable;
+for_window [title="win7"] floating enable;
+for_window [class="krunner"] floating enable;
 for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
+#for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
+#for_window [class="(?i)*nextcloud*"] floating disable

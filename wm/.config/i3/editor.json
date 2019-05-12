@@ -1,0 +1,71 @@
+{
+    "border": "pixel",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 641,
+       "width": 672,
+       "x": 0,
+       "y": 0
+    },
+    "name": "emacs@ericonr-manjaro",
+    "percent": 0.6,
+    "swallows": [
+       {
+        "class": "Emacs",
+	"instance": "editor"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.4,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 832,
+               "width": 1109,
+               "x": 0,
+               "y": 0
+            },
+            "name": "fish /home/ericonr",
+            "percent": 0.5,
+            "swallows": [
+               {
+                   "instance": "^Alacritty$",
+		   "title": "editortop"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 832,
+               "width": 1109,
+               "x": 0,
+               "y": 0
+            },
+            "name": "fish /home/ericonr",
+            "percent": 0.5,
+            "swallows": [
+               {
+		   "instance": "^Alacritty$",
+		   "title": "editorbot"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

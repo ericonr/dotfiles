@@ -25,4 +25,3 @@ function starttmux
     emacs --daemon
     tmux
 end
-

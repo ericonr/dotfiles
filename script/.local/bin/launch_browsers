@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+i3-msg "append_layout ~/.config/i3/browser.json"
+i3-msg "exec --no-startup-id qutebrowser"
+i3-msg "exec --no-startup-id kioclient5 exec .local/share/applications/firefox.desktop"
