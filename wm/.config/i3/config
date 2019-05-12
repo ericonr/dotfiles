@@ -30,7 +30,7 @@ font pango:monospace 8
 for_window [class=".*"] border pixel 0
 gaps outer 2
 gaps inner 4
-smart_gaps on
+#smart_gaps on
 
 # init environment
 exec i3_init

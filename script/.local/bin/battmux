@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# from https://github.com/NerdyPepper/dotfiles
+
+red="\e[31m"
+grn="\e[32m"
+ylw="\e[33m"
+cyn="\e[36m"
+blu="\e[34m"
+prp="\e[35m"
+bprp="\e[35;1m"
+rst="\e[0m"
+
+icon="$( ~/scripts/get_xres color2 )"
+fg="$( ~/scripts/get_xres color7 )"
+
+bat_status=""
+bat_status=$( cat /sys/class/power_supply/BAT1/capacity )
+charging_status=$( cat /sys/class/power_supply/BAT1/status )
+
+health() {
+    for i in {0..4}
+    do
+	if [[ $i -le $(( $bat_status/20 )) ]]; then
+	    echo -ne "#[fg=colour1]♥ "
+	else
+	    echo -ne "#[fg=colour8]♥ "
+	fi
+    done
+    echo
+}
+
+while getopts qi options 
+do
+    case $options in
+        i)
+            echo "$bat_status $charging_status"
+            ;;
+        q)
+            if [[ "$charging_status" = *Charging* ]]; then
+                echo -ne "+ $(health)"
+            else
+                health
+            fi
+    esac
+done
