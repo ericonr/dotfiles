@@ -15,7 +15,7 @@
                "x": 50,
                "y": 50
             },
-            "name": "open multiple applications at startup on different workspaces : i3wm - qutebrowser",
+            "name": "qutebrowser",
             "percent": 0.5,
             "swallows": [
                {
@@ -34,7 +34,7 @@
                "x": 0,
                "y": 0
             },
-            "name": "jceb/dex: DesktopEntry Execution - Mozilla Firefox",
+            "name": "Mozilla Firefox",
             "percent": 0.5,
             "swallows": [
                {

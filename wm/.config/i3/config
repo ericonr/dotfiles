@@ -32,15 +32,10 @@ gaps outer 2
 gaps inner 4
 #smart_gaps on
 
-# init environment
-exec i3_init
-
-# layout
-exec --no-startup-id i3_apps
-
 # quick launch
 bindsym $mod+t exec --no-startup-id alacritty -e tmux
-bindsym $mod+Shift+f exec --no-startup-id launch_browsers
+bindsym $mod+Shift+w exec --no-startup-id launch_browsers
+bindsym $mod+Shift+f exec --no-startup-id dolphin
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -92,7 +87,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -120,6 +115,11 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "media"
+set $ws12 "nwork"
+set $ws13 "brow"
+set $ws14 "pdf"
+set $ws16 "og"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -132,6 +132,11 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $mod+m workspace $ws11
+bindsym $mod+n workspace $ws12
+bindsym $mod+b workspace $ws13
+bindsym $mod+p workspace $ws14
+bindsym $mod+o workspace $ws16
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -144,13 +149,18 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+m move container to workspace $ws11
+bindsym $mod+Shift+n move container to workspace $ws12
+bindsym $mod+Shift+b move container to workspace $ws13
+bindsym $mod+Shift+p move container to workspace $ws14
+bindsym $mod+Shift+o move container to workspace $ws16
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -186,6 +196,28 @@ bindsym $mod+r mode "resize"
 	#status_command polybar example
 #}
 
+# music
+exec --no-startup-id "i3-msg 'workspace media; layout tabbed'"
+for_window [class="spotify"] move container to workspace $ws11
+
+# work
+exec --no-startup-id "i3-msg 'workspace nwork; layout tabbed'"
+assign [class="Kicad"] $ws12
+assign [title="CubeMX"] $ws12
+
+# pdf
+exec --no-startup-id "i3-msg 'workspace pdf; layout tabbed'"
+assign [class="okular"] $ws14
+
+# init environment
+exec --no-startup-id i3_init
+
+# layout
+exec --no-startup-id i3_apps
+
+# compositor
+#exec --no-startup-id compton
+
 for_window [title="Desktop — Plasma"] kill;
 for_window [class="plasmashell"] floating enable;
 for_window [class="Plasma"] floating enable;
@@ -193,6 +225,7 @@ for_window [title="plasma-desktop"] floating enable;
 for_window [title="win7"] floating enable;
 for_window [class="krunner"] floating enable;
 for_window [class="Kmix"] floating enable; border none
+for_window [class="konsole"] floating enable;
 #for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 #for_window [class="(?i)*nextcloud*"] floating disable

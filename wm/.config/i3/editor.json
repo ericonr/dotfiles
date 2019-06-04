@@ -8,7 +8,7 @@
        "x": 0,
        "y": 0
     },
-    "name": "emacs@ericonr-manjaro",
+    "name": "emacs",
     "percent": 0.6,
     "swallows": [
        {
@@ -36,7 +36,7 @@
                "x": 0,
                "y": 0
             },
-            "name": "fish /home/ericonr",
+            "name": "fishtop",
             "percent": 0.5,
             "swallows": [
                {
@@ -56,7 +56,7 @@
                "x": 0,
                "y": 0
             },
-            "name": "fish /home/ericonr",
+            "name": "fishbot",
             "percent": 0.5,
             "swallows": [
                {
