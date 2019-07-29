@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+kdesu enablegpu
+sleep 2
+
+darktable $argv
+
+kdesu disablegpu
+
