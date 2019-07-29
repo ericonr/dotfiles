@@ -15,8 +15,8 @@ icon="$( ~/scripts/get_xres color2 )"
 fg="$( ~/scripts/get_xres color7 )"
 
 bat_status=""
-bat_status=$( cat /sys/class/power_supply/BAT1/capacity )
-charging_status=$( cat /sys/class/power_supply/BAT1/status )
+bat_status=$( cat /sys/class/power_supply/BAT0/capacity )
+charging_status=$( cat /sys/class/power_supply/BAT0/status )
 
 health() {
     for i in {0..4}

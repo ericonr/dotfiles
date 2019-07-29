@@ -91,12 +91,13 @@
 ;;(setq display-line-numbers-type "%d|")
 
 ;; Configs for GTK
-(set-frame-font "Monospace-11" nil t)
+(set-frame-font "Monospace-13" nil t)
 (set-cursor-color "LightGoldenrod1")
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (server-start)
+(toggle-frame-maximized)
 
 ;; Configure dumb-jump
 (dumb-jump-mode)
