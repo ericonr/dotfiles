@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+alacritty --dimensions 60 30 --title launcher --command "$@"

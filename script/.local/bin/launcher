@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
 
-alacritty --dimensions 60 30 --title launcher --command bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=/usr/share/plasma/desktoptheme/breeze-light
+export _JAVA_AWT_WM_NONREPARENTING=1
 
+generic-launcher bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'

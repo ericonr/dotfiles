@@ -86,11 +86,13 @@ floating_modifier $mod normal
 # Default wallpaper
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Font for window titles
-font pango:Liberation Sans 8
+font pango:Liberation Sans 9
 # Gaps configuration
-for_window [class=".*"] border none
+default_border none
 gaps outer 3
 gaps inner 3
+# Redshift
+exec redshift
 
 ## Idle configuration
 # Automatic behavior
@@ -206,13 +208,11 @@ bindsym $mod+r mode "resize"
 ## Status bar
 bar {
     position top
-    status_command i3status
-
-    colors {
-    	statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
+}
+for_window [app_id="waybar" floating] {
+    move position cursor
+    move down 120px # adjust if some menus still don't fit
 }
 
 ## Pre-configured workspaces
@@ -232,4 +232,4 @@ exec swaymsg 'workspace 1'
 ## Application specific settings
 for_window [class="krunner"] floating enable;
 for_window [class="konsole"] floating enable;
-
+for_window [class="pavucontrol"] floating enable;
