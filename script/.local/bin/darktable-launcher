@@ -1,9 +1,9 @@
-#!/usr/bin/env fish
+#!/usr/bin/env bash
 
 kdesu enablegpu
 sleep 2
 
-darktable $argv
+darktable "$@"
 
 kdesu disablegpu
 

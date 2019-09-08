@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+optirun gwe --ctrl-display :8
+

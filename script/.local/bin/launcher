@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=/usr/share/plasma/desktoptheme/breeze-light

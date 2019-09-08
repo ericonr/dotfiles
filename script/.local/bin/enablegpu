@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 echo "Moving config files."
 # allow to load nvidia module
