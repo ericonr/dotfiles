@@ -1,7 +1,13 @@
 alias lk='ls -1'
 alias kl='ls -1'
 
+alias cp='cp --reflink=auto --sparse=always'
+alias pre='cd ../'
+
 alias weather='curl wttr.in/'
+
+alias rgmod='lsmod | rg -i'
+alias rgps='ps aux | rg -i'
 
 #alias info='info --vi-keys'
 
@@ -25,3 +31,4 @@ function starttmux
     emacs --daemon
     tmux
 end
+
