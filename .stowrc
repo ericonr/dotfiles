@@ -1,1 +1,1 @@
---target=/home/ericonr --adopt
+--target=/home/ericonr --adopt --dotfiles
