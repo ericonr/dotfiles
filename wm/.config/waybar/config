@@ -109,7 +109,7 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-	"on-click-right": "generic-launcher nmtui"
+	"on-click-right": "quicknm"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
