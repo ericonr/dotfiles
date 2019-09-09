@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=/usr/share/plasma/desktoptheme/breeze-light
-export _JAVA_AWT_WM_NONREPARENTING=1
+# ericonr's script for launching applications with the appropriate env
+
+if [ $XDG_SESSION_TYPE = wayland ]
+then
+	# Qt
+	export QT_QPA_PLATFORM=wayland-egl
+	export QT_WAYLAND_FORCE_DPI=physical
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+	# Firefox
+	export MOZ_ENABLE_WAYLAND=1
+	# Java
+	export _JAVA_AWT_WM_NONREPARENTING=1
+	# SDL
+	export SDL_VIDEODRIVER=wayland
+fi
 
 generic-launcher bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'
+

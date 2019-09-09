@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# floating editor launcher
+
+export WIDTH=75
+export LENGTH=40
+
+generic-launcher nvim "$@"
+
