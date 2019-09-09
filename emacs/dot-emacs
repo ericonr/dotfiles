@@ -13,7 +13,7 @@
  '(mediawiki-site-default "ERacing")
  '(package-selected-packages
    (quote
-    (kotlin-mode pkgbuild-mode key-chord dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
+    (go-mode kotlin-mode pkgbuild-mode key-chord dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
