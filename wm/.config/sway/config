@@ -42,10 +42,8 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 set $keyboard "1:1:AT_Translated_Set_2_keyboard"
 input $keyboard {
 	xkb_layout "us,br"
+	xkb_options grp:win_space_toggle
 }
-#TODO: make script that automatically switches inputs
-bindsym $mod+Space input $keyboard xkb_switch_layout 0
-bindsym $mod+Shift+Space input $keyboard xkb_switch_layout 1
 # Touchpad
 set $touchpad "1739:31251:SYNA2393:00_06CB:7A13_Touchpad" 
 input $touchpad {
@@ -227,7 +225,7 @@ assign [title="CubeMX"] $wsn
 exec swaymsg 'workspace pdf; layout tabbed'
 assign [class="okular"] $wsp
 # Return to first workspace
-exec swaymsg 'workspace 1'
+exec swaymsg 'workspace 1;'
 
 ## Application specific settings
 for_window [class="krunner"] floating enable;

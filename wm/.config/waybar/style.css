@@ -75,9 +75,15 @@ window#waybar.chromium {
 #custom-media,
 #tray,
 #mode,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-keyboard_layout {
     padding: 0 10px;
     margin: 0 4px;
+    color: #ffffff;
+}
+
+#custom-keyboard_layout {
+    background-color: #b190b1;
     color: #ffffff;
 }
 
