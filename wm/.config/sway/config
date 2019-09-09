@@ -42,8 +42,8 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 set $keyboard "1:1:AT_Translated_Set_2_keyboard"
 input $keyboard {
 	xkb_layout "us,br"
-	xkb_options grp:win_space_toggle
 }
+bindsym $mod+Space exec keyboard_layout_switcher
 # Touchpad
 set $touchpad "1739:31251:SYNA2393:00_06CB:7A13_Touchpad" 
 input $touchpad {
@@ -72,13 +72,20 @@ bindsym $mod+Shift+f exec dolphin
 bindsym $mod+Shift+q kill
 # Start launcher
 bindsym $mod+d exec $menu
-for_window [title="launcher"] floating enable; border none
+for_window [title="launcher"] focus, floating enable, border none
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
 floating_modifier $mod normal
+
+## Enable further services for complete session
+# Polkit authenticator
+exec /usr/lib/polkit-kde-authentication-agent-1
+for_window [app_id="polkit"] focus, floating enable, border pixel 4
+# Notifications daemon
+exec mako
 
 ## Appearance
 # Default wallpaper
@@ -216,18 +223,18 @@ for_window [app_id="waybar" floating] {
 ## Pre-configured workspaces
 # Music
 exec swaymsg 'workspace media; layout tabbed'
-for_window [class="spotify"] move container to workspace $wsm
+for_window [app_id="spotify"] move container to workspace $wsm
 # Work
 exec swaymsg 'workspace nth; layout tabbed'
-assign [class="Kicad"] $wsn
+assign [app_id="Kicad"] $wsn
 assign [title="CubeMX"] $wsn
 # PDF
 exec swaymsg 'workspace pdf; layout tabbed'
-assign [class="okular"] $wsp
+assign [app_id="okular"] $wsp
 # Return to first workspace
 exec swaymsg 'workspace 1;'
 
 ## Application specific settings
-for_window [class="krunner"] floating enable;
-for_window [class="konsole"] floating enable;
-for_window [class="pavucontrol"] floating enable;
+for_window [app_id="krunner"] floating enable
+for_window [app_id="konsole"] floating enable
+for_window [app_id="pavucontrol"] focus, floating enable

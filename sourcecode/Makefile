@@ -1,8 +1,18 @@
-.PHONY: all lnch
+BUILD_DIR  = ../script/.local/bin
 
-all: lnch
+GOSRC      = $(wildcard *.go)
+GOTARGET   = $(GOSRC:%.go=$(BUILD_DIR)/%)
 
-lnch: ../script/.local/bin/lnch
+TARGETS    = $(GOTARGET)
 
-../script/.local/bin/%: %.go
+.PHONY: all go clean
+
+all: go
+
+go: $(GOTARGET)
+
+$(BUILD_DIR)/%: %.go
 	go build -o $@ $<
+
+clean:
+	rm -f $(TARGETS)

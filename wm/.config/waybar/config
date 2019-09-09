@@ -145,6 +145,7 @@
     },
     "custom/keyboard_layout": {
     	"format": "🎹 {}", // piano keyboard. Normal keyboard: ⌨️
-	"exec": "keyboard_layout_monitor"
+	"exec": "keyboard_layout_monitor",
+	"on-click": "keyboard_layout_switcher"
     }
 }
