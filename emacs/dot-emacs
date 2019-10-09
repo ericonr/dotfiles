@@ -13,7 +13,7 @@
  '(mediawiki-site-default "ERacing")
  '(package-selected-packages
    (quote
-    (go-mode kotlin-mode pkgbuild-mode key-chord dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
+    (flx counsel ivy projectile go-mode kotlin-mode pkgbuild-mode key-chord dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,6 +31,9 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+;; Configure GC
+(setq gc-cons-threshold 20000000)
+
 ;; Overwrite selected text
 (delete-selection-mode t)
 
@@ -42,10 +45,6 @@
 (require 'multiple-cursors)
 (global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
 
-;; Auto init AC
-(add-hook 'after-init-hook 'auto-complete-mode)
-(ac-config-default)
-
 ;; Language specific info
 (setq rust-format-on-save t)
 
@@ -53,7 +52,8 @@
 (setq url-user-agent "FOO")
 
 ;; Reload file
-(global-set-key (kbd "C-x r") 'revert-buffer)
+(global-set-key (kbd "M-g r") 'revert-buffer)
+(global-set-key (kbd "C-x M-f") 'projectile-find-file)
 
 ;; C-w delete previous word
 (defadvice kill-region (before unix-werase activate compile)
@@ -121,15 +121,21 @@
 (key-chord-define evil-normal-state-map "cc" 'kill-ring-save)
 (key-chord-define evil-normal-state-map "re" 'revert-buffer)
 
-;; Enables company and company-irony
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-irony))
-;; (add-hook 'after-init-hook 'global-company-mode)
+;; Enables company
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; Enables company-irony
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; Enables company-jedi
-;; (defun my/python-mode-hook ()
-;;   (add-to-list 'company-backends 'company-jedi))
-;; (add-hook 'python-mode-hook 'my/python-mode-hook)
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+(add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;; Set colors https://github.com/albert4git/aTest/blob/master/dotFiles/el-king18/my18company-ac-ispell-yas-eldoc-elisp.el
 ;; (require 'color)
@@ -158,11 +164,41 @@
 ;; Set colors  https://github.com/company-mode/company-mode/wiki/Switching-from-AC
 
 ;; Similarities to AC
-;; (eval-after-load 'company
-;;   '(progn
-;;      (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-;;      (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)))
-;; (eval-after-load 'company
-;;   '(progn
-;;      (define-key company-active-map (kbd "S-TAB") 'company-select-previous)
-;;      (define-key company-active-map (kbd "<backtab>") 'company-select-previous)))
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+     (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)))
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "S-TAB") 'company-select-previous)
+     (define-key company-active-map (kbd "<backtab>") 'company-select-previous)))
+
+;; Configure projectile
+(projectile-mode 1)
+(setq projectile-completion-system 'ivy)
+(define-key projectile-mode-map (kbd "M-s") 'projectile-command-map)
+;; (global-set-key (kbd "M-s f") 'projectile-find-file)
+;; (global-set-key (kbd "M-s c") 'projectile-compile-project)
+;; (global-set-key (kbd "M-s p") 'projectile-switch-project)
+;; (global-set-key (kbd "M-s f") 'projectile-)
+;; (global-set-key (kbd "M-s f") 'projectile-find-file)
+
+;; Ivy, Counsel and Swiper configuration
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(setq ivy-wrap t)
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(counsel-mode 1)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-rg)
+(global-set-key (kbd "C-c l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+;; enable this if you want `swiper' to use it
+;; (setq search-default-mode #'char-fold-to-regexp)
+(global-set-key (kbd "C-s") 'swiper)
