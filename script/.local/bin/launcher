@@ -12,8 +12,10 @@ then
 	export MOZ_ENABLE_WAYLAND=1
 	# Java
 	export _JAVA_AWT_WM_NONREPARENTING=1
-	# SDL
-	export SDL_VIDEODRIVER=wayland
+	# SDL - not working for most games
+	#export SDL_VIDEODRIVER=wayland
+else
+	export GTK_USE_PORTAL=1
 fi
 
 generic-launcher bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'
