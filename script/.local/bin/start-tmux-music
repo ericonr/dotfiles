@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+tmux new-session -d -s music
+STATUS=$?
+
+if [ $STATUS -eq 0 ]
+then
+	tmux new-window -tmusic -n spotify spt
+fi
+
+if [ -z $TMUX ]
+then
+	tmux attach -tmusic:spotify.1
+fi
+

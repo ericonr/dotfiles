@@ -33,6 +33,9 @@ This setup, which can be found on `wm`, requires the following dependencies:
   * `launcher`: used as a standalone launcher, it requires a few details dependencies:
     * `fzf`: a wonderful fuzzy searcher.
 	* `lnch`: a really simple Go program for launching an application. Can be obtained by running the makefile inside `sourcecode`.
+  * `spotify-tui`: TUI for Spotify.
+    * `spotifyd`: daemon for streaming Spotify stuff.
 * Applications needed for media keys:
   * `pulseaudio`: the default audio daemon; `pactl` is used for controlling the volume.
   * `brightnessctl`: the default brightness controller; it's used for setting the backlight.
+  * `playerctl`: player control from media keys.

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+tmux new-session -d -s standard
+STATUS=$?
+
+if [ $STATUS -eq 0 ]
+then
+	tmux new-window -tstandard -n shell
+	tmux new-window -tstandard -n multishell
+	tmux split-window -h
+	tmux split-window -v
+	tmux select-pane -tstandard:multishell.1
+	tmux split-window -v
+	tmux new-window -tstandard -n diagnostic
+	tmux split-window -h htop
+	tmux split-window -v bmon
+	tmux select-pane -tstandard:diagnostic.1
+	tmux split-window -v	
+fi
+
+tmux attach -tstandard:multishell.1
+

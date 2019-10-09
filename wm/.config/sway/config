@@ -35,13 +35,14 @@ bindsym $mod+Shift+c reload
 # Restart sway inplace (can be used to upgrade sway)
 bindsym $mod+Shift+r restart
 # Exit sway
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut.' -b 'Exit session' 'swaymsg exit' -b 'Suspend device' 'systemctl suspend' -b 'Shut down' 'poweroff'
 
 ## Input settings
 # Change keyboard layout
 set $keyboard "1:1:AT_Translated_Set_2_keyboard"
 input $keyboard {
 	xkb_layout "us,br"
+	xkb_options ctrl:nocaps
 }
 bindsym $mod+Space exec keyboard_layout_switcher
 # Touchpad
@@ -55,15 +56,22 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-#TODO: use keys XF86AudioPlay, XF86AudioPause, XF86AudioPrev, XF86AudioNext
+# Cursor theme
+seat * xcursor_theme Breeze_Snow
+
 
 ## Launching applications
 # Start a terminal
 bindsym $mod+Return exec $term
 # Start a terminal with tmux
-bindsym $mod+t exec $term -e tmux
+bindsym $mod+t exec $term -e start-tmux
+# Start a terminal with music tmux
+bindsym $mod+Mod1+m exec $term -e start-tmux-music
 # Launch editor
 bindsym $mod+Shift+w exec $editor
 # Start Dolphin file browser
@@ -212,7 +220,10 @@ bindsym $mod+r mode "resize"
 
 ## Status bar
 bar {
+    id mainbar
     position top
+    mode hide
+    hidden_state hide
     swaybar_command waybar
 }
 for_window [app_id="waybar" floating] {
@@ -238,3 +249,4 @@ exec swaymsg 'workspace 1;'
 for_window [app_id="krunner"] floating enable
 for_window [app_id="konsole"] floating enable
 for_window [app_id="pavucontrol"] focus, floating enable
+for_window [app_id="org.mozilla.plasma-browser-integration-host"] floating enable
