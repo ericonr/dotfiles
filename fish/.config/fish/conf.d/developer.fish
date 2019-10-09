@@ -2,7 +2,7 @@ alias jpnb='jupyter-notebook'
 
 alias cformat='clang-format -i -style=webkit'
 
-alias maketmp='make BUILD_DIR=/tmp/(pwd)'
+alias maketmp='make BUILD_DIR=/tmp/(basename (pwd))'
 
 function statusgit --argument show
     if test -z $show

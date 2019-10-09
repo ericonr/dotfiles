@@ -27,8 +27,3 @@ function pdfunlock
     end
 end
 
-function starttmux
-    emacs --daemon
-    tmux
-end
-
