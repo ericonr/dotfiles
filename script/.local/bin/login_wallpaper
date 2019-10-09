@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-sudo mv /usr/share/sddm/themes/breath/components/artwork/background.png /usr/share/sddm/themes/breath/components/artwork/background.png.back
-
-sudo convert /home/ericonr/Pictures/Wallpaper/wallpaper_login.* /usr/share/sddm/themes/breath/components/artwork/background.png
