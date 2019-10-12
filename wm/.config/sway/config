@@ -63,7 +63,11 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Cursor theme
 seat * xcursor_theme Breeze_Snow
-
+# Screenshots
+bindsym Print exec screenshot
+bindsym Ctrl+Print exec screenshot COPY
+bindsym Shift+Print exec screenshot CROP
+bindsym Ctrl+Shift+Print exec screenshot CROP COPY
 
 ## Launching applications
 # Start a terminal

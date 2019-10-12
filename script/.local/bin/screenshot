@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+SAVEPATH="$(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+mkdir -p "$(xdg-user-dir PICTURES)/Screenshots"
+
+SAVED="Screenshot saved!"
+COPIED="Screenshot copied!"
+
+NOTIFICATION="notify-send -a Grim"
+
+if [ -z $1 ]
+then
+	grim "${SAVEPATH}"
+	${NOTIFICATION} "${SAVED}" "${SAVEPATH}"
+else
+	if [ $1 = COPY ]
+	then
+		grim - | wl-copy
+		${NOTIFICATION} "${COPIED}"
+	elif [ $1 = CROP ]
+	then
+		GEOMETRY=$(slurp)
+		if [ -z $2 ]
+		then
+			grim -g "${GEOMETRY}" "${SAVEPATH}"
+			${NOTIFICATION} "${SAVED}" "${SAVEPATH}"
+		elif [ $2 = COPY ]
+		then
+			grim -g "${GEOMETRY}" - | wl-copy
+			${NOTIFICATION} "${COPIED}"
+		fi
+	fi
+fi
+

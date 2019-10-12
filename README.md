@@ -39,3 +39,5 @@ This setup, which can be found on `wm`, requires the following dependencies:
   * `pulseaudio`: the default audio daemon; `pactl` is used for controlling the volume.
   * `brightnessctl`: the default brightness controller; it's used for setting the backlight.
   * `playerctl`: player control from media keys.
+  * `grim`: screenshots on wayland.
+    * `slurp`: select a geometry on a wayland screen.
