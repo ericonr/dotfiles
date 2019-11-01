@@ -13,7 +13,7 @@
  '(mediawiki-site-default "ERacing")
  '(package-selected-packages
    (quote
-    (flx counsel ivy projectile go-mode kotlin-mode pkgbuild-mode key-chord dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
+    (projectile-ripgrep ripgrep cmake-ide magit cmake-mode dired-git-info flx counsel ivy projectile go-mode kotlin-mode pkgbuild-mode key-chord dumb-jump evil xclip multiple-cursors ws-butler company-jedi company-irony company auto-complete fish-mode mediawiki markdown-mode rust-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -110,6 +110,10 @@
 ;; Configure jump between functions
 (global-set-key (kbd "C-M-p") 'backward-list)
 
+;; Configure dired git info
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd ")") 'dired-git-info-mode))
+
 ;; Change yes-or-no to y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -202,3 +206,11 @@
 ;; enable this if you want `swiper' to use it
 ;; (setq search-default-mode #'char-fold-to-regexp)
 (global-set-key (kbd "C-s") 'swiper)
+
+;; Set up cmake-ide
+(cmake-ide-setup)
+(setq cmake-ide-build-pool-use-persistent-naming t)
+(setq cmake-ide-build-pool-dir "/tmp")
+(defun make-flash()
+  (eshell-command (concat "cd " cmake-ide-build-dir " && make flash")))
+(global-set-key (kbd "M-s n") 'make-flash)
