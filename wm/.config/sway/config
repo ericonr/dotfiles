@@ -24,10 +24,10 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 # You can also use the cursor keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move workspace to left
+bindsym $mod+Shift+Down move workspace to down
+bindsym $mod+Shift+Up move workspace to up
+bindsym $mod+Shift+Right move workspace to right
 
 ## System tasks
 # Reload configuration file
@@ -101,7 +101,7 @@ exec mako
 
 ## Appearance
 # Default wallpaper
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Pictures/wallpaper.png fill
 # Font for window titles
 font pango:Liberation Sans 9
 # Gaps configuration
