@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+RUSTFLAGS="-Clink-arg=-fuse-ld=lld" /usr/bin/makepkg "$@"
+
