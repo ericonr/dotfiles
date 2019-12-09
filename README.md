@@ -4,6 +4,8 @@
 
 Uses [GNU stow](https://www.gnu.org/software/stow/) for managing symlinks! The default `.stowrc` file is setup for my home directory, and for adopting files (overwrite existing files, bringing them into the repo).
 
+Also uses [Go](https://golang.org/) programs to perform a few tasks.
+
 In order to link all files, use
 
 ```bash
@@ -50,3 +52,15 @@ This setup, which can be found on `wm` and `script`, requires the following depe
     * `slurp`: select a geometry on a wayland screen.
   
 **Obs:** A few needed programs can be installed by running the Makefile inside `sourcecode/`.
+
+**Obs.:** This configuration requires some executables that can be obtained from the `sourcecode/` directory.
+
+## `sourcecode`
+
+To install the executables inside this directory, it's necessary to run
+
+```shell
+go install ./...
+```
+
+inside it.
