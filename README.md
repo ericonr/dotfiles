@@ -4,18 +4,23 @@
 
 Uses [GNU stow](https://www.gnu.org/software/stow/) for managing symlinks! The default `.stowrc` file is setup for my home directory, and for adopting files (overwrite existing files, bringing them into the repo).
 
-In order to bring all files, use
+In order to link all files, use
+
 ```bash
 $ stow */
 ```
+
 otherwise, for specific folders, use
+
 ```bash
 $ stow folder
 ```
 
+It's also recommended to create the `~/.local/bin` and `~/.local/share` directories before stowing the repository.
+
 ## Sway + Waybar
 
-This setup, which can be found on `wm`, requires the following dependencies:
+This setup, which can be found on `wm` and `script`, requires the following dependencies:
 * Basic setup:
   * `sway`: the Wayland compositor and tiling window manager.
     * `swaylock`
@@ -43,3 +48,5 @@ This setup, which can be found on `wm`, requires the following dependencies:
   * `playerctl`: player control from media keys.
   * `grim`: screenshots on wayland.
     * `slurp`: select a geometry on a wayland screen.
+  
+**Obs:** A few needed programs can be installed by running the Makefile inside `sourcecode/`.

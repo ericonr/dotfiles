@@ -1,4 +1,4 @@
-BUILD_DIR  = ../script/.local/bin
+BUILD_DIR  ?= ~/.local/bin
 
 GOSRC      = $(wildcard *.go)
 GOTARGET   = $(GOSRC:%.go=$(BUILD_DIR)/%)
