@@ -9,7 +9,9 @@ alias weather='curl wttr.in/'
 alias rgmod='lsmod | rg -i'
 alias rgps='ps aux | rg -i'
 
-#alias info='info --vi-keys'
+function randpw -a digits
+	openssl rand -base64 $digits | wl-copy
+end
 
 function pdfunlock
     # command taken from https://mandrivausers.org/index.php?/topic/79354-saving-pdf-file-without-password-solved/
