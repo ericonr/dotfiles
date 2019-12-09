@@ -26,6 +26,8 @@ This setup, which can be found on `wm`, requires the following dependencies:
   * `jq`: CLI JSON parser, necessary for keyboard layout implementation.
   * `redshift`: magic tool for avoiding eye burning. Needs to be the version patched for Sway/Wayland use.
 * Default applications:
+  * `fish`: the default shell.
+	* `starship`: the prompt for fish.
   * `alacritty`: the default terminal emulator (and it has the `dimensions` option).
     * `tmux`: the main terminal shortcut launches `tmux` for multiple terminals in the same screen.
   * `emacs`: the default text editor (unfortunately, has to run through Xwayland).

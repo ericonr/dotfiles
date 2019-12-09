@@ -1,0 +1,44 @@
+add_newline = false
+
+prompt_order = [
+    "username",
+    "hostname",
+    "kubernetes",
+    "directory",
+    "git_branch",
+    "git_state",
+    "git_status",
+    "package",
+    "golang",
+    "rust",
+    "nix_shell",
+    "conda",
+    "memory_usage",
+    "env_var",
+    "cmd_duration",
+    "line_break",
+    "jobs",
+    "battery",
+    "time",
+    "character",
+]
+
+[character]
+symbol = "➜"
+use_symbol_for_status = false
+
+[directory]
+truncation_length = 1
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+symbol = ""
+
+[git_status]
+modified_count.enabled = true
+modified_count.style = "green"
+staged_count.enabled = true
+show_sync_count = true
+
+[line_break]
+disabled = true
