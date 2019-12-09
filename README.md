@@ -37,11 +37,9 @@ This setup, which can be found on `wm` and `script`, requires the following depe
 	* `starship`: the prompt for fish.
   * `alacritty`: the default terminal emulator (and it has the `dimensions` option).
     * `tmux`: the main terminal shortcut launches `tmux` for multiple terminals in the same screen.
-  * `emacs`: the default text editor (unfortunately, has to run through Xwayland).
+  * `emacs`: the default text editor (unfortunately, it has to run through Xwayland).
   * `nvim`: the default CLI text editor.
-  * `launcher`: used as a standalone launcher, it requires a few details dependencies:
-    * `fzf`: a wonderful fuzzy searcher.
-	* `lnch`: a really simple Go program for launching an application. Can be obtained by running the makefile inside `sourcecode`.
+  * `fzf`: a wonderful fuzzy searcher, required by the self-built launcher.
   * `spotify-tui`: TUI for Spotify.
     * `spotifyd`: daemon for streaming Spotify stuff.
 * Applications needed for media keys:
@@ -50,8 +48,11 @@ This setup, which can be found on `wm` and `script`, requires the following depe
   * `playerctl`: player control from media keys.
   * `grim`: screenshots on wayland.
     * `slurp`: select a geometry on a wayland screen.
-  
-**Obs:** A few needed programs can be installed by running the Makefile inside `sourcecode/`.
+* Application needed for AppPauser keys:
+  * `AppPauser` is used for making pausing the execution of any application that's started by it possible. It's my own application.
+* Theming:
+  * Liberation Sans font.
+  * Breeze_Snow cursor theme.
 
 **Obs.:** This configuration requires some executables that can be obtained from the `sourcecode/` directory.
 

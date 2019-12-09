@@ -68,6 +68,9 @@ bindsym Print exec screenshot
 bindsym Ctrl+Print exec screenshot COPY
 bindsym Shift+Print exec screenshot CROP
 bindsym Ctrl+Shift+Print exec screenshot CROP COPY
+# AppPauser
+bindsym $mod+Ctrl+P exec apppauserctl toggle
+bindsym $mod+Ctrl+G exec firejail --join=steam apppauserctl toggle
 
 ## Launching applications
 # Start a terminal
