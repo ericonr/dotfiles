@@ -122,7 +122,9 @@ exec swayidle -w \
                resume  'swaymsg "output * dpms on"' \
           before-sleep 'swaylock'
 # Manual behavior
-bindsym $mod+Shift+x exec swaylock -f -c 000000
+bindsym $mod+Shift+x exec swaylock
+# Sleep when closed behavior
+bindswitch --reload lid:on exec systemctl suspend
 
 ## Layout
 # Split in horizontal orientation
@@ -238,19 +240,12 @@ for_window [app_id="waybar" floating] {
     move down 120px # adjust if some menus still don't fit
 }
 
-## Pre-configured workspaces
-# Music
-exec swaymsg 'workspace media; layout tabbed'
-for_window [app_id="spotify"] move container to workspace $wsm
+## Window assignment
 # Work
-exec swaymsg 'workspace nth; layout tabbed'
 assign [app_id="Kicad"] $wsn
 assign [title="CubeMX"] $wsn
 # PDF
-exec swaymsg 'workspace pdf; layout tabbed'
 assign [app_id="okular"] $wsp
-# Return to first workspace
-exec swaymsg 'workspace 1;'
 
 ## Application specific settings
 for_window [app_id="krunner"] floating enable
