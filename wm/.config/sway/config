@@ -35,7 +35,8 @@ bindsym $mod+Shift+c reload
 # Restart sway inplace (can be used to upgrade sway)
 bindsym $mod+Shift+r restart
 # Exit sway
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut.' -b 'Exit session' 'swaymsg exit' -b 'Suspend device' 'systemctl suspend' -b 'Shut down' 'poweroff'
+set $exit_command "swaynag -t warning -m 'You pressed the exit shortcut.' -b 'Exit session' 'swaymsg exit' -b 'Suspend device' 'systemctl suspend' -b 'Shut down' 'poweroff'"
+bindsym $mod+Shift+e exec $exit_command
 
 ## Input settings
 # Change keyboard layout
@@ -51,18 +52,18 @@ input $touchpad {
 	tap enabled
 	natural_scroll disabled
 }
-# Media keys
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Cursor theme
-seat * xcursor_theme Breeze_Snow
+seat * xcursor_theme posy-white
+# Media keys
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 # Screenshots
 bindsym Print exec screenshot
 bindsym Ctrl+Print exec screenshot COPY
@@ -195,6 +196,12 @@ bindsym $mod+Shift+n move container to workspace $wsn
 bindsym $mod+Shift+m move container to workspace $wsm
 bindsym $mod+Shift+o move container to workspace $wso
 bindsym $mod+Shift+p move container to workspace $wsp
+
+## Mouse bindings
+set $mouse button9
+bindsym --whole-window $mouse+button1 exec launcher
+bindsym --whole-window $mouse+button3 workspace $ws10
+bindsym --whole-window $mouse+button8 exec $exit_command
 
 ## Scratchpad
 # Sway has a "scratchpad", which is a bag of holding for windows.
