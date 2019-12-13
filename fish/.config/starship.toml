@@ -40,5 +40,16 @@ modified_count.style = "green"
 staged_count.enabled = true
 show_sync_count = true
 
+[package]
+style="bright-green"
+
+[golang]
+symbol="Go "
+style="bold yellow"
+
+[rust]
+symbol="Rust "
+style="bold red"
+
 [line_break]
 disabled = true
