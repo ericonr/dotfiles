@@ -67,3 +67,17 @@ go install ./...
 ```
 
 inside it.
+
+## neovim
+
+Neovim now uses git submodules to store some plugins:
+
+* vim-airline
+* kotlin-vim
+
+If you want to use these plugins, you can download them using:
+
+```shell
+git clone --recursive https://github.com/ericonr/dotfiles.git
+```
+

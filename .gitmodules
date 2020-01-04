@@ -1,0 +1,6 @@
+[submodule "nvim/.config/nvim/pack/plugins/start/kotlin-vim"]
+	path = nvim/.config/nvim/pack/plugins/start/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-airline"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
