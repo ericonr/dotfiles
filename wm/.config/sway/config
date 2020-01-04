@@ -53,7 +53,7 @@ input $touchpad {
 	natural_scroll disabled
 }
 # Cursor theme
-seat * xcursor_theme posy-white
+seat * xcursor_theme Breeze_Snow
 # Media keys
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -87,8 +87,10 @@ bindsym $mod+Shift+f exec dolphin
 # Kill focused window
 bindsym $mod+Shift+q kill
 # Start launcher
-bindsym $mod+d exec $menu
+bindsym $mod+Shift+d exec $menu
 for_window [title="launcher"] focus, floating enable, border none
+# Start wofi
+bindsym $mod+d exec wofitheme
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -259,3 +261,4 @@ for_window [app_id="krunner"] floating enable
 for_window [app_id="konsole"] floating enable
 for_window [app_id="pavucontrol"] focus, floating enable
 for_window [app_id="org.mozilla.plasma-browser-integration-host"] floating enable
+

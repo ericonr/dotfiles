@@ -1,0 +1,13 @@
+# ericonr's mako config
+
+anchor=top-right
+default-timeout=5000
+
+border-radius=8
+height=500
+width=400
+
+font=Liberation Sans 10
+text-color=#ffffff
+background-color=#c250c2
+

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# ericonr's script for launching applications with the appropriate env
+
+if [ $XDG_SESSION_TYPE = wayland ]
+then
+	# Qt
+	export QT_QPA_PLATFORM=wayland-egl
+	export QT_WAYLAND_FORCE_DPI=physical
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+	# Firefox
+	export MOZ_ENABLE_WAYLAND=1
+	# Java
+	export _JAVA_AWT_WM_NONREPARENTING=1
+	# SDL - not working for most games
+	#export SDL_VIDEODRIVER=wayland
+else
+	export GTK_USE_PORTAL=1
+fi
+
+env GTK_THEME=OSX-Arc-Shadow wofi -i -t alacritty $@
+

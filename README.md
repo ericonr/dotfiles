@@ -30,6 +30,8 @@ This setup, which can be found on `wm` and `script`, requires the following depe
     * `swayidle`
   * `Xwayland`: X server inside Wayland, for backwards compatibility.
   * `waybar`: customizable status bar.
+  * `wofi`: a pretty good menu system, for wayland (replaces the self built launcher).
+  * `mako`: a notification daemon
   * `jq`: CLI JSON parser, necessary for keyboard layout implementation.
   * `redshift`: magic tool for avoiding eye burning. Needs to be the version patched for Sway/Wayland use.
 * Default applications:
