@@ -24,37 +24,38 @@ It's also recommended to create the `~/.local/bin` and `~/.local/share` director
 
 This setup, which can be found on `wm` and `script`, requires the following dependencies:
 * Basic setup:
-  * `sway`: the Wayland compositor and tiling window manager.
-    * `swaylock`
-    * `swaybg`
-    * `swayidle`
-  * `Xwayland`: X server inside Wayland, for backwards compatibility.
-  * `waybar`: customizable status bar.
-  * `wofi`: a pretty good menu system, for wayland (replaces the self built launcher).
-  * `mako`: a notification daemon
-  * `jq`: CLI JSON parser, necessary for keyboard layout implementation.
-  * `redshift`: magic tool for avoiding eye burning. Needs to be the version patched for Sway/Wayland use.
+  * [`sway`](https://swaywm.org/): the Wayland compositor and tiling window manager.
+    * [`swaylock`](https://github.com/swaywm/swaylock)
+    * [`swaybg`](https://github.com/swaywm/swaybg)
+    * [`swayidle`](https://github.com/swaywm/swayidle)
+  * [`Xwayland`](https://wayland.freedesktop.org/xserver.html): X server inside Wayland, for backwards compatibility.
+  * [`waybar`](https://github.com/Alexays/Waybar): customizable status bar.
+  * [`wofi`](https://hg.sr.ht/~scoopta/wofi): a pretty good menu system, for wayland (replaces the self built launcher).
+  * [`mako`](https://wayland.emersion.fr/mako/): a notification daemon
+  * [`jq`](https://stedolan.github.io/jq/): CLI JSON parser, necessary for keyboard layout implementation.
+  * [`redshift`](https://github.com/minus7/redshift/tree/wayland): magic tool for avoiding eye burning. Needs to be the version patched for Sway/Wayland use.
 * Default applications:
-  * `fish`: the default shell.
-	* `starship`: the prompt for fish.
-  * `alacritty`: the default terminal emulator (and it has the `dimensions` option).
-    * `tmux`: the main terminal shortcut launches `tmux` for multiple terminals in the same screen.
-  * `emacs`: the default text editor (unfortunately, it has to run through Xwayland).
-  * `nvim`: the default CLI text editor.
-  * `fzf`: a wonderful fuzzy searcher, required by the self-built launcher.
-  * `spotify-tui`: TUI for Spotify.
-    * `spotifyd`: daemon for streaming Spotify stuff.
+  * [`fish`](https://fishshell.com/): the default shell.
+	* [`starship`](https://starship.rs/): the cross-shell prompt for astronauts.
+  * [`alacritty`](https://github.com/jwilm/alacritty): the default terminal emulator (because it's pretty, fast, and it has the `dimensions` option).
+    * [`tmux`](https://github.com/tmux/tmux): the Meta+T shortcut launches `tmux` for multiple terminals in the same screen.
+  * [`emacs`](https://www.gnu.org/software/emacs/): the default(?) text editor (unfortunately, it has to run through Xwayland).
+  * [`nvim`](https://neovim.io/): the default CLI text editor.
+  * [`fzf`](https://github.com/junegunn/fzf): a wonderful fuzzy searcher, required by the self-built launcher.
 * Applications needed for media keys:
-  * `pulseaudio`: the default audio daemon; `pactl` is used for controlling the volume.
-  * `brightnessctl`: the default brightness controller; it's used for setting the backlight.
-  * `playerctl`: player control from media keys.
-  * `grim`: screenshots on wayland.
-    * `slurp`: select a geometry on a wayland screen.
-* Application needed for AppPauser keys:
-  * `AppPauser` is used for making pausing the execution of any application that's started by it possible. It's my own application.
+  * [`pulseaudio`](https://www.freedesktop.org/wiki/Software/PulseAudio/): the default audio daemon; provides `pactl`, which is used for controlling the volume.
+  * [`brightnessctl`](https://github.com/Hummer12007/brightnessctl): the default brightness controller; it's used for setting the backlight.
+  * [`playerctl`](https://github.com/altdesktop/playerctl): player control from media keys.
+  * [`grim`](https://wayland.emersion.fr/grim/): screenshots on wayland.
+    * [`slurp`](https://wayland.emersion.fr/slurp/): select a geometry on a wayland screen.
+* Media applications:
+  * [`spotify-tui`](https://github.com/Rigellute/spotify-tui): a Spotify TUI.
+    * [`spotifyd`](https://github.com/Spotifyd/spotifyd): a Spotify daemon.
+* Applications needed for AppPauser keys:
+  * [`AppPauser`](https://github.com/ericonr/AppPauser): is used for making pausing the execution of any application that's started by it possible.
 * Theming:
-  * Liberation Sans font.
-  * Breeze_Snow cursor theme.
+  * [Liberation font](https://en.wikipedia.org/wiki/Liberation_fonts) (Sans).
+  * [Breeze\_Snow](https://github.com/KDE/breeze) cursor theme.
 
 **Obs.:** This configuration requires some executables that can be obtained from the `sourcecode/` directory.
 
@@ -68,12 +69,12 @@ go install ./...
 
 inside it.
 
-## neovim
+## neovim plugins
 
 Neovim now uses git submodules to store some plugins:
 
-* vim-airline
-* kotlin-vim
+* [vim-airline](https://github.com/vim-airline/vim-airline)
+* [kotlin-vim](https://github.com/udalov/kotlin-vim)
 
 If you want to use these plugins, you can download them using:
 
