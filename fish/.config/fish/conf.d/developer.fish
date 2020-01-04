@@ -4,6 +4,8 @@ alias cformat='clang-format -i -style=webkit'
 
 alias maketmp='make BUILD_DIR=/tmp/(basename (pwd))'
 
+alias cargotmp='env CARGO_TARGET_DIR=/tmp/cargo/(basename (pwd)) cargo'
+
 function statusgit --argument show
     if test -z $show
         set show_status false
