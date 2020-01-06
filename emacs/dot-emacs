@@ -79,7 +79,7 @@
   ;; ispell-set-spellchecker-params has to be called
   ;; before ispell-hunspell-add-multi-dic will work
   (ispell-set-spellchecker-params)
-  (ispell-hunspell-add-multi-dic "pt_BR,en_US-large"))
+  (ispell-hunspell-add-multi-dic "pt_BR,en_US"))
 (ispell-minor-mode 1)
 
 ;; Position configs
