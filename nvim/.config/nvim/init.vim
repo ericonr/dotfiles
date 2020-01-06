@@ -1,6 +1,13 @@
 " ericonr's nvim config
 
 
+" BEHAVIOR
+
+" Case insensitive searches, unless the term has a capital letter
+set ignorecase
+set smartcase
+
+
 " SHORTCUTS
 
 " Shortcuts for quickly going back to normal mode
