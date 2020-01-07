@@ -18,6 +18,12 @@ set smartcase
 :nmap wp "+p
 :vmap wy "+y
 
+" Shortcuts for working with tabs
+:nmap tr :tabr<cr>
+:nmap tl :tabl<cr>
+:nmap tp :tabp<cr>
+:nmap tn :tabn<cr>
+
 
 " APPEARANCE
 
