@@ -29,10 +29,19 @@ function wm () {
 		wofi
 }
 
+function audio () {
+	xbps-install -S \
+		alsa-utils \
+		playerctl \
+		pulseaudio \
+		pavucontrol
+}
+
 function term () {
 	xbps-install -S \
 		bat \
 		bmon \
+		fd \
 		fish-shell \
 		htop \
 		mdcat \
@@ -79,7 +88,11 @@ function intel () {
 }
 
 function fonts () {
-	xbps-install -S noto-fonts-ttf noto-fonts-emoji
+	xbps-install -S \
+		font-fira-ttf \
+		noto-fonts-ttf \
+		noto-fonts-emoji \
+		ttf-bitstream-vera
 }
 
 function qt5 () {
