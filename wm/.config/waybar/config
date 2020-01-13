@@ -57,7 +57,8 @@
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
+        },
+	"on-click-right": "launchlava EXIT"
     },
     "tray": {
         // "icon-size": 21,

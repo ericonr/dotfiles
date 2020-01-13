@@ -5,11 +5,27 @@ source ~/.local/bin/wayland-vars
 HICOLOR="/usr/share/icons/hicolor"
 GNOME="/usr/share/icons/gnome"
 
+if [ -z $1 ]
+then
+	:
+else
+	if [ $1 = EXIT ]
+	then
+		LAYER=(-l overlay)
+		POSITION=(-p top)
+		SIZE=(-s 60)
+		EXITB=(-b "$GNOME/256x256/actions/exit.png" "exit")
+	fi
+fi
+
 lavalauncher \
 	-M 6 \
 	-S 1 \
 	-c "#909090FF" \
 	-C "#EEEEEEFF" \
+	${LAYER[0]} ${LAYER[1]} \
+	${POSITION[0]} ${POSITION[1]} \
+	${SIZE[0]} ${SIZE[1]} \
 	-b "$HICOLOR/256x256/apps/firefox.png" "firefox" \
 	-b "$HICOLOR/512x512/apps/qutebrowser.png" "qutebrowser" \
 	-b "$HICOLOR/256x256/apps/thunderbird.png" "thunderbird" \
@@ -23,5 +39,6 @@ lavalauncher \
 	-b "$HICOLOR/256x256/apps/steam.png" "steam" \
 	-b "$GNOME/256x256/apps/gnome-terminal.png" "alacritty" \
 	-b "$GNOME/256x256/apps/ksysguard.png" "ksysguard" \
-	-b "$GNOME/256x256/actions/exit.png" "notify-send hello"
+	-b "$GNOME/256x256/actions/system-shutdown.png" "notify-send hello" \
+	${EXITB[0]} ${EXITB[1]} ${EXITB[2]}
 
