@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+source ~/.local/bin/wayland-vars
+
+HICOLOR="/usr/share/icons/hicolor"
+GNOME="/usr/share/icons/gnome"
+
+lavalauncher \
+	-M 6 \
+	-S 1 \
+	-c "#909090FF" \
+	-C "#EEEEEEFF" \
+	-b "$HICOLOR/256x256/apps/firefox.png" "firefox" \
+	-b "$HICOLOR/512x512/apps/qutebrowser.png" "qutebrowser" \
+	-b "$HICOLOR/256x256/apps/thunderbird.png" "thunderbird" \
+	-b "$HICOLOR/128x128/apps/konversation.png" "konversation" \
+	-b "$HICOLOR/192x192/apps/qbittorrent.png" "qbittorrent" \
+	-b "$HICOLOR/512x512/apps/libreoffice-startcenter.png" "libreoffice" \
+	-b "$HICOLOR/512x512/apps/spotify.png" "spotify" \
+	-b "$HICOLOR/128x128/apps/elisa.png" "elisa" \
+	-b "$HICOLOR/256x256/apps/digikam.png" "digikam" \
+	-b "$HICOLOR/256x256/apps/darktable.png" "darktable" \
+	-b "$HICOLOR/256x256/apps/steam.png" "steam" \
+	-b "$GNOME/256x256/apps/gnome-terminal.png" "alacritty" \
+	-b "$GNOME/256x256/apps/ksysguard.png" "ksysguard" \
+	-b "$GNOME/256x256/actions/exit.png" "notify-send hello"
+

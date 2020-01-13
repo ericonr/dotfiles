@@ -30,6 +30,7 @@ This setup, which can be found on `wm` and `script`, requires the following depe
     * [`swayidle`](https://github.com/swaywm/swayidle)
   * [`Xwayland`](https://wayland.freedesktop.org/xserver.html): X server inside Wayland, for backwards compatibility.
   * [`waybar`](https://github.com/Alexays/Waybar): customizable status bar.
+  * [`lavalauncher`](https://git.sr.ht/~leon_plickat/lavalauncher): simple static launcher that remains hidden `:)`.
   * [`wofi`](https://hg.sr.ht/~scoopta/wofi): a pretty good menu system, for wayland (replaces the self built launcher).
   * [`mako`](https://wayland.emersion.fr/mako/): a notification daemon
   * [`jq`](https://stedolan.github.io/jq/): CLI JSON parser, necessary for keyboard layout implementation.
