@@ -26,6 +26,8 @@
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
  '(company-tooltip-selection ((t (:background "steelblue" :foreground "white")))))
 
+(setq package-user-dir "/home/ericonr/.config/emacs/emacs.d")
+
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
