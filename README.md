@@ -56,6 +56,7 @@ This setup, which can be found on `wm` and `script`, requires the following depe
   * [`AppPauser`](https://github.com/ericonr/AppPauser): is used for making pausing the execution of any application that's started by it possible.
 * Theming:
   * [Liberation font](https://en.wikipedia.org/wiki/Liberation_fonts) (Sans).
+  * [IBM Plex font](https://www.ibm.com/plex/).
   * [Breeze\_Snow](https://github.com/KDE/breeze) cursor theme.
 
 **Obs.:** This configuration requires some executables that can be obtained from the `sourcecode/` directory.
