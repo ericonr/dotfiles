@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"strings"
-	"strconv"
 	"encoding/json"
-	"os/exec"
+	"fmt"
 	"log"
+	"os/exec"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -19,12 +19,12 @@ func main() {
 
 	// struct that represents the Input
 	type Input struct {
-		Identifier, Name string
-		Vendor, Product int
-		Type string
-		Xkb_Layout_Names []string
+		Identifier, Name        string
+		Vendor, Product         int
+		Type                    string
+		Xkb_Layout_Names        []string
 		Xkb_Active_Layout_Index int
-		Xkb_Active_Layout_Name string
+		Xkb_Active_Layout_Name  string
 	}
 
 	// JSON decoder and getting the first token ('[')
@@ -70,7 +70,7 @@ func main() {
 	}
 
 	// setting the new layout index
-	cmd_out := exec.Command("swaymsg", "input", keyboard_input.Identifier, "xkb_switch_layout", strconv.Itoa(next_index))
+	cmd_out := exec.Command("swaymsg", "input", "*", "xkb_switch_layout", strconv.Itoa(next_index))
 	_, err = cmd_out.Output()
 	if err != nil {
 		log.Fatal(err)

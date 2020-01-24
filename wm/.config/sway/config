@@ -40,8 +40,7 @@ bindsym $mod+Shift+e exec $exit_command
 
 ## Input settings
 # Change keyboard layout
-set $keyboard "1:1:AT_Translated_Set_2_keyboard"
-input $keyboard {
+input * {
 	xkb_layout "us,br"
 	xkb_options ctrl:nocaps
 }
