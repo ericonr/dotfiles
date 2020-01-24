@@ -61,6 +61,14 @@ This setup, which can be found on `wm` and `script`, requires the following depe
 
 **Obs.:** This configuration requires some executables that can be obtained from the `sourcecode/` directory.
 
+### Wallpaper
+
+![wallpaper](https://gitlab.com/Kreneker/the-grand-canyon/raw/master/The%20Grand%20Canyon%20preview.png)
+
+The wallpaper is from one of the finalists of the [Plasma 5.18 Wallpaper Contest](https://dot.kde.org/2020/01/24/volna-wins-plasma-518-wallpaper-contest)! Congratulations to all of them :D
+
+I specially loved kevintee's colors, so I'm using their wallpaper, which is available here as a convenience, but still under their license. You can find other versions of it at their [repo](https://gitlab.com/Kreneker/the-grand-canyon).
+
 ## `sourcecode`
 
 To install the executables inside this directory, it's necessary to run
