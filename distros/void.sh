@@ -20,6 +20,7 @@ function wm () {
 		grim \
 		jq \
 		liberation-fonts-ttf \
+		mako \
 		redshift \
 		slurp \
 		sway \
@@ -117,6 +118,22 @@ function libreoffice () {
 
 function pdf () {
 	xbps-install -S zathura zathura-pdf-poppler
+}
+
+function flatpak () {
+	sudo xbps-install -S \
+		flatpak \
+		xdg-desktop-portal \
+		xdg-desktop-portal-gtk \
+		xdg-user-dirs \
+		xdg-user-dirs-gtk \
+		xdg-utils
+}
+
+function arm-none () {
+	sudo xbps-install -S \
+		cross-arm-none-eabi \
+		cross-arm-none-eabi-gdb
 }
 
 # Run function from script:
