@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Uses copy setttings beneficial to Btrfs
+
+/usr/bin/env cp --reflink=auto --sparse=always "$@"
+

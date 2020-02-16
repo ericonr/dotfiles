@@ -1,3 +1,5 @@
+# ericonr's fish config related to xrandr
+
 function list-display --description 'List available display interfaces from xrandr.'
     xrandr | sed -n '/connected/p'
 end
@@ -17,3 +19,4 @@ function conf-display --argument-names width height interface
     end
 
 end
+
