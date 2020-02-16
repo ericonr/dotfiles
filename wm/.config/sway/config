@@ -103,8 +103,8 @@ exec /usr/lib/polkit-kde-authentication-agent-1
 for_window [app_id="polkit"] focus, floating enable, border pixel 4
 # Notifications daemon
 exec mako
-# Lavalauncher
-exec launchlava
+# KDE Connect
+exec /usr/lib/kdeconnectd
 
 ## Appearance
 # Default wallpaper
