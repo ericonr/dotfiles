@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-kdesu enablegpu
-sleep 2
-
-darktable "$@"
-
-kdesu disablegpu
-
