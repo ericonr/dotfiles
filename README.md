@@ -92,3 +92,14 @@ If you want to use these plugins, you can download them using:
 git clone --recursive https://github.com/ericonr/dotfiles.git
 ```
 
+## Embedded development
+
+This setup for embedded development, especially on the arm-none-eabi platform, can be found on `embedded/`. It requires the following dependencies:
+* [`arm-none-eabi-gcc/gdb/newlib`](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads): the arm-none-eabi compiler, debugger and libc.
+* [`openocd`](http://openocd.org/): the debugger/programmer software used in most cases.
+* [STM32CubeProg](https://www.st.com/en/development-tools/stm32cubeprog.html): the programmer for cases when OpenOCD doesn't work.
+* [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): the tool used for generating STM32 projects.
+* [`esp-idf`](https://github.com/espressif/esp-idf): the Espressif IoT Development Framework. Still requires the download of an actual ESP32 compiler.
+* [`ugdb`](https://github.com/ftilde/ugdb): the best GDB interface! Helps a lot in usability.
+* [`can-utils`](https://github.com/linux-can/can-utils): Utilities for debugging and using the CAN bus on Linux.
+
