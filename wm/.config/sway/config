@@ -46,8 +46,7 @@ input * {
 }
 bindsym $mod+Space exec keyboard_layout_switcher
 # Touchpad
-set $touchpad "1739:31251:SYNA2393:00_06CB:7A13_Touchpad" 
-input $touchpad {
+input * {
 	tap enabled
 	natural_scroll disabled
 }
@@ -79,6 +78,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+t exec $term -e start-tmux
 # Start a terminal with music tmux
 bindsym $mod+Mod1+m exec $term -e start-tmux-music
+# Start MPV with clipboard as arg
+bindsym $mod+Mod1+p exec bash -c "mpv `wl-paste`"
 # Launch editor
 bindsym $mod+Shift+w exec $editor
 # Start Dolphin file browser
@@ -256,6 +257,7 @@ assign [app_id="Kicad"] $wsn
 assign [title="CubeMX"] $wsn
 # PDF
 assign [app_id="okular"] $wsp
+assign [app_id="zathura"] $wsp
 
 ## Application specific settings
 for_window [app_id="krunner"] floating enable
