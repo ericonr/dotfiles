@@ -27,9 +27,21 @@ set smartcase
 
 " APPEARANCE
 
+" Tab width
+set tabstop=3
+set shiftwidth=3
+
 " Show relative line numbers
 set number rnu
 
 " Pretty color scheme that works well with the one chosen for alacritty
 colorscheme slate
 
+
+" FUNCTIONS
+
+" Sets up the editor for spaces instead of tabs - WIP
+" https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
+fu! SpaceTabs()
+	:set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+endfunction

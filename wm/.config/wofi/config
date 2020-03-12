@@ -4,3 +4,5 @@ prompt=Hello!
 normal_window=false
 allow_images=true
 
+cache=~/.cache/wofi
+

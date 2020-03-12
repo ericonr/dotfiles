@@ -46,8 +46,7 @@ input * {
 }
 bindsym $mod+Space exec keyboard_layout_switcher
 # Touchpad
-set $touchpad "1739:31251:SYNA2393:00_06CB:7A13_Touchpad" 
-input $touchpad {
+input * {
 	tap enabled
 	natural_scroll disabled
 }
@@ -79,6 +78,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+t exec $term -e start-tmux
 # Start a terminal with music tmux
 bindsym $mod+Mod1+m exec $term -e start-tmux-music
+# Start MPV with clipboard as arg
+bindsym $mod+Mod1+p exec bash -c "mpv `wl-paste`"
 # Launch editor
 bindsym $mod+Shift+w exec $editor
 # Start Dolphin file browser
@@ -152,21 +153,21 @@ bindsym $mod+Shift+a focus child
 
 ## Workspaces
 # Workspace name
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-set $wsb "browser"
-set $wsn "nth"
-set $wsm "media"
-set $wso "oh"
-set $wsp "pdf"
+set $ws1 "💜"
+set $ws2 "👯"
+set $ws3 "🔱"
+set $ws4 "🍀"
+set $ws5 "🌟"
+set $ws6 "🌈"
+set $ws7 "🐞"
+set $ws8 "♾️"
+set $ws9 "👌"
+set $ws10 "🌀"
+set $wsb "🌎"
+set $wsn "⚡"
+set $wsm "🎺"
+set $wso "🧛"
+set $wsp "📜"
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -256,6 +257,7 @@ assign [app_id="Kicad"] $wsn
 assign [title="CubeMX"] $wsn
 # PDF
 assign [app_id="okular"] $wsp
+assign [app_id="zathura"] $wsp
 
 ## Application specific settings
 for_window [app_id="krunner"] floating enable
