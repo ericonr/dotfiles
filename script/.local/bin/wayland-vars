@@ -12,6 +12,8 @@ then
 	export _JAVA_AWT_WM_NONREPARENTING=1
 	# SDL - not working for most games
 	#export SDL_VIDEODRIVER=wayland
+	# Vulkan should use the Intel GPU
+	export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
 else
 	export GTK_USE_PORTAL=1
 fi
