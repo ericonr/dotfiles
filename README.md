@@ -30,7 +30,6 @@ This setup, which can be found on `wm` and `script`, requires the following depe
     * [`swayidle`](https://github.com/swaywm/swayidle)
   * [`Xwayland`](https://wayland.freedesktop.org/xserver.html): X server inside Wayland, for backwards compatibility.
   * [`waybar`](https://github.com/Alexays/Waybar): customizable status bar.
-  * [`lavalauncher`](https://git.sr.ht/~leon_plickat/lavalauncher): simple static launcher that remains hidden `:)`.
   * [`wofi`](https://hg.sr.ht/~scoopta/wofi): a pretty good menu system, for wayland (replaces the self built launcher).
   * [`mako`](https://wayland.emersion.fr/mako/): a notification daemon
   * [`jq`](https://stedolan.github.io/jq/): CLI JSON parser, necessary for keyboard layout implementation.
@@ -40,8 +39,9 @@ This setup, which can be found on `wm` and `script`, requires the following depe
 	* [`starship`](https://starship.rs/): the cross-shell prompt for astronauts.
   * [`alacritty`](https://github.com/jwilm/alacritty): the default terminal emulator (because it's pretty, fast, and it has the `dimensions` option).
     * [`tmux`](https://github.com/tmux/tmux): the Meta+T shortcut launches `tmux` for multiple terminals in the same screen.
-  * [`emacs`](https://www.gnu.org/software/emacs/): the default(?) text editor (unfortunately, it has to run through Xwayland).
-  * [`nvim`](https://neovim.io/): the default CLI text editor.
+  * [`emacs`](https://www.gnu.org/software/emacs/): the no longer default text editor (unfortunately, it has to run through Xwayland).
+  * [`neovim`](https://neovim.io/): the default CLI text editor.
+  * [`neovide`](https://github.com/Kethku/neovide): a no nonsense neovim client.
   * [`fzf`](https://github.com/junegunn/fzf): a wonderful fuzzy searcher, required by the self-built launcher.
 * Applications needed for media keys:
   * [`pulseaudio`](https://www.freedesktop.org/wiki/Software/PulseAudio/): the default audio daemon; provides `pactl`, which is used for controlling the volume.

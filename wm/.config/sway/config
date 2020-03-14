@@ -7,8 +7,10 @@
 
 ## Defaults
 set $term alacritty
-set $menu launcher
-set $editor emacs
+set $menu wofitheme
+set $fallback_menu launcher
+set $editor neovide
+set $file_manager dolphin
 
 ## Set keyboard controls
 # Logo key
@@ -44,17 +46,15 @@ set $exit_command "swaynag -t warning -m 'You pressed the exit shortcut.' -b 'Ex
 bindsym $mod+Shift+e exec $exit_command
 
 ## Input settings
-# Change keyboard layout
 input * {
+	# Change keyboard layout
 	xkb_layout "us,br"
 	xkb_options ctrl:nocaps
-}
-bindsym $mod+Space exec keyboard_layout_switcher
-# Touchpad
-input * {
+	# Touchpad
 	tap enabled
 	natural_scroll disabled
 }
+bindsym $mod+Space exec keyboard_layout_switcher
 # Cursor theme
 seat * xcursor_theme Breeze_Snow
 # Media keys
@@ -86,16 +86,16 @@ bindsym $mod+Mod1+m exec $term -e start-tmux-music
 # Start MPV with clipboard as arg
 bindsym $mod+Mod1+p exec bash -c "mpv `wl-paste`"
 # Launch editor
-bindsym $mod+Shift+w exec $editor
+bindsym $mod+Mod1+e exec $editor
 # Start Dolphin file browser
-bindsym $mod+Shift+f exec dolphin
+bindsym $mod+Mod1+f exec $file_manager
 # Kill focused window
 bindsym $mod+Shift+q kill
 # Start launcher
-bindsym $mod+Shift+d exec $menu
+bindsym $mod+Shift+d exec $fallback_menu
 for_window [title="launcher"] focus, floating enable, border none
 # Start wofi
-bindsym $mod+d exec wofitheme
+bindsym $mod+d exec $menu
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -111,6 +111,8 @@ for_window [app_id="polkit"] focus, floating enable, border pixel 4
 exec mako
 # KDE Connect
 exec /usr/lib/kdeconnectd
+# Redshift
+exec redshift
 
 ## Appearance
 # Default wallpaper
@@ -121,8 +123,6 @@ font pango:Liberation Sans 9
 default_border none
 gaps outer 3
 gaps inner 3
-# Redshift
-exec redshift
 
 ## Idle configuration
 # Automatic behavior
@@ -133,7 +133,10 @@ exec swayidle -w \
           before-sleep 'swaylock'
 # Manual behavior
 bindsym $mod+Shift+x exec swaylock
+bindsym --locked $mod+Mod1+a output * dpms on
+bindsym --locked $mod+Mod1+z output * dpms off
 # Sleep when closed behavior
+# TODO: create script to make this multi-platform
 bindswitch --reload lid:on exec systemctl suspend
 
 ## Layout

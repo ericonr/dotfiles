@@ -41,6 +41,10 @@ set number rnu
 " Pretty color scheme that works well with the one chosen for alacritty
 colorscheme slate
 
+" Settings for neovide
+set guifont=IBMPlex\ Mono:h16
+let g:neovide_cursor_vfx_mode = "sonicboom"
+
 
 " FUNCTIONS
 
