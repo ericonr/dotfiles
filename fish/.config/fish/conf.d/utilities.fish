@@ -1,4 +1,11 @@
-# ericonr's fish config for everyday utilities
+#               _                           
+#    ___  _ __ (_)  ___   ___   _ __   _ __ 
+#   / _ \| '__|| | / __| / _ \ | '_ \ | '__|
+#  |  __/| |   | || (__ | (_) || | | || |   
+#   \___||_|   |_| \___| \___/ |_| |_||_|   
+#                                           
+
+# fish config for everyday utilities
 
 ## Aliases for single column ls
 alias lk='ls -1'

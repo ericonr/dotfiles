@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+#               _                           
+#    ___  _ __ (_)  ___   ___   _ __   _ __ 
+#   / _ \| '__|| | / __| / _ \ | '_ \ | '__|
+#  |  __/| |   | || (__ | (_) || | | || |   
+#   \___||_|   |_| \___| \___/ |_| |_||_|   
+#                                           
+
+# install script for Void based systems
+
 function print_help () {
 	echo Look inside for available stuff
 }

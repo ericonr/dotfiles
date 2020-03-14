@@ -1,4 +1,11 @@
-# ericonr's fish config related to xrandr
+#               _                           
+#    ___  _ __ (_)  ___   ___   _ __   _ __ 
+#   / _ \| '__|| | / __| / _ \ | '_ \ | '__|
+#  |  __/| |   | || (__ | (_) || | | || |   
+#   \___||_|   |_| \___| \___/ |_| |_||_|   
+#                                           
+
+# fish config related to xrandr
 
 function list-display --description 'List available display interfaces from xrandr.'
     xrandr | sed -n '/connected/p'

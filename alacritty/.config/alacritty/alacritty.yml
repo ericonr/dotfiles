@@ -1,4 +1,11 @@
-# ericonr's configuration for Alacritty, the GPU enhanced terminal emulator.
+#               _                           
+#    ___  _ __ (_)  ___   ___   _ __   _ __ 
+#   / _ \| '__|| | / __| / _ \ | '_ \ | '__|
+#  |  __/| |   | || (__ | (_) || | | || |   
+#   \___||_|   |_| \___| \___/ |_| |_||_|   
+#                                           
+
+# Alacritty, the GPU enhanced terminal emulator.
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
