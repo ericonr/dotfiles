@@ -11,6 +11,10 @@ alias jpnb='jupyter-notebook'
 
 alias cformat='clang-format -i -style=webkit'
 
+function ugdb-tmux
+    tmux new-window -n ugdb ugdb $argv
+end
+
 # Aliases for getting make and cargo to use temporary directories for building.
 # Helps in keepign the SSD fresh.
 alias maketmp='make BUILD_DIR=/tmp/(basename (pwd))'

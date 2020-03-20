@@ -11,6 +11,20 @@
 alias lk='ls -1'
 alias kl='ls -1'
 
+## Alias to make `la` useful, hiding ./ and ../
+alias lla='ls -lA'
+
+## Same as above, without the extra details
+alias la='ls -A'
+
+function rmstar --description "Remove starship prompt."
+	alias fish_prompt='echo (pwd) "> "'
+end
+
+function addstar --description "Add starship prompt back."
+	source ~/.config/fish/functions/fish_prompt.fish
+end
+
 alias pre='cd ../'
 
 alias weather='curl wttr.in/'
