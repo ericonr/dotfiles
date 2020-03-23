@@ -14,21 +14,50 @@ function print_help () {
 }
 
 function base () {
-	xbps-install -S base-system refind udisks2
+	xbps-install \
+		base-system \
+		binutils \
+		cryptsetup \
+		chrony \
+		elogind \
+		fscrypt \
+		gummiboot \
+		sbsigntool \
+		udisks2 \
+		vsv
+}
+
+function refind () {
+	xbps-install refind
+}
+
+function fonts () {
+	xbps-install \
+		font-awesome5 \
+		font-fira-ttf \
+		font-ibm-plex-ttf \
+		liberation-fonts-ttf \
+		noto-fonts-ttf \
+		noto-fonts-emoji \
+		ttf-bitstream-vera
+}
+
+function themes () {
+	xbps-install \
+		breeze \
+		breeze-gtk \
+		breeze-snow-cursor-theme \
+		papirus-icon-theme
 }
 
 function wm () {
-	xbps-install -S \
+	xbps-install \
 		Waybar \
 		alacritty \
-		breeze-snow-cursor-theme \
 		brightnessctl \
 		fzf \
-		git \
-		go \
 		grim \
 		jq \
-		liberation-fonts-ttf \
 		mako \
 		redshift \
 		slurp \
@@ -37,18 +66,29 @@ function wm () {
 		swaylock \
 		wl-clipboard \
 		wofi
+
+	fonts
+	themes
 }
 
 function audio () {
-	xbps-install -S \
+	xbps-install \
 		alsa-utils \
 		playerctl \
 		pulseaudio \
 		pavucontrol
 }
 
+function media () {
+	xbps-install \
+		elisa \
+		mpv \
+		spotifyd \
+		spotify-tui
+}
+
 function term () {
-	xbps-install -S \
+	xbps-install \
 		bat \
 		bmon \
 		fd \
@@ -64,7 +104,7 @@ function term () {
 }
 
 function kicad () {
-	xbps-install -S \
+	xbps-install \
 		kicad \
 		kicad-footprints \
 		kicad-library \
@@ -74,14 +114,18 @@ function kicad () {
 }
 
 function dev () {
-	xbps-install -S \
-		arduino-cli \
+	xbps-install \
 		clang \
+		cmake \
+		make \
+		meson \
+		ninja \
+		git \
 		go
 }
 
 function emacs () {
-	xbps-install -S \
+	xbps-install \
 		emacs-gtk2 \
 		hunspell \
 		hunspell-en_US \
@@ -89,7 +133,7 @@ function emacs () {
 }
 
 function intel () {
-	xbps-install -S \
+	xbps-install \
 		intel-gpu-tools \
 		iwd \
 		libva-intel-driver \
@@ -97,40 +141,32 @@ function intel () {
 		mesa-intel-dri
 }
 
-function fonts () {
-	xbps-install -S \
-		font-fira-ttf \
-		noto-fonts-ttf \
-		noto-fonts-emoji \
-		ttf-bitstream-vera
-}
-
 function qt5 () {
-	xbps-install -S qt5-wayland qt5ct
+	xbps-install qt5-wayland qt5ct
 }
 
-function qute () {
+function kde () {
 	qt5
-	xbps-install -S qutebrowser pdf.js
+	xbps-install qutebrowser konversation pdf.js
 }
 
 function mozilla () {
-	xbps-install -S firefox thunderbird
+	xbps-install firefox thunderbird
 }
 
 function libreoffice () {
-	xbps-install -S \
+	xbps-install \
 		libreoffice \
 		libreoffice-i18n-en-US \
 		libreoffice-i18n-pt-BR
 }
 
 function pdf () {
-	xbps-install -S zathura zathura-pdf-poppler
+	xbps-install zathura zathura-pdf-poppler
 }
 
 function flatpak () {
-	sudo xbps-install -S \
+	sudo xbps-install \
 		flatpak \
 		xdg-desktop-portal \
 		xdg-desktop-portal-gtk \
@@ -139,10 +175,12 @@ function flatpak () {
 		xdg-utils
 }
 
-function arm-none () {
-	sudo xbps-install -S \
+function embedded () {
+	sudo xbps-install \
+		arduino-cli \
 		cross-arm-none-eabi \
-		cross-arm-none-eabi-gdb
+		cross-arm-none-eabi-gdb \
+		openocd
 }
 
 # Run function from script:
@@ -150,12 +188,13 @@ function arm-none () {
 # Check if the function exists (bash specific)
 if declare -f "$1" > /dev/null
 then
-  # call arguments verbatim
-  "$@"
+	xbps-install -S
+	# call arguments verbatim
+	"$@"
 else
-  # Show a helpful error
-  echo "'$1' is not a known function name" >&2
-  print_help
-  exit 1
+	# Show a helpful error
+	echo "'$1' is not a known function name" >&2
+	print_help
+	exit 1
 fi
 
