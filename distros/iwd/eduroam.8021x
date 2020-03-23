@@ -1,0 +1,11 @@
+[Security]
+
+EAP-Method=TTLS
+EAP-Identity=anonymous@unicamp.br
+
+EAP-TTLS-CACert=/etc/certs/eduroam-unicamp.pem
+
+EAP-TTLS-Phase2-Method=Tunneled-PAP
+
+EAP-TTLS-Phase2-Identity=ra@unicamp.br
+EAP-TTLS-Phase2-Password=password
