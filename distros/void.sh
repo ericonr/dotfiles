@@ -9,10 +9,6 @@
 
 # install script for Void based systems
 
-function print_help () {
-	echo Look inside for available stuff
-}
-
 function base () {
 	xbps-install \
 		base-system \
@@ -22,13 +18,50 @@ function base () {
 		elogind \
 		fscrypt \
 		gummiboot \
+		iwd \
 		sbsigntool \
 		udisks2 \
 		vsv
 }
+function base_desc () {
+	echo "Install base system utilities, with encryption and UEFI support."
+}
 
 function refind () {
 	xbps-install refind
+}
+function refind_desc () {
+	echo "Install rEFInd boot manager. Necessary when it's the only system on a device."
+}
+
+function term () {
+	xbps-install \
+		bat \
+		bmon \
+		fd \
+		fish-shell \
+		htop \
+		mdcat \
+		neovim \
+		python3 \
+		ripgrep \
+		starship \
+		stow \
+		tmux
+}
+function term_desc () {
+	echo "Install basic terminal utilities."
+}
+
+function intel () {
+	xbps-install \
+		intel-gpu-tools \
+		libva-intel-driver \
+		intel-media-driver \
+		mesa-intel-dri
+}
+function intel_desc () {
+	echo "Install packages for media decode and GPU stuff in Intel-land."
 }
 
 function fonts () {
@@ -41,6 +74,9 @@ function fonts () {
 		noto-fonts-emoji \
 		ttf-bitstream-vera
 }
+function fonts_desc () {
+	echo "Basic fonts necessary for browsing the web and normal GUIs."
+}
 
 function themes () {
 	xbps-install \
@@ -48,6 +84,9 @@ function themes () {
 		breeze-gtk \
 		breeze-snow-cursor-theme \
 		papirus-icon-theme
+}
+function themes_desc () {
+	echo "Color and mouse themes for a good color setup."
 }
 
 function wm () {
@@ -70,6 +109,9 @@ function wm () {
 	fonts
 	themes
 }
+function wm_desc () {
+	echo "Install the SwayWM and supporting packages."
+}
 
 function audio () {
 	xbps-install \
@@ -78,39 +120,21 @@ function audio () {
 		pulseaudio \
 		pavucontrol
 }
+function audio_desc () {
+	echo "Install PulseAudio and alsa."
+}
 
 function media () {
+	audio
+
 	xbps-install \
 		elisa \
 		mpv \
 		spotifyd \
 		spotify-tui
 }
-
-function term () {
-	xbps-install \
-		bat \
-		bmon \
-		fd \
-		fish-shell \
-		htop \
-		mdcat \
-		neovim \
-		python3 \
-		ripgrep \
-		starship \
-		stow \
-		tmux
-}
-
-function kicad () {
-	xbps-install \
-		kicad \
-		kicad-footprints \
-		kicad-library \
-		kicad-packages3D \
-		kicad-symbols \
-		kicad-templates
+function media_desc () {
+	echo "Install the Elisa player, mpv, and spotify CLI programs."
 }
 
 function dev () {
@@ -121,7 +145,11 @@ function dev () {
 		meson \
 		ninja \
 		git \
-		go
+		go \
+		rustup
+}
+function dev_desc () {
+	echo "Install the CLang compiler, some build systems, the Go compiler, and rustup."
 }
 
 function emacs () {
@@ -131,38 +159,44 @@ function emacs () {
 		hunspell-en_US \
 		hunspell-pt_BR
 }
-
-function intel () {
-	xbps-install \
-		intel-gpu-tools \
-		iwd \
-		libva-intel-driver \
-		intel-media-driver \
-		mesa-intel-dri
+function emacs_desc () {
+	echo "(deprecated) Install the GUI version of Emacs."
 }
 
 function qt5 () {
-	xbps-install qt5-wayland qt5ct
+	xbps-install \
+		qt5-wayland \
+		qt5ct \
+		konversation \
+		qutebrowser \
+		pdf.js
 }
-
-function kde () {
-	qt5
-	xbps-install qutebrowser konversation pdf.js
+function qt5_desc () {
+	echo "Install Qt5 for Wayland, plus Qutebrowser and Konversation."
 }
 
 function mozilla () {
 	xbps-install firefox thunderbird
 }
+function mozzila_desc () {
+	echo "Install Firefox and Thunderbird."
+}
 
-function libreoffice () {
+function office () {
 	xbps-install \
 		libreoffice \
 		libreoffice-i18n-en-US \
 		libreoffice-i18n-pt-BR
 }
+function office_desc () {
+	echo "Install Libreoffice."
+}
 
 function pdf () {
 	xbps-install zathura zathura-pdf-poppler
+}
+function pdf_desc () {
+	echo "Install Zathura."
 }
 
 function flatpak () {
@@ -174,6 +208,9 @@ function flatpak () {
 		xdg-user-dirs-gtk \
 		xdg-utils
 }
+function flatpak_desc () {
+	echo "Install Flatpak and supporting packages."
+}
 
 function embedded () {
 	sudo xbps-install \
@@ -182,6 +219,58 @@ function embedded () {
 		cross-arm-none-eabi-gdb \
 		openocd
 }
+function embedded_desc () {
+	echo "Install embedded toolchain and programmer/debugger software."
+}
+
+function kicad () {
+	xbps-install \
+		kicad \
+		kicad-footprints \
+		kicad-library \
+		kicad-packages3D \
+		kicad-symbols \
+		kicad-templates
+}
+function kicad_desc () {
+	echo "Install KiCad EDA and its resource packages."
+}
+
+MOST_PACKAGES="base term intel fonts themes wm audio media dev qt5 mozzila pdf"
+COMPLEMENT_PACKAGES="refind emacs office flatpak embedded kicad"
+
+function install_most () {
+	for target in $MOST_PACKAGES
+	do
+		$target
+	done
+}
+function install_most_desc () {
+	echo "Install [ ${MOST_PACKAGES} ]"
+}
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+function print_help () {
+	echo "${bold}Usage${normal}: ./void.sh <package-collection>"
+	echo ""
+	echo "These are the available package collections inside:"
+	echo ""
+
+	for target in $MOST_PACKAGES $COMPLEMENT_PACKAGES
+	do
+		echo "- ${bold}${target}${normal}: $(${target}_desc)"
+	done
+
+	echo ""
+	echo "These are the available bundles:"
+	echo ""
+	for bundle in install_most
+	do
+		echo "- ${bold}${bundle}${normal}: $(${bundle}_desc)"
+	done
+}
 
 # Run function from script:
 # https://stackoverflow.com/questions/8818119/how-can-i-run-a-function-from-a-script-in-command-line
@@ -189,12 +278,17 @@ function embedded () {
 if declare -f "$1" > /dev/null
 then
 	xbps-install -S
-	# call arguments verbatim
-	"$@"
+	# call first argument
+	"$1"
 else
-	# Show a helpful error
-	echo "'$1' is not a known function name" >&2
-	print_help
-	exit 1
+	if [ -z $1 ]
+	then
+		print_help
+	else
+		echo "${1} is not a package collection"
+		echo ""
+		print_help
+		exit 1
+	fi
 fi
 
