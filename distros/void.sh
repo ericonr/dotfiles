@@ -11,7 +11,6 @@
 
 function base () {
 	xbps-install \
-		base-system \
 		binutils \
 		cryptsetup \
 		chrony \
@@ -38,16 +37,23 @@ function term () {
 	xbps-install \
 		bat \
 		bmon \
+		curl \
 		fd \
 		fish-shell \
+		gnupg2 \
 		htop \
 		mdcat \
 		neovim \
 		python3 \
+		p7zip \
 		ripgrep \
 		starship \
 		stow \
-		tmux
+		tmux \
+		xtools \
+		xz \
+		zip \
+		unzip
 }
 function term_desc () {
 	echo "Install basic terminal utilities."
@@ -130,8 +136,10 @@ function media () {
 	xbps-install \
 		elisa \
 		mpv \
+		mpv-mpris \
 		spotifyd \
-		spotify-tui
+		spotify-tui \
+		youtube-dl
 }
 function media_desc () {
 	echo "Install the Elisa player, mpv, and spotify CLI programs."
@@ -146,7 +154,8 @@ function dev () {
 		ninja \
 		git \
 		go \
-		rustup
+		rustup \
+		tokei
 }
 function dev_desc () {
 	echo "Install the CLang compiler, some build systems, the Go compiler, and rustup."
@@ -217,7 +226,10 @@ function embedded () {
 		arduino-cli \
 		cross-arm-none-eabi \
 		cross-arm-none-eabi-gdb \
-		openocd
+		python3-pyserial \
+		openocd \
+		screen \
+		sdcc
 }
 function embedded_desc () {
 	echo "Install embedded toolchain and programmer/debugger software."
