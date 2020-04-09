@@ -18,11 +18,11 @@ alias lla='ls -lA'
 alias la='ls -A'
 
 function rmstar --description "Remove starship prompt."
-	alias fish_prompt='echo (pwd) "> "'
+    alias fish_prompt='echo (pwd) "> "'
 end
 
 function addstar --description "Add starship prompt back."
-	source ~/.config/fish/functions/fish_prompt.fish
+    source ~/.config/fish/functions/fish_prompt.fish
 end
 
 alias pre='cd ../'
@@ -34,14 +34,14 @@ alias rgmod='lsmod | rg -i'
 alias rgps='ps aux | rg -i'
 
 function randpw -a digits \
---description "Generates a random password with the specified number of digits, and copies it into the Wayland buffer."
-	openssl rand -base64 $digits | wl-copy
+    --description "Generates a random password with the specified number of digits, and copies it into the Wayland buffer."
+    openssl rand -base64 $digits | wl-copy
 end
 
 function pdfunlock --description "Unlocks all PDF files in a directory."
     # command taken from https://mandrivausers.org/index.php?/topic/79354-saving-pdf-file-without-password-solved/
     echo "Password: $argv[1]"
-    
+
     mkdir -p unlocked
     for file in *.pdf
         rm -f "unlocked/$file"

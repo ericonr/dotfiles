@@ -21,7 +21,7 @@ alias maketmp='make BUILD_DIR=/tmp/(basename (pwd))'
 alias cargotmp='env CARGO_TARGET_DIR=/tmp/cargo/(basename (pwd)) cargo'
 
 function statusgit --argument show \
---description "Show git status for all directories in the current directory. Requires omf."
+    --description "Show git status for all directories in the current directory. Requires omf."
     if test -z $show
         set show_status false
     else
@@ -38,14 +38,14 @@ function statusgit --argument show \
 
     for dir in ./*/
         cd "$dir"
-        
+
         if git_is_repo
             set final 0
-            
+
             set_color -o
             printf "$dir is:\n"
             set_color normal
-            
+
             if git_is_dirty
                 printf "  dirty\n"
                 set final 1
@@ -69,9 +69,9 @@ function statusgit --argument show \
                 git status
                 printf "\n"
             end
-            
+
         end
-        
+
         cd -
     end
 end
