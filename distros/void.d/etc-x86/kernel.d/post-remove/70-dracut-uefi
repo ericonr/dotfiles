@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Kernel post-remove hook for dracut.
+#
+# Arguments passed to this script: $1 pkgname, $2 version.
+#
+PKGNAME="$1"
+VERSION="$2"
+
+if [ -f /boot/efi/EFI/Linux/linux-${VERSION}.efi ]; then
+	rm -f /boot/efi/EFI/Void/linux-${VERSION}.efi
+fi
+exit $?

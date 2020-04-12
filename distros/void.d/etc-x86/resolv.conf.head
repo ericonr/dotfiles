@@ -1,0 +1,3 @@
+# config kept after dhcpcd
+
+nameserver 1.1.1.1

@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Kernel post-install hook for dracut UEFI bundle.
+#
+# Arguments passed to this script: $1 pkgname, $2 version.
+#
+PKGNAME="$1"
+VERSION="$2"
+
+if [ ! -x bin/dracut ]; then
+	exit 0
+fi
+
+dracut --force --uefi /boot/efi/EFI/Void/linux-${VERSION}.efi ${VERSION}
+exit $?
