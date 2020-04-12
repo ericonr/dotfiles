@@ -8,6 +8,7 @@
 # fish config related to text editing
 
 set -x VISUAL nvim
+set -x EDITOR nvim
 
 alias clem='emacsclient -n'
 
