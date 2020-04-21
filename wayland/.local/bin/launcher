@@ -4,4 +4,4 @@
 
 source ~/.local/bin/wayland-vars
 
-generic-launcher bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'
+exec generic-launcher bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'

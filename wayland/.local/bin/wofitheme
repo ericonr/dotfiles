@@ -4,4 +4,6 @@
 
 source ~/.local/bin/wayland-vars
 
-env GTK_THEME=OSX-Arc-Shadow wofi -i -t alacritty $@
+export GTK_THEME=OSX-Arc-Shadow
+
+exec wofi -i -t alacritty $@

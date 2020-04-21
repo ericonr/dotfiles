@@ -9,8 +9,8 @@
 set $term alacritty
 set $menu wofitheme
 set $fallback_menu launcher
-set $editor neovide
-set $file_manager dolphin
+set $editor quickedit
+set $file_manager generic-launcher ranger
 
 ## Set keyboard controls
 # Logo key
@@ -53,6 +53,7 @@ input * {
 	# Touchpad
 	tap enabled
 	natural_scroll disabled
+	scroll_factor 0.8 # help Firefox work correctly
 }
 bindsym $mod+Space exec keyboard_layout_switcher
 # Cursor theme
@@ -79,16 +80,22 @@ bindsym $mod+Ctrl+G exec firejail --join=steam apppauserctl toggle
 ## Launching applications
 # Start a terminal
 bindsym $mod+Return exec $term
+# Start a floating terminal
+bindsym $mod+Shift+Return exec generic-launcher
 # Start a terminal with tmux
 bindsym $mod+t exec $term -e start-tmux
 # Start a terminal with music tmux
 bindsym $mod+Mod1+m exec $term -e start-tmux-music
 # Start MPV with clipboard as arg
-bindsym $mod+Mod1+p exec bash -c "mpv `wl-paste`"
+bindsym $mod+Mod1+p exec youtube-mpv
 # Launch editor
 bindsym $mod+Mod1+e exec $editor
 # Start Dolphin file browser
 bindsym $mod+Mod1+f exec $file_manager
+# Open iwctl dialog
+bindsym $mod+Mod1+i exec quickiwctl
+# Dismiss all mako notifications
+bindsym $mod+Mod1+n exec makoctl dismiss -a
 # Kill focused window
 bindsym $mod+Shift+q kill
 # Start launcher
@@ -96,11 +103,8 @@ bindsym $mod+Shift+d exec $fallback_menu
 for_window [title="launcher"] focus, floating enable, border none
 # Start wofi
 bindsym $mod+d exec $menu
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
+# Drag windows by holding down $mod and left mouse button.
+# Resize windows with right mouse button + $mod.
 floating_modifier $mod normal
 
 ## Enable further services for complete session
@@ -291,16 +295,19 @@ for_window [app_id="waybar" floating] {
     move down 120px # adjust if some menus still don't fit
 }
 
-## Window assignment
+## Application specific settings
 # PDF
 assign [app_id="okular"] $wsp
 assign [app_id="zathura"] $wsp
-
-## Application specific settings
+# Media
+for_window [app_id="pavucontrol"] focus, floating enable
+for_window [title="Picture-in-Picture"] floating enable
+for_window [app_id="mpv"] floating enable
+# KDE
 for_window [app_id="krunner"] floating enable
 for_window [app_id="konsole"] floating enable
-for_window [app_id="pavucontrol"] focus, floating enable
-for_window [app_id="org.mozilla.plasma-browser-integration-host"] floating enable
+for_window [app_id=".* KDE Connect Daemon"] floating enable
+# Firefox
 for_window [title="Firefox - Sharing Indicator"] floating enable
-for_window [title="Picture-in-Picture"] floating enable
+for_window [app_id="org.mozilla.plasma-browser-integration-host"] floating enable
 
