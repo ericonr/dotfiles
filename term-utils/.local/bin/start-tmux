@@ -17,5 +17,4 @@ then
 	tmux split-window -v	
 fi
 
-tmux attach -tstandard:multishell.1
-
+exec tmux attach -tstandard:multishell.1

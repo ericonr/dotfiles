@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# start spotify session on tmux
+
+tmux new-session -d -s music fish -C "spotifyd --no-daemon"
+STATUS=$?
+
+if [ $STATUS -eq 0 ]
+then
+	tmux new-window -tmusic -n spotify fish -C spt
+fi
+
+if [ -z $TMUX ]
+then
+	exec tmux attach -tmusic:spotify.1
+fi
