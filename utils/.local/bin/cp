@@ -2,5 +2,4 @@
 
 # Uses copy setttings beneficial to Btrfs
 
-/usr/bin/cp --reflink=auto --sparse=always "$@"
-
+exec /usr/bin/cp --reflink=auto --sparse=always "$@"
