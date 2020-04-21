@@ -20,7 +20,8 @@ function base () {
 		iwd \
 		sbsigntool \
 		udisks2 \
-		vsv
+		vsv \
+		PopCorn
 }
 function base_desc () {
 	echo "Install base system utilities, with encryption and UEFI support."
@@ -46,14 +47,17 @@ function term () {
 		neovim \
 		python3 \
 		p7zip \
+		ranger \
 		ripgrep \
 		starship \
 		stow \
 		tmux \
 		xtools \
 		xz \
+		zstd \
 		zip \
-		unzip
+		bsdunzip \
+		bsdtar
 }
 function term_desc () {
 	echo "Install basic terminal utilities."
