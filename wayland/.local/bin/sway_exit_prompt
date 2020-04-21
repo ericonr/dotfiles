@@ -2,7 +2,11 @@
 
 exec swaynag \
 	-t warning \
-	-m 'You pressed the exit shortcut.' \
+	-m 'Logout' \
 	-b 'Exit session' 'swaymsg exit' \
-	-b 'Suspend device' 'erctl suspend' \
-	-b 'Shut down' 'erctl poweroff'
+	-b 'Suspend' 'erctl suspend' \
+	-b 'Hibernate' 'erctl hibernate' \
+	-b 'Hybrid sleep' 'erctl hybrid-sleep' \
+	-b 'Shut down' 'erctl poweroff' \
+	-b 'Reboot' 'erctl reboot' \
+	-b 'Suspend then hibernate' 'erctl suspend-then-hibernate'

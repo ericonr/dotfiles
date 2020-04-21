@@ -39,10 +39,8 @@ bindsym $mod+Shift+Right move workspace to right
 ## System tasks
 # Reload configuration file
 bindsym $mod+Shift+c reload
-# Restart sway inplace (can be used to upgrade sway)
-bindsym $mod+Shift+r restart
 # Exit sway
-bindsym $mod+Shift+e exec sway_exit_command
+bindsym $mod+Shift+e exec sway_exit_prompt
 
 ## Input settings
 input * {
