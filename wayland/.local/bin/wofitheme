@@ -5,4 +5,3 @@
 source ~/.local/bin/wayland-vars
 
 env GTK_THEME=OSX-Arc-Shadow wofi -i -t alacritty $@
-

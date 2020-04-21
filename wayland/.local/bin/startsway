@@ -10,5 +10,4 @@ fi
 
 export XDG_SESSION_TYPE=wayland
 
-sway
-
+exec sway

@@ -12,5 +12,4 @@ then
 	LENGTH=30
 fi
 
-alacritty --dimensions $WIDTH $LENGTH --title launcher --command "$@"
-
+exec alacritty --dimensions $WIDTH $LENGTH --title launcher --command "$@"

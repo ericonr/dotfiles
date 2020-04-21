@@ -22,7 +22,7 @@ It's also recommended to create the `~/.local/bin` and `~/.local/share` director
 
 ## Sway + Waybar
 
-This setup, which can be found on `wm` and `script`, requires the following dependencies:
+This setup, which can be found inside `wayland`, requires the following dependencies:
 * Basic setup:
   * [`sway`](https://swaywm.org/): the Wayland compositor and tiling window manager.
     * [`swaylock`](https://github.com/swaywm/swaylock)
@@ -41,8 +41,8 @@ This setup, which can be found on `wm` and `script`, requires the following depe
     * [`tmux`](https://github.com/tmux/tmux): the Meta+T shortcut launches `tmux` for multiple terminals in the same screen.
   * [`emacs`](https://www.gnu.org/software/emacs/): the no longer default text editor (unfortunately, it has to run through Xwayland).
   * [`neovim`](https://neovim.io/): the default CLI text editor.
-  * [`neovide`](https://github.com/Kethku/neovide): a no nonsense neovim client.
   * [`fzf`](https://github.com/junegunn/fzf): a wonderful fuzzy searcher, required by the self-built launcher.
+  * [`ranger`](https://ranger.github.io/): a VIM-like TUI file manager.
 * Applications needed for media keys:
   * [`pulseaudio`](https://www.freedesktop.org/wiki/Software/PulseAudio/): the default audio daemon; provides `pactl`, which is used for controlling the volume.
   * [`brightnessctl`](https://github.com/Hummer12007/brightnessctl): the default brightness controller; it's used for setting the backlight.
@@ -52,6 +52,9 @@ This setup, which can be found on `wm` and `script`, requires the following depe
 * Media applications:
   * [`spotify-tui`](https://github.com/Rigellute/spotify-tui): a Spotify TUI.
     * [`spotifyd`](https://github.com/Spotifyd/spotifyd): a Spotify daemon.
+  * [`mpv`](https://mpv.io/): great player for everything.
+    * [`mpv-mpris`](https://github.com/hoyon/mpv-mpris): MPV plugin to allow it to be controlled from playerctl.
+    * [`youtube-dl`](https://youtube-dl.org/): allows MPV to stream YouTube videos.
 * Applications needed for AppPauser keys:
   * [`AppPauser`](https://github.com/ericonr/AppPauser): is used for making pausing the execution of any application that's started by it possible.
 * Theming:
