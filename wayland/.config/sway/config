@@ -42,8 +42,7 @@ bindsym $mod+Shift+c reload
 # Restart sway inplace (can be used to upgrade sway)
 bindsym $mod+Shift+r restart
 # Exit sway
-set $exit_command "swaynag -t warning -m 'You pressed the exit shortcut.' -b 'Exit session' 'swaymsg exit' -b 'Suspend device' 'systemctl suspend' -b 'Shut down' 'poweroff'"
-bindsym $mod+Shift+e exec $exit_command
+bindsym $mod+Shift+e exec sway_exit_command
 
 ## Input settings
 input * {
@@ -173,7 +172,7 @@ bindsym --locked $mod+Mod1+a output * dpms on
 bindsym --locked $mod+Mod1+z output * dpms off
 # Sleep when closed behavior
 # TODO: create script to make this multi-platform
-bindswitch --reload lid:on exec systemctl suspend
+bindswitch --reload lid:on exec erctl suspend
 
 ## Layout
 # Split in horizontal orientation

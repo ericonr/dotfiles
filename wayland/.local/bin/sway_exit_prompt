@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+exec swaynag \
+	-t warning \
+	-m 'You pressed the exit shortcut.' \
+	-b 'Exit session' 'swaymsg exit' \
+	-b 'Suspend device' 'erctl suspend' \
+	-b 'Shut down' 'erctl poweroff'
