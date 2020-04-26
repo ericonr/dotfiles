@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mimic_time $(date +"%H:%M")
+

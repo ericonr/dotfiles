@@ -20,6 +20,8 @@ end
 alias maketmp='make BUILD_DIR=/tmp/(basename (pwd))'
 alias cargotmp='env CARGO_TARGET_DIR=/tmp/cargo/(basename (pwd)) cargo'
 
+alias rebase-up='git pull upstream master --rebase --autostash'
+
 function statusgit --argument show \
     --description "Show git status for all directories in the current directory. Requires omf."
     if test -z $show

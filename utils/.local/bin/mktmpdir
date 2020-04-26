@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-NEW_DIR="/tmp/$(pwd)/$1"
+NEW_DIR="$(mktemp)"
 
-echo New dir created in $NEW_DIR
+echo "New dir created in $NEW_DIR"
 
-mkdir -p $NEW_DIR
 ln -s $NEW_DIR $1
+
+echo "$1 linked to $NEW_DIR"
