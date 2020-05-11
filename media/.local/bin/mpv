@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-MPRIS="$(fd mpris.so /usr/lib/mpv/)"
+MPRIS="$(fd mpris.so /usr/lib/mpv*)"
 
 exec /usr/bin/mpv --script=$MPRIS "$@"

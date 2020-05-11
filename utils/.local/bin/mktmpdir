@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NEW_DIR="$(mktemp)"
+NEW_DIR="$(mktemp -d)"
 
 echo "New dir created in $NEW_DIR"
 
