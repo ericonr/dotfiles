@@ -244,10 +244,16 @@ bindsym $mod+Shift+o move container to workspace $wso
 bindsym $mod+Shift+p move container to workspace $wsp
 
 ## Mouse bindings
+# Reference for x11 mouse button codes:
+# http://xahlee.info/linux/linux_x11_mouse_button_number.html
+# Modifier is the forward button
 set $mouse button9
+# launcher with the left mouse button
 bindsym --whole-window $mouse+button1 exec launcher
+# switch to workspace 10 with right mouse button
 bindsym --whole-window $mouse+button3 workspace $ws10
-bindsym --whole-window $mouse+button8 exec $exit_command
+# open exit dialog with the backward button
+bindsym --whole-window $mouse+button8 exec $sway_exit_prompt
 
 ## Scratchpad
 # Sway has a "scratchpad", which is a bag of holding for windows.
