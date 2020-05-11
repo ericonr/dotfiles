@@ -4,3 +4,6 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/vim-airline"]
 	path = nvim/.config/nvim/pack/plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule "ate/.local/share/ate"]
+	path = ate/.local/share/ate
+	url = git@github.com:ericonr/ate.git

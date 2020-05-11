@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec ${EDITOR:-nvim} ~/.local/share/ate/config.default.h

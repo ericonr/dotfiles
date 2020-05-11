@@ -9,8 +9,7 @@
 
 # install script for Void based systems
 
-function base () {
-	xbps-install \
+function base () { xbps-install \
 		binutils \
 		cryptsetup \
 		chrony \
@@ -252,8 +251,18 @@ function kicad_desc () {
 	echo "Install KiCad EDA and its resource packages."
 }
 
+function ate () {
+	xbps-install \
+		tcc \
+		gtk+3-devel \
+		vte3-devel
+}
+function ate_desc () {
+	echo "Install the packages necessary to use ate compiled by TCC."
+}
+
 MOST_PACKAGES="base term intel fonts themes wm audio media dev qt5 mozzila pdf"
-COMPLEMENT_PACKAGES="refind emacs office flatpak embedded kicad"
+COMPLEMENT_PACKAGES="refind emacs office flatpak embedded kicad ate"
 
 function install_most () {
 	for target in $MOST_PACKAGES
