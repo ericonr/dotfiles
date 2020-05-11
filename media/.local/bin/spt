@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+command -v spotify-tui > /dev/null && SPT="spotify-tui"
+SPT="${SPT:-/usr/bin/spt}"
+
+exec $SPT
