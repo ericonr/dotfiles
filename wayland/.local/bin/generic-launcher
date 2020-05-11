@@ -2,4 +2,4 @@
 
 # generic launcher for floating alacritty with size WIDTH X LENGTH
 
-exec ${TERMEMU:-alacritty} --dimensions ${WIDTH:-80} ${LENGTH:-35} --title launcher --command "${@:-fish}"
+exec ${TERMEMU:-alacritty} --class generic-launcher --command "${@:-fish}"

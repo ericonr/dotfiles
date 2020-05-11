@@ -82,7 +82,11 @@ bindsym $mod+Shift+Return exec generic-launcher
 # Start a terminal with tmux
 bindsym $mod+t exec $term -e start-tmux
 # Start a terminal with music tmux
-bindsym $mod+Mod1+m exec $term -e start-tmux-music
+bindsym $mod+Mod1+m exec generic-launcher start-tmux-music
+# Start launcher
+bindsym $mod+Shift+d exec $fallback_menu
+# Rule for almost everything inside launcher
+for_window [app_id="generic-launcher"] focus, floating enable, border none, resize set height 80ppt, resize set width 70ppt
 # Start MPV with clipboard as arg
 bindsym $mod+Mod1+p exec youtube-mpv
 # Launch editor
@@ -95,9 +99,6 @@ bindsym $mod+Mod1+i exec quickiwctl
 bindsym $mod+Mod1+n exec makoctl dismiss -a
 # Kill focused window
 bindsym $mod+Shift+q kill
-# Start launcher
-bindsym $mod+Shift+d exec $fallback_menu
-for_window [title="launcher"] focus, floating enable, border none
 # Start wofi
 bindsym $mod+d exec $menu
 # Drag windows by holding down $mod and left mouse button.
