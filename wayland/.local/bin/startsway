@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# created by elogind, usually
 if test -z "${XDG_RUNTIME_DIR}"; then
 	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
 	if ! test -d "${XDG_RUNTIME_DIR}"; then
@@ -8,6 +9,8 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 	fi
 fi
 
-export XDG_SESSION_TYPE=wayland
+# activate PulseAudio, guarantee volume widget in Waybar works
+pactl stat
 
-exec sway
+# start the compositor itself
+exec dbus-run-session runsvdir $HOME/.local/share/wayland-services

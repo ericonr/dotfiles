@@ -3,7 +3,7 @@
 exec swaynag \
 	-t warning \
 	-m 'Logout' \
-	-b 'Exit session' 'swaymsg exit' \
+	-b 'Exit session' 'kill-sway' \
 	-b 'Suspend' 'erctl suspend' \
 	-b 'Hibernate' 'erctl hibernate' \
 	-b 'Hybrid sleep' 'erctl hybrid-sleep' \

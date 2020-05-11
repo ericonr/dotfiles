@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export SVDIR=$HOME/.local/share/wayland-services
+exec vsv "$@"

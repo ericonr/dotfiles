@@ -1,0 +1,3 @@
+#!/bin/sh
+swaysv check sway || exit 1
+exec redshift 2>&1

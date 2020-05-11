@@ -1,0 +1,3 @@
+#!/bin/sh
+swaysv check sway >/dev/null || exit 1
+exec mako 2>&1

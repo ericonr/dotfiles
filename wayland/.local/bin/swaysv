@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export SVDIR=$HOME/.local/share/wayland-services
+exec sv "$@"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# arch/manjaro
+export EXISTFAIL=1
+exec exec-if-exists /usr/lib/polkit-kde-authentication-agent-1
+
+# void
+unset EXISTFAIL
+exec exec-if-exists /usr/lib/libexec/polkit-kde-authentication-agent-1
