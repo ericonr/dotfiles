@@ -13,13 +13,11 @@ function base () {
 	xbps-install \
 		chrony \
 		elogind \
-		fscrypt \
 		iwd \
-		udisks2 \
 		vsv
 }
 function base_desc () {
-	echo "Install base system utilities, with encryption and UEFI support."
+	echo "Install base system utilities."
 }
 
 function luks () {
@@ -37,6 +35,13 @@ function uefi_bundle () {
 }
 function uefi_bundle_desc () {
 	echo "Install tools for creating UEFI bundles."
+}
+
+function disk_tools () {
+	xbps-install fscrypt udisks2
+}
+function disk_tools_desc () {
+	echo "Install fscrypt and UDisks2"
 }
 
 function refind () {
@@ -306,8 +311,8 @@ function ate_desc () {
 
 MOST_PACKAGES="base term intel fonts themes wm audio media
  dev qt5 mozzila pdf popcorn"
-COMPLEMENT_PACKAGES="uefi_bundle luks zfs security refind
- emacs office flatpak embedded kicad ate nonfree"
+COMPLEMENT_PACKAGES="uefi_bundle disk_tools luks zfs security
+ refind emacs office flatpak embedded kicad ate nonfree"
 
 function install_most () {
 	for target in $MOST_PACKAGES
