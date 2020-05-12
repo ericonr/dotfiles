@@ -8,6 +8,3 @@ do
 	ln -s /etc/sv/${service} "${MOUNTDIR}/etc/runit/runsvdir/default/"
 	echo "Installed service ${service}"
 done
-
-echo "Copying /etc"
-cp -av etc-x86/* "${MOUNTDIR}/etc"

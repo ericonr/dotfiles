@@ -9,28 +9,61 @@
 
 # install script for Void based systems
 
-function base () { xbps-install \
-		binutils \
-		cryptsetup \
+function base () {
+	xbps-install \
 		chrony \
 		elogind \
 		fscrypt \
-		gummiboot \
 		iwd \
-		sbsigntool \
 		udisks2 \
-		vsv \
-		PopCorn
+		vsv
 }
 function base_desc () {
 	echo "Install base system utilities, with encryption and UEFI support."
 }
+
+function luks () {
+	xbps_install cryptsetup
+}
+function luks_desc () {
+	echo "Install support for LUKS."
+}
+
+function uefi_bundle () {
+	xbps-install \
+		binutils \
+		gummiboot \
+		sbsigntool
+}
+function uefi_bundle_desc () {
+	echo "Install tools for creating UEFI bundles."
 
 function refind () {
 	xbps-install refind
 }
 function refind_desc () {
 	echo "Install rEFInd boot manager. Necessary when it's the only system on a device."
+}
+
+function zfs () {
+	xbps-install zfs zfsbootmenu
+}
+function zfs_desc () {
+	echo "Install support for ZFS."
+}
+
+function security () {
+	xbps-install apparmor
+}
+function security_desc () {
+	echo "Install security related packages."
+}
+
+function popcorn () {
+	xbps-install PopCorn
+}
+function popcorn_desc () {
+	echo "Install PopCorn usage statistics."
 }
 
 function term () {
@@ -137,6 +170,7 @@ function media () {
 	audio
 
 	xbps-install \
+		bluez \
 		elisa \
 		mpv \
 		mpv-mpris \
@@ -251,6 +285,14 @@ function kicad_desc () {
 	echo "Install KiCad EDA and its resource packages."
 }
 
+function nonfree () {
+	xbps-install void-repo-nonfree
+	xbps-install -S intel-ucode
+}
+function nonfree_desc () {
+	echo "Install nonfree repo and Intel microcode."
+}
+
 function ate () {
 	xbps-install \
 		tcc \
@@ -261,8 +303,10 @@ function ate_desc () {
 	echo "Install the packages necessary to use ate compiled by TCC."
 }
 
-MOST_PACKAGES="base term intel fonts themes wm audio media dev qt5 mozzila pdf"
-COMPLEMENT_PACKAGES="refind emacs office flatpak embedded kicad ate"
+MOST_PACKAGES="base term intel fonts themes wm audio media
+ dev qt5 mozzila pdf popcorn"
+COMPLEMENT_PACKAGES="uefi_bundle luks zfs security refind
+ emacs office flatpak embedded kicad ate nonfree"
 
 function install_most () {
 	for target in $MOST_PACKAGES
