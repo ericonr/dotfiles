@@ -37,6 +37,7 @@ function uefi_bundle () {
 }
 function uefi_bundle_desc () {
 	echo "Install tools for creating UEFI bundles."
+}
 
 function refind () {
 	xbps-install refind
