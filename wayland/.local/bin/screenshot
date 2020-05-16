@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SAVEPATH="$(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-mkdir -p "$(xdg-user-dir PICTURES)/Screenshots"
+SAVEPATH="$HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+mkdir -p "$HOME/Pictures/Screenshots"
 
 SAVED="Screenshot saved!"
 COPIED="Screenshot copied!"
