@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-exec spotifyd --no-daemon
+swaysv up spotifyd
+exec swaysv reload spotifyd
