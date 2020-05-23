@@ -49,33 +49,36 @@ popcorn_desc="$(print-item popcorn) Install PopCorn usage statistics."
 
 term="bat bmon curl fd fish-shell gnupg2 htop mdcat neovim python3 p7zip ranger
  ripgrep starship stow tmux xtools vsv usbutils xz zstd zip bsdunzip bsdtar
- parallel"
+ parallel lolcat-c ncdu"
 term_desc="$(print-item term) Install basic terminal utilities."
 
 ssh="fuse-sshfs rsync"
 ssh_desc="$(print-item ssh) Install SSH utilities."
 
-intel="intel-gpu-tools libva-intel-driver intel-media-driver mesa-intel-dri"
+intel="intel-gpu-tools libva-intel-driver intel-media-driver mesa-intel-dri intel-undervolt"
 intel_desc="$(print-item intel) Install packages for media decode and GPU stuff in Intel-land."
 
 fonts="font-awesome5 font-fira-ttf font-ibm-plex-ttf liberation-fonts-ttf
  noto-fonts-ttf noto-fonts-emoji ttf-bitstream-vera"
 fonts_desc="$(print-item fonts) Basic fonts necessary for browsing the web and normal GUIs."
 
-themes="breeze breeze-gtk breeze-snow-cursor-theme papirus-icon-theme"
+themes="breeze breeze-gtk papirus-icon-theme"
 themes_desc="$(print-item themes) Color and mouse themes for a good color setup."
 
 wm="Waybar alacritty brightnessctl fzf grim jq mako redshift slurp sway swayidle
  swaylock wl-clipboard wofi go"
 wm_desc="$(print-item wm) Install SwayWM and supporting packages. Depends on fonts and themes."
 
+wayland="wf-recorder wayfire wf-shell cage"
+wayland_desc="$(print-item wayland) Install Wayfire and Cage."
+
 audio="alsa-utils playerctl pulseaudio pavucontrol"
 audio_desc="$(print-item audio) Install PulseAudio and alsa."
 
-media="bluez mpv mpv-mpris spotifyd spotify-tui youtube-dl"
-media_desc="$(print-item media) Install the Elisa player, mpv, and spotify CLI programs."
+media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv"
+media_desc="$(print-item media) Install mpv, imv and spotify CLI programs."
 
-dev="clang cmake make meson ninja git rustup tokei valgrind"
+dev="clang cmake make meson ninja git rustup tokei valgrind gdb strace"
 dev_desc="$(print-item dev) Install the CLang compiler, some build systems and rustup."
 
 emacs="emacs-gtk3 hunspell hunspell-en_US hunspell-pt_BR shellcheck"
@@ -105,7 +108,7 @@ embedded_desc="$(print-item embedded) Install embedded toolchain and programmer/
 kicad="kicad kicad-footprints kicad-library kicad-packages3D kicad-symbols kicad-templates"
 kicad_desc="$(print-item kicad) Install KiCad EDA and its resource packages."
 
-[ -z "$NO_NONFREE" ] && nonfree="intel-ucode nvidia"
+[ -z "$NO_NONFREE" ] && nonfree="intel-ucode nvidia nvidia-opencl"
 nonfree_desc="$(print-item nonfree) Install nonfree pacakges: intel-ucode and nvidia."
 
 ate="tcc gtk+3-devel vte3-devel pkgconf"
@@ -123,9 +126,10 @@ base_env_desc="$(print-item base_env) [ base term ssh intel fonts themes wm audi
  media qt5 popcorn mozilla pdf emacs security su_disk_tools ]"
 
 all="$base_env $luks $uefi_bundle $disk_tools $refind $zfs $dev $elisa $office
- $flatpak $embedded $kicad $ate $nonfree $void_docs $xbps_devel"
+ $flatpak $embedded $kicad $ate $nonfree $void_docs $xbps_devel $wayland"
 all_desc="$(print-item all) [ base_env luks uefi_bundle disk_tools refind
- zfs dev elisa office flatpak embedded kicad ate nonfree void_docs xbps_devel ]"
+ zfs dev elisa office flatpak embedded kicad ate nonfree void_docs xbps_devel
+ wayland ]"
 
 function print_help () {
 	cat <<EOF
@@ -147,6 +151,7 @@ $intel_desc
 $fonts_desc
 $themes_desc
 $wm_desc
+$wayland_desc
 $audio_desc
 $media_desc
 $dev_desc
@@ -171,11 +176,11 @@ $all_desc
 Recommended individual apps:
 $(print-item bolt)
 $(print-item cscope)
-$(print-item lolcat-c)
 $(print-item sl)
 $(print-item podman)
 $(print-item riot-desktop)
 $(print-item sent)
+$(print-item pandoc)
 
 $(print-bold "Environment variables:")
 - ADDITIONAL_PACKAGES: env variable for individual packages
@@ -191,7 +196,7 @@ EOF
 
 function check-nonfree() {
 	if [ -z "$NO_NONFREE" ] ; then
-		if xbps-query void-repo-nonfree >/dev/null ; then
+		if ! xbps-query void-repo-nonfree >/dev/null ; then
 			xbps-install $FLAGS -S void-repo-nonfree
 			xbps-install -S
 		fi
