@@ -9,6 +9,6 @@ UUID=AA32-8638              /boot/efi      vfat    defaults,noatime,nodiratime 0
 /dev/mapper/root            /              f2fs   defaults,noatime,nodiratime 0 1
 
 # tmpfs
-none                        /tmp           tmpfs   defaults     0       0
+none                        /tmp           tmpfs   defaults,size=18G     0       0
 none                        /var/tmp       tmpfs   noatime,size=512m      0       0
 
