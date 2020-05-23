@@ -9,8 +9,5 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 	fi
 fi
 
-# activate PulseAudio, guarantee volume widget in Waybar works
-pactl stat
-
 # start the compositor itself
-exec dbus-run-session runsvdir $HOME/.local/share/wayland-services
+exec dbus-run-session runsvdir $HOME/.local/share/wayland-services 'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'

@@ -4,6 +4,6 @@
 
 source ~/.local/bin/wayland-vars
 
-export GTK_THEME=OSX-Arc-Shadow
+export GTK_THEME=Breeze
 
 exec wofi -i -t alacritty $@

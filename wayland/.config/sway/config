@@ -181,6 +181,8 @@ bindsym $mod+z focus mode_toggle
 bindsym $mod+a focus parent
 # Move focus to the child container
 bindsym $mod+Shift+a focus child
+# Make window sticky
+bindsym $mod+Shift+s sticky toggle
 
 ## Workspaces
 # Workspace name
@@ -282,10 +284,6 @@ bar {
     mode hide
     hidden_state hide
     swaybar_command waybar
-}
-for_window [app_id="waybar" floating] {
-    move position cursor
-    move down 120px # adjust if some menus still don't fit
 }
 
 ## Application specific settings
