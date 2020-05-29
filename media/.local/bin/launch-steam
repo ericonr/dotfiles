@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec flatpak run --filesystem=/home/ericonr/extern/ssd/ericonr/ com.valvesoftware.Steam
