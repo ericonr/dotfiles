@@ -2,4 +2,4 @@
 
 export XDG_SESSION_TYPE=wayland
 cd $HOME
-exec sway
+WLR_DRM_DEVICES=/dev/dri/card0 exec sway --my-next-gpu-wont-be-nvidia
