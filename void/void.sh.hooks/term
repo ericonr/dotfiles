@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Linking bsdtar to tar"
+ln -s /usr/bin/bsdtar /usr/local/bin/tar

@@ -20,6 +20,10 @@ function print-item() {
 	printf -- "- %s:" "$(print-bold $1)"
 }
 
+function nonfree() {
+	[ -z "$NO_NONFREE" ] && echo "$@"
+}
+
 base="chrony elogind iwd vsv"
 base_desc="$(print-item base) Install base system utilities."
 
@@ -47,16 +51,28 @@ security_desc="$(print-item security) Install security related packages."
 popcorn="PopCorn"
 popcorn_desc="$(print-item popcorn) Install PopCorn usage statistics."
 
-term="bat bmon curl fd fish-shell gnupg2 htop mdcat neovim python3 p7zip ranger
- ripgrep starship stow tmux xtools vsv usbutils xz zstd zip bsdunzip bsdtar
- parallel lolcat-c ncdu"
+_browser="ncdu ranger"
+_device="usbutils"
+_monitor="bmon htop"
+_net="curl gnupg2"
+_shell="fish-shell lolcat-c starship tmux"
+_tools="bat bsdtar fd mdcat neovim p7zip parallel ripgrep stow"
+_void="vsv xtools"
+term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}"
 term_desc="$(print-item term) Install basic terminal utilities."
 
 ssh="fuse-sshfs rsync"
 ssh_desc="$(print-item ssh) Install SSH utilities."
 
-intel="intel-gpu-tools libva-intel-driver intel-media-driver mesa-intel-dri intel-undervolt"
+intel="intel-gpu-tools libva-intel-driver intel-media-driver mesa-intel-dri
+ intel-undervolt $(nonfree intel-ucode)"
 intel_desc="$(print-item intel) Install packages for media decode and GPU stuff in Intel-land."
+
+nvidia="$(nonfree nvidia nvidia-opencl)"
+nvidia_desc="$(print-item nvidia) Install NVIDIA drivers."
+
+graphics="Vulkan-Tools clinfo mesa-demos"
+graphics_desc="$(print-item graphics) Install graphics stack testing tools."
 
 fonts="font-awesome5 font-fira-ttf font-ibm-plex-ttf liberation-fonts-ttf
  noto-fonts-ttf noto-fonts-emoji ttf-bitstream-vera"
@@ -72,16 +88,19 @@ wm_desc="$(print-item wm) Install SwayWM and supporting packages. Depends on fon
 wayland="wf-recorder wayfire wf-shell cage"
 wayland_desc="$(print-item wayland) Install Wayfire and Cage."
 
+xorg="xfce4 xorg"
+xorg_desc="$(print-item xorg) Install XFCE4 and Xorg."
+
 audio="alsa-utils playerctl pulseaudio pavucontrol"
 audio_desc="$(print-item audio) Install PulseAudio and alsa."
 
-media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv"
+media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv ImageMagick"
 media_desc="$(print-item media) Install mpv, imv and spotify CLI programs."
 
 dev="clang cmake make meson ninja git rustup tokei valgrind gdb strace"
 dev_desc="$(print-item dev) Install the CLang compiler, some build systems and rustup."
 
-emacs="emacs-gtk3 hunspell hunspell-en_US hunspell-pt_BR shellcheck"
+emacs="emacs-gtk3 hunspell hunspell-en_US hunspell-pt_BR shellcheck zstd"
 emacs_desc="$(print-item emacs) Install the GUI version of Emacs."
 
 qt5="qt5-wayland qt5ct konversation qutebrowser pdf.js"
@@ -108,13 +127,10 @@ embedded_desc="$(print-item embedded) Install embedded toolchain and programmer/
 kicad="kicad kicad-footprints kicad-library kicad-packages3D kicad-symbols kicad-templates"
 kicad_desc="$(print-item kicad) Install KiCad EDA and its resource packages."
 
-[ -z "$NO_NONFREE" ] && nonfree="intel-ucode nvidia nvidia-opencl"
-nonfree_desc="$(print-item nonfree) Install nonfree pacakges: intel-ucode and nvidia."
-
 ate="tcc gtk+3-devel vte3-devel pkgconf"
 ate_desc="$(print-item ate) Install the packages necessary to use ate compiled by TinyCC."
 
-void_docs="mdBook mdbook-linkcheck vmdfmt"
+void_docs="mdBook mdbook-linkcheck pandoc vmdfmt"
 void_docs_desc="$(print-item void_docs) Install development tools for Void Docs."
 
 xbps_devel="zlib-devel libressl-devel libarchive-devel"
@@ -126,10 +142,10 @@ base_env_desc="$(print-item base_env) [ base term ssh intel fonts themes wm audi
  media qt5 popcorn mozilla pdf emacs security su_disk_tools ]"
 
 all="$base_env $luks $uefi_bundle $disk_tools $refind $zfs $dev $elisa $office
- $flatpak $embedded $kicad $ate $nonfree $void_docs $xbps_devel $wayland"
+ $flatpak $embedded $kicad $ate $void_docs $xbps_devel $wayland $nvidia $graphics $xorg"
 all_desc="$(print-item all) [ base_env luks uefi_bundle disk_tools refind
- zfs dev elisa office flatpak embedded kicad ate nonfree void_docs xbps_devel
- wayland ]"
+ zfs dev elisa office flatpak embedded kicad ate void_docs xbps_devel
+ wayland xorg nvidia graphics ]"
 
 function print_help () {
 	cat <<EOF
@@ -148,9 +164,12 @@ $popcorn_desc
 $term_desc
 $ssh_desc
 $intel_desc
+$nvidia_desc
+$graphics_desc
 $fonts_desc
 $themes_desc
 $wm_desc
+$xorg_desc
 $wayland_desc
 $audio_desc
 $media_desc
@@ -164,7 +183,6 @@ $pdf_desc
 $flatpak_desc
 $embedded_desc
 $kicad_desc
-$nonfree_desc
 $ate_desc
 $void_docs_desc
 $xbps_devel_desc
@@ -180,7 +198,6 @@ $(print-item sl)
 $(print-item podman)
 $(print-item riot-desktop)
 $(print-item sent)
-$(print-item pandoc)
 
 $(print-bold "Environment variables:")
 - ADDITIONAL_PACKAGES: env variable for individual packages
@@ -215,7 +232,7 @@ else
 
 	for coll in "$@"
 	do
-		if [ -z "${!coll}" ] ; then
+		if [ -z "${coll}" ] ; then
 			echo "$coll doesn't exist"
 			exit
 		fi
@@ -226,4 +243,11 @@ else
 	echo "Packages: $packages"
 
 	xbps-install $FLAGS $packages
+
+	for coll in "$@"
+	do
+		if [ -r "void.sh.hooks/$coll" ] ; then
+			command "void.sh.hooks/$coll"
+		fi
+	done
 fi
