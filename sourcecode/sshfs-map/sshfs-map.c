@@ -1,10 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <mntent.h>
+#include <limits.h>
+#include <linux/limits.h>
 
 #include "sshfs-map.h"
 
@@ -49,20 +52,50 @@ int main(int argc, char **argv)
 		// guarantee null-terminated terms
 		if (line[result - 1] == '\n') line[result - 1] = '\0';
 
-		char *source, *dist;
-		source = dist = NULL;
-		sscanf(line, "%ms %ms", &source, &dist);
+
+		char *source, *dest, *full_dest;
+		source = dest = full_dest = NULL;
+		sscanf(line, "%ms %ms", &source, &dest);
 		printf("map #%02d: %s\n", i, line);
+
+		if (dest[0] == '/') {
+			full_dest = dest;
+		} else {
+			full_dest = realpath(dest, NULL);
+			if (full_dest == NULL) {
+				puts("couldn't find path");
+				exit(1);
+			}
+		}
+
+		// check path mount status
+		FILE *mtab = setmntent("/etc/mtab", "r");
+		bool is_mounted = false;
+		while (true) {
+			struct mntent *mounts = getmntent(mtab);
+			if (mounts == NULL) {
+				break;
+			}
+			if (strcmp(full_dest, mounts->mnt_dir) == 0) {
+				is_mounted = true;
+				break;
+			}
+		}
+		endmntent(mtab);
 
 		switch (mode) {
 			pid_t p;
 			case SSHFS_MAP:
+				if (is_mounted) {
+					printf("%s is already mounted\n", full_dest);
+					continue;
+				}
 				p = fork();
 				if (p == 0) {
-					printf("%s <=> %s\n", source, dist);
+					printf("%s <=> %s\n", source, full_dest);
 					fflush(stdout);
 
-					char *args[] = {"sshfs", source, dist, NULL};
+					char *args[] = {"sshfs", source, full_dest, NULL};
 					execvp("sshfs", args);
 				} else {
 					int wstatus;
@@ -71,9 +104,13 @@ int main(int argc, char **argv)
 				break;
 
 			case SSHFS_UNMAP:
+				if (!is_mounted) {
+					printf("%s isn't mounted\n", full_dest);
+					continue;
+				}
 				p = fork();
 				if (p == 0) {
-					char *args[] = {"umount", dist, NULL};
+					char *args[] = {"umount", full_dest, NULL};
 					execvp("umount", args);
 				} else {
 					int wstatus;
@@ -81,7 +118,15 @@ int main(int argc, char **argv)
 				}
 				break;
 		}
+
 		free(line);
+		free(source);
+		free(dest);
+		if (full_dest != dest) free(full_dest);
+
 		i++; // update count
 	}
+
+	fclose(map);
+	return 0;
 }
