@@ -29,14 +29,24 @@ int main(int argc, char **argv)
 	}
 
 	char *line = NULL;
-	size_t line_size = 0, result;
+	size_t line_size = 0;
+	int i = 0;
 	
-	for (int i = 0; true; i++) {
-		result = getline(&line, &line_size, map);
+	while (true) {
+		size_t result = getline(&line, &line_size, map);
+		// EOF
 		if (result == -1) {
 			break;
 		}
 
+		// comment *or*
+		// lines smaller than 3 characters
+		// can't be valid
+		if (result < 3 || line[0] == '#') {
+			continue;
+		}
+
+		// guarantee null-terminated terms
 		if (line[result - 1] == '\n') line[result - 1] = '\0';
 
 		char *source, *dist;
@@ -72,5 +82,6 @@ int main(int argc, char **argv)
 				break;
 		}
 		free(line);
+		i++; // update count
 	}
 }
