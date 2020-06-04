@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # generic launcher for floating alacritty with size WIDTH X LENGTH
 
-exec ${TERMEMU:-alacritty} --class generic-launcher --command "${@:-fish}"
+exec "${TERMEMU:-alacritty}" --class generic-launcher --command "${@:-fish}"

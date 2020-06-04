@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-RUSTFLAGS="-Clink-arg=-fuse-ld=lld" CC="clang" CXX="clang++" /usr/bin/makepkg "$@"
-

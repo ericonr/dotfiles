@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 NEW_DIR="$(mktemp -d)"
 
 echo "New dir created in $NEW_DIR"
 
-ln -s $NEW_DIR $1
+ln -s "$NEW_DIR" "$1"
 
 echo "$1 linked to $NEW_DIR"

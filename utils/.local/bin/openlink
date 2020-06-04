@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-firejail --join=firefox firefox "$@"
-

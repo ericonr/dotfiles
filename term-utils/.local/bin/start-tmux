@@ -1,10 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 tmux new-session -d -s standard
 STATUS=$?
 
-if [ $STATUS -eq 0 ]
-then
+if [ $STATUS -eq 0 ] ; then
 	tmux new-window -tstandard -n multishell
 	tmux split-window -h
 	tmux split-window -v

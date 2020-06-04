@@ -1,24 +1,24 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # script to automate generation of executable shell scripts
 
-FILE=$1
-SHELL=$2
+FILE="$1"
+SHELL="$2"
 
-if [ -z $FILE ]
+if [ -z "$FILE" ]
 then
 	echo "No file name specified."
 	exit
 fi
 
-if [ -e $FILE ]
+if [ -e "$FILE" ]
 then
 	echo "File already exists."
 	exit
 fi
 
-printf "#!/usr/bin/env ${SHELL:-bash}\n\n\n" > $FILE
+printf "#!/bin/%s\n\n\n" "${SHELL:-sh}" > "$FILE"
 
-touch $FILE
-chmod +x $FILE
-exec ${EDITOR:-nvim} $FILE '+$'
+touch "$FILE"
+chmod +x "$FILE"
+exec "${EDITOR:-nvim}" "$FILE" '+$'

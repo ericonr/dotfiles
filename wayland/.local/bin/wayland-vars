@@ -1,11 +1,11 @@
-# ericonr's script for launching applications with the appropriate env
+# ericonr's environment for launching applications
 
-if [ $XDG_SESSION_TYPE = wayland ]
+if [ "$XDG_SESSION_TYPE" = wayland ]
 then
 	# Qt
 	export QT_QPA_PLATFORM=wayland-egl
 	export QT_WAYLAND_FORCE_DPI=physical
-	export QT_QPA_PLATFORMTHEME="qt5ct"
+	export QT_QPA_PLATFORMTHEME=qt5ct
 	# Firefox
 	export MOZ_ENABLE_WAYLAND=1
 	# Java
@@ -15,6 +15,7 @@ then
 	# Vulkan should use the Intel GPU
 	export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
 else
+	# useful for KDE
 	export GTK_USE_PORTAL=1
 fi
 

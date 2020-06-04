@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # prints the current keyboard layout and then any layout changes
 # taken from https://github.com/Alexays/Waybar/pull/85

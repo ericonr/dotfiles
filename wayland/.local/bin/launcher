@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # ericonr's script for launching applications with the appropriate env
 
-source ~/.local/bin/wayland-vars
+. "$HOME/.local/bin/wayland-vars"
 
-exec generic-launcher bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'
+exec generic-launcher /bin/sh -c 'compgen -c | sort -u | fzf --border | xargs lnch'

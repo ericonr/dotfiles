@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # ericonr's script for system tasks
 
 # detect session manager;
 # systemd -> systemctl
 # non-systemd -> loginctl
-command -v systemctl >/dev/null 2>&1 && CTL=systemctl
-CTL=${CTL:-loginctl}
+CTL=loginctl
+command -v systemctl && CTL=systemctl
 
 exec $CTL "$@"
