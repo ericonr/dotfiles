@@ -147,14 +147,7 @@ client.focused $focused_bgcolor $focused_bgcolor $focused_textcolor $focused_ind
 client.focused_inactive $inactive_bgcolor $inactive_bgcolor $inactive_textcolor $inactive_indicator $inactive_bgcolor
 client.unfocused $unfocused_bgcolor $unfocused_bgcolor $unfocused_textcolor $unfocused_indicator $unfocused_bgcolor
 
-## Idle configuration
-# Automatic behavior
-exec swayidle -w \
-          timeout 300  'swaylock' \
-          timeout 600  'swaymsg "output * dpms off"' \
-               resume  'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock'
-# Manual behavior
+## Idle configuratio- manual behavior
 bindsym $mod+Shift+x exec swaylock
 bindsym --locked $mod+Mod1+a output * dpms on
 bindsym --locked $mod+Mod1+z output * dpms off
@@ -278,13 +271,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## Status bar
-bar {
-    id mainbar
-    position top
-    mode hide
-    hidden_state hide
-    swaybar_command waybar
-}
+# bar {
+#     id mainbar
+#     position top
+#     mode hide
+#     hidden_state hide
+#     swaybar_command waybar
+# }
 
 ## Services directory
 exec runsvdir-sway
