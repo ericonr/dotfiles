@@ -65,5 +65,6 @@
       :nick "ericonr"
       :sasl-username "ericonr"
       :sasl-password ,freenode-password
-      :channels ("#voidlinux-ppc" "#voidlinux" "#xbps" "#sway" "#wayfire"
-      "#postmarketos" "#iwd" "#openbsd" "#nouveau" "#bootstrappable"))))
+      :channels ("#voidlinux-ppc" "#voidlinux" "#xbps" "#musl" "#kicad" "#sway"
+      "#wayfire" "#postmarketos" "#iwd" "#openbsd" "#nouveau"
+      "#bootstrappable"))))

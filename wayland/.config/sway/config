@@ -43,11 +43,11 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec sway_exit_prompt
 
 ## Input settings
-input * {
-	# Change keyboard layout
+input type:keyboard {
 	xkb_layout "us,br"
 	xkb_options ctrl:nocaps
-	# Touchpad
+}
+input type:touchpad {
 	tap enabled
 	natural_scroll disabled
 	scroll_factor 0.8 # help Firefox work correctly
