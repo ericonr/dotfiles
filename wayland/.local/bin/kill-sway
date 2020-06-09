@@ -1,3 +1,6 @@
 #!/bin/sh
+# TODO: some way of checking if this is the right runsvdir instance to kill
 
-pkill -HUP -f "^runsvdir /home/ericonr/.local/share/wayland-services"
+echo "Quitting sway"
+pkill -HUP -f "^runsvdir $HOME/.local/share/wayland-services"
+swaymsg exit

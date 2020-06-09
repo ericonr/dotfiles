@@ -286,6 +286,9 @@ bar {
     swaybar_command waybar
 }
 
+## Services directory
+exec runsvdir-sway
+
 ## Application specific settings
 # PDF
 assign [app_id="okular"] $wsp

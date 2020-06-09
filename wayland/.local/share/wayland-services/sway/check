@@ -1,4 +1,0 @@
-#!/bin/sh
-
-SWAYSOCK=$(find $XDG_RUNTIME_DIR -type s -name "sway-ipc*") \
-	exec swaymsg -t send_tick

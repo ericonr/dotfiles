@@ -9,6 +9,7 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 	fi
 fi
 
+export XDG_SESSION_TYPE=wayland
+
 # start the compositor itself
-exec dbus-run-session runsvdir "$HOME/.local/share/wayland-services" \
-	'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'
+WLR_DRM_DEVICES=/dev/dri/card0 exec dbus-run-session sway --my-next-gpu-wont-be-nvidia
