@@ -7,3 +7,9 @@
 [submodule "ate/.local/share/ate"]
 	path = ate/.local/share/ate
 	url = git@github.com:ericonr/ate.git
+[submodule "void/subprojects/git-merge-pr"]
+	path = sourcecode/subprojects/git-merge-pr
+	url = git@github.com:leahneukirchen/git-merge-pr.git
+[submodule "sourcecode/subprojects/hugo.el"]
+	path = sourcecode/subprojects/hugo.el
+	url = git@github.com:aaronbieber/hugo.el.git

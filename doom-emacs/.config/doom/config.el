@@ -68,3 +68,5 @@
       :channels ("#voidlinux-ppc" "#voidlinux" "#xbps" "#musl" "#kicad" "#sway"
       "#wayfire" "#postmarketos" "#iwd" "#openbsd" "#nouveau"
       "#bootstrappable"))))
+
+(load-file "~/.config/doom/hugo.el")
