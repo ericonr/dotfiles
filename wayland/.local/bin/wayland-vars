@@ -4,7 +4,6 @@ if [ "$XDG_SESSION_TYPE" = wayland ]
 then
 	# Qt
 	export QT_QPA_PLATFORM=wayland-egl
-	export QT_WAYLAND_FORCE_DPI=physical
 	export QT_QPA_PLATFORMTHEME=qt5ct
 	# Firefox
 	export MOZ_ENABLE_WAYLAND=1

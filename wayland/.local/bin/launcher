@@ -4,4 +4,4 @@
 
 . "$HOME/.local/bin/wayland-vars"
 
-exec generic-launcher /bin/sh -c 'compgen -c | sort -u | fzf --border | xargs lnch'
+exec generic-launcher /bin/bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'

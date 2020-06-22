@@ -12,4 +12,6 @@ fi
 export XDG_SESSION_TYPE=wayland
 
 # start the compositor itself
-WLR_DRM_DEVICES=/dev/dri/card0 exec dbus-run-session sway --my-next-gpu-wont-be-nvidia
+WLR_DRM_DEVICES=/dev/dri/card0 exec dbus-run-session \
+	sway --my-next-gpu-wont-be-nvidia -d -V 2>&1 \
+	> "${XDG_RUNTIME_DIR}/sway-$(date "+%Y-%m-%d").log"
