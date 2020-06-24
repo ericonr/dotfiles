@@ -1,9 +1,2 @@
 #!/bin/sh
-
-# void location
-export EXISTFAIL=1
 exec exec-if-exists /usr/lib/libexec/kdeconnectd
-
-# arch/manjaro location
-unset EXISTFAIL
-exec exec-if-exists /usr/lib/kdeconnectd
