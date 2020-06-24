@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -eu
+
+args=
+package=
+open_after=
+
+print_help() {
+	cat << EOF
+Usage: $0 [flags] package
+Flags:
+	-o: open result in imv
+	-f, -g, -m: flags passed to xbps-dgraph
+EOF
+
+	exit 1
+}
+
+while [ $# -gt 0 ]; do
+	case $1 in
+		-g|-f|-m) args="$args $1";;
+		-o) open_after=1;;
+		*) package="$1";;
+	esac
+	shift
+done
+
+if [ -z "$package" ]; then
+	print_help
+fi
+
+echo "Generating graph for $package"
+
+if [ "$open_after" ]; then
+	xbps-dgraph $args $package | dot -Tpng | imv -
+else
+	xbps-dgraph $args $package | dot -Tpng -o "${package}.png"
+fi
