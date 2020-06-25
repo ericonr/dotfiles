@@ -42,7 +42,7 @@ su_disk_tools_desc="$(print_item su_disk_tools) Install AutoFS and hdparm"
 refind="refind"
 refind_desc="$(print_item refind) Install the rEFInd boot manager."
 
-zfs="zfs zfsbootmenu"
+zfs="zfs zfsbootmenu linux-headers"
 zfs_desc="$(print_item zfs) Install support for ZFS."
 
 security="apparmor"
@@ -54,11 +54,13 @@ popcorn_desc="$(print_item popcorn) Install PopCorn usage statistics."
 _browser="ncdu ranger"
 _device="usbutils"
 _monitor="bmon htop"
-_net="curl gnupg2"
+_net="curl git gnupg2"
 _shell="fish-shell lolcat-c starship tmux"
-_tools="bat bsdtar fd mdcat neovim p7zip parallel ripgrep stow"
-_void="vsv xtools"
-term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}"
+_tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow"
+_void="vsv xtools graphviz"
+_info="man-pages-devel"
+term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}
+ ${_info}"
 term_desc="$(print_item term) Install basic terminal utilities."
 
 ssh="fuse-sshfs rsync"
@@ -68,7 +70,7 @@ intel="intel-gpu-tools libva-intel-driver intel-media-driver mesa-intel-dri
  intel-undervolt $(nonfree intel-ucode)"
 intel_desc="$(print_item intel) Install packages for media decode and GPU stuff in Intel-land."
 
-nvidia="$(nonfree nvidia nvidia-opencl)"
+nvidia="$(nonfree nvidia nvidia-opencl linux-headers)"
 nvidia_desc="$(print_item nvidia) Install NVIDIA drivers."
 
 graphics="Vulkan-Tools clinfo mesa-demos"
@@ -78,14 +80,14 @@ fonts="font-awesome5 font-fira-ttf font-ibm-plex-ttf liberation-fonts-ttf
  noto-fonts-ttf noto-fonts-emoji ttf-bitstream-vera"
 fonts_desc="$(print_item fonts) Basic fonts necessary for browsing the web and normal GUIs."
 
-themes="breeze breeze-gtk papirus-icon-theme"
+themes="breeze-snow-cursor-theme breeze-amber-cursor-theme breeze-gtk papirus-icon-theme"
 themes_desc="$(print_item themes) Color and mouse themes for a good color setup."
 
 wm="Waybar alacritty brightnessctl fzf grim jq mako redshift slurp sway swayidle
  swaylock wl-clipboard wofi go"
 wm_desc="$(print_item wm) Install SwayWM and supporting packages. Depends on fonts and themes."
 
-wayland="wf-recorder wayfire wf-shell cage"
+wayland="wf-recorder wayfire wf-shell cage waypipe"
 wayland_desc="$(print_item wayland) Install Wayfire and Cage."
 
 xorg="xfce4 xorg"
@@ -97,17 +99,17 @@ audio_desc="$(print_item audio) Install PulseAudio and alsa."
 media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv ImageMagick"
 media_desc="$(print_item media) Install mpv, imv and spotify CLI programs."
 
-dev="clang cmake make meson ninja git rustup tokei valgrind gdb strace"
+dev="clang cmake make meson ninja rustup tokei valgrind gdb strace"
 dev_desc="$(print_item dev) Install the CLang compiler, some build systems and rustup."
 
 emacs="emacs-gtk3 hunspell hunspell-en_US hunspell-pt_BR shellcheck zstd"
 emacs_desc="$(print_item emacs) Install the GUI version of Emacs."
 
-qt5="qt5-wayland qt5ct konversation qutebrowser pdf.js"
-qt5_desc="$(print_item qt5) Install Qt5 for Wayland, plus Qutebrowser and Konversation."
+qute="qt5-wayland qutebrowser pdf.js"
+qute_desc="$(print_item qute) Install Qt5 for Wayland and Qutebrowser."
 
-elisa="elisa"
-elisa_desc="$(print_item elisa) Install the Elisa music player."
+qt5="qt5-wayland qt5ct konversation"
+qt5_desc="$(print_item qt5) Install Qt5 for Wayland, Konversation and qt5ct."
 
 mozilla="firefox thunderbird"
 mozzila_desc="$(print_item mozilla) Install Firefox and Thunderbird."
@@ -121,8 +123,12 @@ pdf_desc="$(print_item pdf) Install Zathura."
 flatpak="flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils"
 flatpak_desc="$(print_item flatpak) Install Flatpak and supporting packages."
 
-embedded="arduino-cli cross-arm-none-eabi cross-arm-none-eabi-gdb python3-pyserial openocd screen sdcc"
+embedded="arduino-cli cross-arm-none-eabi cross-arm-none-eabi-gdb
+ python3-pyserial openocd screen sdcc"
 embedded_desc="$(print_item embedded) Install embedded toolchain and programmer/debugger software."
+
+qemu="qemu proot qemu-user-static"
+qemu_desc="$(print_item qemu) Install QEMU, proot."
 
 kicad="kicad kicad-footprints kicad-library kicad-packages3D kicad-symbols kicad-templates"
 kicad_desc="$(print_item kicad) Install KiCad EDA and its resource packages."
@@ -136,16 +142,19 @@ void_docs_desc="$(print_item void_docs) Install development tools for Void Docs.
 xbps_devel="zlib-devel libressl-devel libarchive-devel"
 xbps_devel_desc="$(print_item xbps_devel) Install development dependencies for XBPS."
 
-base_env="$base $term $ssh $intel $fonts $themes $wm $audio $media $qt5 $popcorn
+base_env="$base $term $ssh $intel $fonts $themes $wm $audio $media $qute $popcorn
  $mozilla $pdf $emacs $security $su_disk_tools"
 base_env_desc="$(print_item base_env) [ base term ssh intel fonts themes wm audio
- media qt5 popcorn mozilla pdf emacs security su_disk_tools ]"
+ media qute popcorn mozilla pdf emacs security su_disk_tools ]"
 
-all="$base_env $luks $uefi_bundle $disk_tools $refind $zfs $dev $elisa $office
- $flatpak $embedded $kicad $ate $void_docs $xbps_devel $wayland $nvidia $graphics $xorg"
+current_system="$base_env $zfs $wayland $uefi_bundle"
+current_system_desc="$(print_item current_system) [ base_env zfs wayland uefi_bundle ]"
+
+all="$base_env $luks $uefi_bundle $disk_tools $refind $zfs $dev $office $qt5
+ $flatpak $embedded $kicad $ate $void_docs $xbps_devel $nvidia $graphics $xorg"
 all_desc="$(print_item all) [ base_env luks uefi_bundle disk_tools refind
- zfs dev elisa office flatpak embedded kicad ate void_docs xbps_devel
- wayland xorg nvidia graphics ]"
+ zfs dev office flatpak embedded kicad ate void_docs xbps_devel
+ xorg nvidia graphics qt5 ]"
 
 print_help () {
 	cat <<EOF
@@ -176,7 +185,7 @@ $media_desc
 $dev_desc
 $emacs_desc
 $qt5_desc
-$elisa_desc
+$qute_desc
 $mozzila_desc
 $office_desc
 $pdf_desc
@@ -189,33 +198,46 @@ $xbps_devel_desc
 
 These are the available bundles:
 $base_env_desc
+$current_system_desc
 $all_desc
 
 Recommended individual apps:
-$(print_item bolt)
-$(print_item cscope)
-$(print_item sl)
-$(print_item podman)
-$(print_item riot-desktop)
-$(print_item sent)
+$(print_item bolt) control thunderbolt port
+$(print_item cscope) inspect code
+$(print_item elisa) music player
+$(print_item fstl) STL visualizer
+$(print_item fwupd) system firmware updater
+$(print_item hugo) static site generator
+$(print_item podman) container tool
+$(print_item riot-desktop) Matrix client
+$(print_item sent) presentation thingy
+$(print_item sl) choo-choo
 
 $(print_bold "Environment variables:")
 - ADDITIONAL_PACKAGES: env variable for individual packages
 - NO_NONFREE: to disable nonfree repo
-- YES: don't ask for confirmation
+- FLAGS: additional flags
+- BOOTSTRAP: bootstrap an installation
+- ROOTDIR: root directory
 EOF
 
 	exit
 }
 
+[ -n "$ROOTDIR" ] && FLAGS="-r${ROOTDIR} ${FLAGS}"
+[ -n "$BOOTSTRAP" ] &&
+	FLAGS="-Rhttps://mirror.clarkson.edu/voidlinux/current
+		   -Rhttps://mirror.clarkson.edu/voidlinux/current/musl
+		   -S ${FLAGS}"
 
-[ -n "$YES" ] && FLAGS="-y"
+XBPS_INSTALL="xbps-install ${FLAGS}"
+XBPS_QUERY="xbps-query ${FLAGS}"
 
 check_nonfree() {
 	if [ -z "$NO_NONFREE" ] ; then
-		if ! xbps-query void-repo-nonfree >/dev/null ; then
-			xbps-install $FLAGS -S void-repo-nonfree
-			xbps-install -S
+		if ! $XBPS_QUERY void-repo-nonfree >/dev/null ; then
+			$XBPS_INSTALL -S void-repo-nonfree
+			$XBPS_INSTALL -S
 		fi
 	else
 		echo "Non-free packages are disabled"
@@ -225,8 +247,13 @@ check_nonfree() {
 if [ -z "$1" ] ; then
 	print_help
 else
-	xbps-install -S
-	xbps-install $FLAGS -u xbps
+	if [ "$BOOTSTRAP" ]; then
+		$XBPS_INSTALL -S base-system
+	else
+		$XBPS_INSTALL -S
+		$XBPS_INSTALL -u xbps
+	fi
+
 	check_nonfree
 	echo "Collections: $@"
 
@@ -243,7 +270,7 @@ else
 	packages="${packages} $ADDITIONAL_PACKAGES"
 	echo "Packages: ${packages}"
 
-	xbps-install $FLAGS $packages
+	$XBPS_INSTALL $packages
 
 	for coll in "$@"
 	do
