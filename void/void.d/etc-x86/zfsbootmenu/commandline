@@ -1,1 +1,1 @@
-spl_hostid=0e2e6746 ro quiet i195.enable_guc=2 apparmor=1 security=apparmor
+spl_hostid=0e2e6746 ro quiet i915.enable_guc=2 apparmor=1 security=apparmor
