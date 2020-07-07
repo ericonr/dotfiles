@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo true
+sudo dmesg --color=always | less -r

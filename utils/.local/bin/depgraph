@@ -11,7 +11,7 @@ print_help() {
 Usage: $0 [flags] package
 Flags:
 	-o: open result in imv
-	-f, -g, -m: flags passed to xbps-dgraph
+	-f, -g, -m, -R, -M: flags passed to xbps-dgraph
 EOF
 
 	exit 1
@@ -19,7 +19,7 @@ EOF
 
 while [ $# -gt 0 ]; do
 	case $1 in
-		-g|-f|-m) args="$args $1";;
+		-g|-f|-m|-R|-M) args="$args $1";;
 		-o) open_after=1;;
 		*) package="$1";;
 	esac

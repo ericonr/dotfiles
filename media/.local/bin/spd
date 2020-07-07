@@ -1,4 +1,4 @@
 #!/bin/sh
 
 swaysv up spotifyd
-exec swaysv reload spotifyd
+swaysv reload spotifyd
