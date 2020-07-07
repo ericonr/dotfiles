@@ -1,0 +1,10 @@
+#!/bin/sh
+
+key="$(openssl rand -hex 32)"
+
+url="$(openssl enc -aes-256-cbc -K ${key} -iv 00000000000000000000000000000000 -e -base64 -A < ${1:-/dev/stdin} | purr)"
+
+website="${url%\/*}/paste.html#${url##*\/}_${key}"
+echo $website
+
+[ "$WAYLAND_DISPLAY" ] && echo -n $website | wl-copy

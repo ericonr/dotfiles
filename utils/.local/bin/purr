@@ -1,6 +1,6 @@
 #!/bin/sh
 
-website="$(curl -F"file=@${1:--}" https://0x0.st)"
+website="$(curl --silent --data-binary "@${1:-/dev/stdin}" bsd.ac:42069)"
 echo $website
 
 [ "$WAYLAND_DISPLAY" ] && echo -n $website | wl-copy
