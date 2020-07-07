@@ -2,6 +2,8 @@ SRC = sshfs-map.c
 OBJ = sshfs-map
 UOBJ = sshfs-unmap
 
+CFLAGS = -g3 -ggdb -O2
+
 DESTDIR ?= /
 PREFIX ?= usr/local
 
