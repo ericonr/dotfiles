@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ROOTDIR=/mnt
+
+umount -R \
+	"$ROOTDIR/dev" \
+	"$ROOTDIR/proc" \
+	"$ROOTDIR/sys" \
+	"$ROOTDIR/etc/resolv.conf" \
+	"$ROOTDIR/tmp" \
+	"$ROOTDIR/home" \
+	"$ROOTDIR/run"
+
+rm -f "$ROOTDIR/chrooted"

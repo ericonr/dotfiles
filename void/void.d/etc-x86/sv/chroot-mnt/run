@@ -1,0 +1,24 @@
+#!/bin/sh
+
+ROOTDIR=/mnt
+
+mount -o zfsutil -t zfs zroot/ROOT/glibc "$ROOTDIR"
+
+if ! [ -e "$ROOTDIR/chrooted" ]; then
+	# chroot has been launched already
+
+	# xchroot commands
+	mount --rbind /dev "$ROOTDIR/dev"
+	mount --rbind /proc "$ROOTDIR/proc"
+	mount --rbind /sys "$ROOTDIR/sys"
+	touch "$ROOTDIR/etc/resolv.conf"
+	mount --bind /etc/resolv.conf "$ROOTDIR/etc/resolv.conf"
+
+	mount --bind /tmp "$ROOTDIR/tmp"
+	mount --bind /home "$ROOTDIR/home"
+	mount --rbind /run "$ROOTDIR/run"
+
+	touch "$ROOTDIR/chrooted"
+fi
+
+exec pause

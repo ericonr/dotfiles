@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DEVICE="${1:-zroot/ROOT/glibc}"
+MOUNT="${2:-/mnt}"
+
+mount -o zfsutil -t zfs "$DEVICE" "$MOUNT"

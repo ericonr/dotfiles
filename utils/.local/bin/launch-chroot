@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# use with sudo -E
+
+ROOTDIR="${1:-/mnt}"
+USERNAME="${SUDO_USER:-ericonr}"
+
+chroot "$ROOTDIR" /bin/sudo -u $USERNAME \
+	env CHROOTED=1 \
+	XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
+	WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+	DISPLAY=$DISPLAY \
+	/bin/fish -C "cd"
