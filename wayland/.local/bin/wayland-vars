@@ -13,8 +13,8 @@ then
 	#export SDL_VIDEODRIVER=wayland
 	# Vulkan should use the Intel GPU
 	export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
+	export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
 else
 	# useful for KDE
 	export GTK_USE_PORTAL=1
 fi
-

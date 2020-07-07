@@ -10,6 +10,10 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 fi
 
 export XDG_SESSION_TYPE=wayland
+. ~/.local/bin/wayland-vars
+
+# catch crashes
+ulimit -c unlimited
 
 # start the compositor itself
 WLR_DRM_DEVICES=/dev/dri/card0 exec dbus-run-session \
