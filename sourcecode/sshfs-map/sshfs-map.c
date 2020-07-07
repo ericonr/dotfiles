@@ -31,11 +31,12 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	char *line = NULL;
-	size_t line_size = 0;
 	int i = 0;
 	
 	while (true) {
+		char *line = NULL;
+		size_t line_size = 0;
+
 		size_t result = getline(&line, &line_size, map);
 		// EOF
 		if (result == -1) {
@@ -51,7 +52,6 @@ int main(int argc, char **argv)
 
 		// guarantee null-terminated terms
 		if (line[result - 1] == '\n') line[result - 1] = '\0';
-
 
 		char *source, *dest, *full_dest;
 		source = dest = full_dest = NULL;
@@ -85,36 +85,36 @@ int main(int argc, char **argv)
 
 		switch (mode) {
 			pid_t p;
+
 			case SSHFS_MAP:
 				if (is_mounted) {
 					printf("%s is already mounted\n", full_dest);
-					continue;
-				}
-				p = fork();
-				if (p == 0) {
-					printf("%s <=> %s\n", source, full_dest);
-					fflush(stdout);
-
-					char *args[] = {"sshfs", source, full_dest, NULL};
-					execvp("sshfs", args);
 				} else {
-					int wstatus;
-					waitpid(p, &wstatus, 0);
+					printf("%s <=> %s\n", source, full_dest);
+
+					p = fork();
+					if (p == 0) {
+						char *args[] = {"sshfs", "-o", "follow_symlinks", source, full_dest, NULL};
+						execvp("sshfs", args);
+					} else {
+						int wstatus;
+						waitpid(p, &wstatus, 0);
+					}
 				}
 				break;
 
 			case SSHFS_UNMAP:
 				if (!is_mounted) {
 					printf("%s isn't mounted\n", full_dest);
-					continue;
-				}
-				p = fork();
-				if (p == 0) {
-					char *args[] = {"umount", full_dest, NULL};
-					execvp("umount", args);
 				} else {
-					int wstatus;
-					waitpid(p, &wstatus, 0);
+					p = fork();
+					if (p == 0) {
+						char *args[] = {"umount", full_dest, NULL};
+						execvp("umount", args);
+					} else {
+						int wstatus;
+						waitpid(p, &wstatus, 0);
+					}
 				}
 				break;
 		}
