@@ -67,6 +67,6 @@
       :sasl-password ,freenode-password
       :channels ("#voidlinux-ppc" "#voidlinux" "#xbps" "#musl" "#kicad" "#sway"
       "#wayfire" "#postmarketos" "#iwd" "#openbsd" "#nouveau"
-      "#bootstrappable"))))
+      "#bootstrappable" "#openocd"))))
 
 (load-file "~/.config/doom/hugo.el")
