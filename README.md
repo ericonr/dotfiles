@@ -6,16 +6,16 @@ Uses [GNU stow](https://www.gnu.org/software/stow/) for managing symlinks! The
 default `.stowrc` file is setup for my home directory, and for adopting files
 (overwrite existing files, bringing them into the repo).
 
-In order to link all files, use
+In order to link the usual files, use
 
 ```````
-$ stow */
+$ ./stow-linux.sh
 ```````
 
 otherwise, for specific folders, use
 
 ```````
-$ stow folder
+$ stow <folder>
 ```````
 
 It's also recommended to create the `~/.local/bin` and `~/.local/share`
