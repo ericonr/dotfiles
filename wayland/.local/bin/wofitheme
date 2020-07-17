@@ -1,9 +1,3 @@
 #!/bin/sh
-
-# ericonr's script for launching applications with the appropriate env
-
-. "$HOME/.local/bin/wayland-vars"
-
-export GTK_THEME=Breeze
-
+# ericonr's script for launching applications
 exec wofi -i -t alacritty "$@"

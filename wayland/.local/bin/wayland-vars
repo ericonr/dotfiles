@@ -1,20 +1,36 @@
-# ericonr's environment for launching applications
+# ericonr's environment for launching wayland compositors
 
-if [ "$XDG_SESSION_TYPE" = wayland ]
-then
-	# Qt
-	export QT_QPA_PLATFORM=wayland-egl
-	export QT_QPA_PLATFORMTHEME=qt5ct
-	# Firefox
-	export MOZ_ENABLE_WAYLAND=1
-	# Java
-	export _JAVA_AWT_WM_NONREPARENTING=1
-	# SDL - not working for most games
-	#export SDL_VIDEODRIVER=wayland
-	# Vulkan should use the Intel GPU
-	export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
-	export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
-else
-	# useful for KDE
-	export GTK_USE_PORTAL=1
+# created by elogind, usually
+if test -z "${XDG_RUNTIME_DIR}"; then
+	export XDG_RUNTIME_DIR="/tmp/$(mktemp -d ${UID}-runtime-XXXXXX)"
+	if ! test -d "${XDG_RUNTIME_DIR}"; then
+		mkdir "${XDG_RUNTIME_DIR}"
+		chmod 0700 "${XDG_RUNTIME_DIR}"
+	fi
 fi
+
+# Session
+export XDG_SESSION_TYPE=wayland
+
+# Qt
+export QT_QPA_PLATFORM=wayland-egl
+# Firefox
+export MOZ_ENABLE_WAYLAND=1
+# Java
+export _JAVA_AWT_WM_NONREPARENTING=1
+# SDL - not working for most games
+#export SDL_VIDEODRIVER=wayland
+
+# Vulkan should use the Intel GPU
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
+# EGL should use the Mesa driver -> segfaults with Nvidia on musl
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+# Pass Intel GPU wlroots - hope naming doesn't change
+export WLR_DRM_DEVICES=/dev/dri/card0
+
+# catch crashes
+ulimit -c unlimited
+
+launch_compositor() {
+	exec dbus-run-session "$@" > "${XDG_RUNTIME_DIR}/$1-$(date "+%Y-%m-%d").log" 2>&1
+}
