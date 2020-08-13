@@ -1,2 +1,8 @@
-#!/bin/sh
-ps aux | rg -i "$@" | rg -v "(rg -i)|(rgps)"
+#!/bin/execlineb -S1
+pipeline
+{
+    pipeline
+    { ps aux }
+    rg -i $@
+}
+rg -v "(rg -i)|(rgps)"

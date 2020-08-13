@@ -1,5 +1,6 @@
-#!/bin/sh
-
+#!/bin/execlineb -S0
 # generic launcher for floating alacritty with size WIDTH X LENGTH
-
-exec "${TERMEMU:-alacritty}" --class generic-launcher --command "${@:-fish}"
+ifte
+{ alacritty --class generic-launcher }
+{ alacritty --class generic-launcher --command $@ }
+test -z "$@"

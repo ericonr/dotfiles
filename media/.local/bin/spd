@@ -1,4 +1,4 @@
-#!/bin/sh
-
-swaysv up spotifyd
+#!/bin/execlineb -P
+foreground
+{ swaysv up spotifyd }
 swaysv reload spotifyd

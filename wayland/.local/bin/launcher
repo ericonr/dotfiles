@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/execlineb -P
 # ericonr's script for launching applications
-exec generic-launcher /bin/bash -c 'compgen -c | sort -u | fzf --border | xargs lnch'
+generic-launcher /bin/bash -c "compgen -c | sort -u | fzf --border | xargs lnch"

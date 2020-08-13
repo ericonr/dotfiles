@@ -1,4 +1,4 @@
-#!/bin/sh
-
-export SVDIR="$HOME/.local/share/wayland-services"
-exec sv "$@"
+#!/bin/execlineb -S0
+importas -D /home/ericonr HOME HOME
+export SVDIR ${HOME}/.local/share/wayland-services
+sv $@

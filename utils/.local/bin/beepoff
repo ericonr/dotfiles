@@ -1,3 +1,2 @@
-#!/bin/sh
-
+#!/bin/execlineb -P
 xset b off

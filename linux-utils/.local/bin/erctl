@@ -1,11 +1,7 @@
-#!/bin/sh
-
+#!/bin/execlineb -S0
 # ericonr's script for system tasks
-
-# detect session manager;
 # systemd -> systemctl
 # non-systemd -> loginctl
-CTL=loginctl
-command -v systemctl && CTL=systemctl
-
-exec $CTL "$@"
+tryexec
+{ systemctl $@ }
+loginctl $@

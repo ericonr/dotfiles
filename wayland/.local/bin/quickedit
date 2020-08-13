@@ -1,5 +1,3 @@
-#!/bin/sh
-
+#!/bin/execlineb -S0
 # floating editor launcher
-
-exec generic-launcher nvim "$@"
+generic-launcher nvim $@

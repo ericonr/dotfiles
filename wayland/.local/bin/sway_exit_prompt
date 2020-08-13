@@ -1,12 +1,11 @@
-#!/bin/sh
-
-exec swaynag \
-	-t warning \
-	-m 'Logout' \
-	-b 'Exit session' 'kill-sway' \
-	-b 'Suspend' 'erctl suspend' \
-	-b 'Hibernate' 'erctl hibernate' \
-	-b 'Hybrid sleep' 'erctl hybrid-sleep' \
-	-b 'Shut down' 'erctl poweroff' \
-	-b 'Reboot' 'erctl reboot' \
-	-b 'Suspend then hibernate' 'erctl suspend-then-hibernate'
+#!/bin/execlineb -P
+swaynag
+-t warning
+-m "Logout"
+-b "Exit session" "kill-sway"
+-b "Suspend" "erctl suspend"
+-b "Hibernate" "erctl hibernate"
+-b "Hybrid sleep" "erctl hybrid-sleep"
+-b "Shut down" "erctl poweroff"
+-b "Reboot" "erctl reboot"
+-b "Suspend then hibernate" "erctl suspend-then-hibernate"

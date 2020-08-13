@@ -1,3 +1,2 @@
-#!/bin/sh
-
-exec playerctl --player=playerctld "$@"
+#!/bin/execlineb -S0
+playerctl --player=playerctld $@

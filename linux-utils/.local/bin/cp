@@ -1,4 +1,3 @@
-#!/bin/sh
-
+#!/bin/execlineb -S1
 # Uses copy setttings beneficial to Btrfs
-exec /usr/bin/cp --reflink=auto --sparse=always "$@"
+/usr/bin/cp --reflink=auto --sparse=always $@

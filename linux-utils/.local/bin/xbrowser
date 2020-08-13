@@ -1,2 +1,4 @@
-#!/bin/sh
-xpkg -a | fzf --reverse --cycle --preview 'xq {}'
+#!/bin/execlineb -P
+pipeline
+{ xpkg -a }
+fzf --reverse --cycle --preview "xq {}"

@@ -1,3 +1,2 @@
-#!/bin/sh
-
-exec generic-launcher iwctl
+#!/bin/execlineb -P
+generic-launcher iwctl

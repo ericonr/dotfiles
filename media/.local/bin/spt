@@ -1,5 +1,1 @@
-#!/bin/sh
-
-SPT=/usr/bin/spt
-command -v spotify-tui && SPT=spotify-tui
-exec $SPT
+/usr/bin/spotify-tui
