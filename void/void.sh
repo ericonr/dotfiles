@@ -24,6 +24,13 @@ nonfree() {
 	[ -z "$NO_NONFREE" ] && echo "$@"
 }
 
+assemble_list() {
+	for name in $1
+	do
+		eval "echo \"\$$name\""
+	done
+}
+
 base="chrony elogind iwd vsv"
 base_desc="$(print_item base) Install base system utilities."
 
@@ -70,7 +77,7 @@ intel="intel-gpu-tools libva-intel-driver intel-media-driver mesa-intel-dri
  intel-undervolt $(nonfree intel-ucode)"
 intel_desc="$(print_item intel) Install packages for media decode and GPU stuff in Intel-land."
 
-nvidia="$(nonfree nvidia nvidia-opencl linux-headers)"
+nvidia="$(nonfree nvidia nvidia-opencl)"
 nvidia_desc="$(print_item nvidia) Install NVIDIA drivers."
 
 graphics="Vulkan-Tools clinfo mesa-demos"
@@ -115,7 +122,7 @@ qt5="qt5-wayland qt5ct konversation"
 qt5_desc="$(print_item qt5) Install Qt5 for Wayland, Konversation and qt5ct."
 
 mozilla="firefox thunderbird"
-mozzila_desc="$(print_item mozilla) Install Firefox and Thunderbird."
+mozilla_desc="$(print_item mozilla) Install Firefox and Thunderbird."
 
 office="libreoffice libreoffice-i18n-en-US libreoffice-i18n-pt-BR"
 office_desc="$(print_item office) Install Libreoffice."
@@ -145,60 +152,34 @@ void_docs_desc="$(print_item void_docs) Install development tools for Void Docs.
 xbps_devel="zlib-devel libressl-devel libarchive-devel"
 xbps_devel_desc="$(print_item xbps_devel) Install development dependencies for XBPS."
 
-base_env="$base $term $ssh $intel $fonts $themes $wm $sndio $media $qute $popcorn
- $mozilla $pdf $emacs $security $su_disk_tools"
-base_env_desc="$(print_item base_env) [ base term ssh intel fonts themes wm sndio
- media qute popcorn mozilla pdf emacs security su_disk_tools ]"
+base_env_list="base term ssh intel fonts themes wm sndio media qute popcorn
+ mozilla pdf emacs security su_disk_tools"
+base_env="$(assemble_list "$base_env_desc")"
+base_env_desc="$(print_item base_env) $base_env_list"
 
-current_system="$base_env $zfs $wayland $uefi_bundle"
-current_system_desc="$(print_item current_system) [ base_env zfs wayland uefi_bundle ]"
+current_system_desc="base_env zfs wayland uefi_bundle"
+current_system="$(assemble_list "$current_system_desc")"
+current_system_desc="$(print_item current_system) $current_system_desc"
 
-all="$base_env $luks $uefi_bundle $disk_tools $refind $zfs $dev $office $qt5
- $flatpak $embedded $kicad $ate $void_docs $xbps_devel $nvidia $graphics $xorg $audio"
-all_desc="$(print_item all) [ base_env luks uefi_bundle disk_tools refind
- zfs dev office flatpak embedded kicad ate void_docs xbps_devel
- xorg nvidia graphics qt5 audio ]"
+all_list="$base_env_list luks uefi_bundle disk_tools refind zfs dev office
+ flatpak embedded kicad ate void_docs xbps_devel xorg nvidia graphics qt5 audio
+ wayland"
+all="$(assemble_list "$all_desc")"
+all_desc="$(print_item all) $all_list"
+
+print_all_descs() {
+	for name in $1
+	do
+		eval "echo \"\$${name}_desc\""
+	done
+}
 
 print_help () {
 	cat <<EOF
 $(print_bold Usage): $0 collection [collections...]
 
 These are the available package collections:
-$base_desc
-$luks_desc
-$uefi_bundle_desc
-$disk_tools_desc
-$su_disk_tools_desc
-$refind_desc
-$zfs_desc
-$security_desc
-$popcorn_desc
-$term_desc
-$ssh_desc
-$intel_desc
-$nvidia_desc
-$graphics_desc
-$fonts_desc
-$themes_desc
-$wm_desc
-$xorg_desc
-$wayland_desc
-$audio_desc
-$sndio_desc
-$media_desc
-$dev_desc
-$emacs_desc
-$qt5_desc
-$qute_desc
-$mozzila_desc
-$office_desc
-$pdf_desc
-$flatpak_desc
-$embedded_desc
-$kicad_desc
-$ate_desc
-$void_docs_desc
-$xbps_devel_desc
+$(print_all_descs "$all_list")
 
 These are the available bundles:
 $base_env_desc
