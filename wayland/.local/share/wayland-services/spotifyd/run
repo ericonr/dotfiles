@@ -1,2 +1,2 @@
-#!/bin/sh
-exec spotifyd --no-daemon
+#!/bin/execlineb -P
+spotifyd --no-daemon

@@ -1,2 +1,4 @@
-#!/bin/sh
-exec exec-if-exists /usr/lib/libexec/polkit-kde-authentication-agent-1
+#!/bin/execlineb -P
+tryexec
+{ /usr/lib/libexec/polkit-kde-authentication-agent-1 }
+sleep 100

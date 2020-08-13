@@ -1,2 +1,4 @@
-#!/bin/sh
-exec exec-if-exists /usr/lib/libexec/kdeconnectd
+#!/bin/execlineb -P
+tryexec
+{ /usr/lib/libexec/kdeconnectd }
+sleep 100
