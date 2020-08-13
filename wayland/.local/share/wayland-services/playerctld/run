@@ -1,2 +1,1 @@
-#!/bin/sh
-exec playerctld
+/usr/bin/playerctld

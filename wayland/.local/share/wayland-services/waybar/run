@@ -1,3 +1,1 @@
-#!/bin/sh
-
-exec waybar
+/usr/bin/waybar

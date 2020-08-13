@@ -1,2 +1,1 @@
-#!/bin/sh
-exec redshift 2>&1
+/usr/bin/redshift
