@@ -54,7 +54,7 @@ popcorn_desc="$(print_item popcorn) Install PopCorn usage statistics."
 _browser="ncdu ranger"
 _device="usbutils"
 _monitor="bmon htop"
-_net="curl git gnupg2"
+_net="curl git gnupg2 aerc asciinema"
 _shell="fish-shell lolcat-c starship tmux"
 _tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow"
 _void="vsv xtools graphviz"
@@ -80,11 +80,11 @@ fonts="font-awesome5 font-fira-ttf font-ibm-plex-ttf liberation-fonts-ttf
  noto-fonts-ttf noto-fonts-emoji ttf-bitstream-vera"
 fonts_desc="$(print_item fonts) Basic fonts necessary for browsing the web and normal GUIs."
 
-themes="breeze-snow-cursor-theme breeze-amber-cursor-theme breeze-gtk papirus-icon-theme"
+themes="breeze-snow-cursor-theme breeze-amber-cursor-theme"
 themes_desc="$(print_item themes) Color and mouse themes for a good color setup."
 
 wm="Waybar alacritty brightnessctl fzf grim jq mako redshift slurp sway swayidle
- swaylock wl-clipboard wofi go"
+ swaylock wl-clipboard nwg-launchers go"
 wm_desc="$(print_item wm) Install SwayWM and supporting packages. Depends on fonts and themes."
 
 wayland="wf-recorder wayfire wf-shell cage waypipe"
@@ -95,6 +95,9 @@ xorg_desc="$(print_item xorg) Install XFCE4 and Xorg."
 
 audio="alsa-utils playerctl pulseaudio pavucontrol"
 audio_desc="$(print_item audio) Install PulseAudio and alsa."
+
+sndio="sndio aucatctl alsa-sndio"
+sndio_desc="$(print_item sndio) Install sndio."
 
 media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv ImageMagick"
 media_desc="$(print_item media) Install mpv, imv and spotify CLI programs."
@@ -142,19 +145,19 @@ void_docs_desc="$(print_item void_docs) Install development tools for Void Docs.
 xbps_devel="zlib-devel libressl-devel libarchive-devel"
 xbps_devel_desc="$(print_item xbps_devel) Install development dependencies for XBPS."
 
-base_env="$base $term $ssh $intel $fonts $themes $wm $audio $media $qute $popcorn
+base_env="$base $term $ssh $intel $fonts $themes $wm $sndio $media $qute $popcorn
  $mozilla $pdf $emacs $security $su_disk_tools"
-base_env_desc="$(print_item base_env) [ base term ssh intel fonts themes wm audio
+base_env_desc="$(print_item base_env) [ base term ssh intel fonts themes wm sndio
  media qute popcorn mozilla pdf emacs security su_disk_tools ]"
 
 current_system="$base_env $zfs $wayland $uefi_bundle"
 current_system_desc="$(print_item current_system) [ base_env zfs wayland uefi_bundle ]"
 
 all="$base_env $luks $uefi_bundle $disk_tools $refind $zfs $dev $office $qt5
- $flatpak $embedded $kicad $ate $void_docs $xbps_devel $nvidia $graphics $xorg"
+ $flatpak $embedded $kicad $ate $void_docs $xbps_devel $nvidia $graphics $xorg $audio"
 all_desc="$(print_item all) [ base_env luks uefi_bundle disk_tools refind
  zfs dev office flatpak embedded kicad ate void_docs xbps_devel
- xorg nvidia graphics qt5 ]"
+ xorg nvidia graphics qt5 audio ]"
 
 print_help () {
 	cat <<EOF
@@ -181,6 +184,7 @@ $wm_desc
 $xorg_desc
 $wayland_desc
 $audio_desc
+$sndio_desc
 $media_desc
 $dev_desc
 $emacs_desc
@@ -212,6 +216,8 @@ $(print_item podman) container tool
 $(print_item riot-desktop) Matrix client
 $(print_item sent) presentation thingy
 $(print_item sl) choo-choo
+$(print_item aria2) multi-downloader
+$(print_item arp-scan) network scanner
 
 $(print_bold "Environment variables:")
 - ADDITIONAL_PACKAGES: env variable for individual packages
