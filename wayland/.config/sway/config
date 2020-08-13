@@ -7,7 +7,7 @@
 
 ## Defaults
 set $term alacritty
-set $menu wofitheme
+set $menu nwgdmenu
 set $fallback_menu launcher
 set $editor quickedit
 set $file_manager generic-launcher ranger

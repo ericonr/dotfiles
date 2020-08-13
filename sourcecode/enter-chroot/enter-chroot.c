@@ -28,7 +28,7 @@ int main(int argc, char * const argv[])
 				check_chrooted = false;
 				break;
 			default:
-				puts("wrong usage");
+				fputs("wrong usage", stderr);
 				exit(EXIT_FAILURE);
 		}
 	}
