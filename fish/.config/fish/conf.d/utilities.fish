@@ -31,7 +31,6 @@ alias weather='curl wttr.in/'
 
 ## Aliases for quick grepping
 alias rgmod='lsmod | rg -i'
-alias rgps='ps aux | rg -i'
 
 function randpw -a digits \
     --description "Generates a random password with the specified number of digits, and copies it into the Wayland buffer."

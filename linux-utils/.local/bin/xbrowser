@@ -1,0 +1,2 @@
+#!/bin/sh
+xpkg -a | fzf --reverse --cycle --preview 'xq {}'

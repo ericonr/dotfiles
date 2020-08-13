@@ -2,7 +2,7 @@
 
 # start spotify session on tmux
 
-tmux new-session -d -s music fish -C spd
+tmux new-session -d -s music fish
 STATUS=$?
 
 if [ $STATUS -eq 0 ]

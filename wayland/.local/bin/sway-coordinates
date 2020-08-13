@@ -1,0 +1,2 @@
+#!/bin/sh
+exec swaymsg -t get_outputs | jq -r '.[] | [ .name,.rect.x,.rect.y,.transform ] | @csv' | awk -F ',' '{ print "output " $1 " position "$2" "$3 "\nouput " $1 " transform " $4}'

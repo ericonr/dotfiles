@@ -1,0 +1,3 @@
+#!/bin/sh
+# https://www.tecmint.com/find-open-ports-in-linux/
+exec netstat -lntu

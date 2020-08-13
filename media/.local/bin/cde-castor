@@ -1,0 +1,3 @@
+#!/bin/sh
+
+GTK_THEME=cdetheme exec castor "$@"
