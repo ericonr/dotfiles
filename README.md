@@ -23,39 +23,26 @@ directories before stowing the repository.
 
 ## Sway + Waybar
 
-This setup, which can be found inside `wayland`, requires the following
-dependencies:
+This setup, which can be found inside `wayland/`, requires mostly the
+dependencies listed under `wm` and `wayland` in `void/void.sh`.
 
 - Basic setup:
    - [`sway`](https://swaywm.org/): the Wayland compositor and tiling window
       manager.
-      - [`swaylock`](https://github.com/swaywm/swaylock)
-      - [`swaybg`](https://github.com/swaywm/swaybg)
-      - [`swayidle`](https://github.com/swaywm/swayidle)
-   - [`Xwayland`](https://wayland.freedesktop.org/xserver.html): X server inside
-      Wayland, for backwards compatibility.
-   - [`waybar`](https://github.com/Alexays/Waybar): customizable status bar.
-   - [`wofi`](https://hg.sr.ht/~scoopta/wofi): a pretty good menu system, for
-      wayland (replaces the self built launcher).
-   - [`mako`](https://wayland.emersion.fr/mako/): a notification daemon
-   - [`jq`](https://stedolan.github.io/jq/): CLI JSON parser, necessary for
-      keyboard layout implementation.
-   - [`redshift`](https://github.com/minus7/redshift/tree/wayland): magic tool
-      for avoiding eye burning. Needs to be the version patched for Sway/Wayland
-      use.
+   - [`Wayfire`](https://wayfire.org/)
 - Default applications:
    - [`fish`](https://fishshell.com/): the default shell.
-   - [`starship`](https://starship.rs/): the cross-shell prompt for astronauts.
    - [`alacritty`](https://github.com/jwilm/alacritty): the default terminal
       emulator (because it's pretty, fast, and it has the `dimensions` option).
       - [`tmux`](https://github.com/tmux/tmux): the Meta+T shortcut launches
          `tmux` for multiple terminals in the same screen.
-   - [`emacs`](https://www.gnu.org/software/emacs/): the no longer default text
+   - [`emacs`](https://www.gnu.org/software/emacs/): the back to default text
       editor (unfortunately, it has to run through Xwayland).
    - [`neovim`](https://neovim.io/): the default CLI text editor.
    - [`fzf`](https://github.com/junegunn/fzf): a wonderful fuzzy searcher,
       required by the self-built launcher.
-   - [`ranger`](https://ranger.github.io/): a VIM-like TUI file manager.
+   - [`ranger`](https://ranger.github.io/): a VIM-like TUI file manager, for
+      playing music.
 - Applications needed for media keys:
    - [`pulseaudio`](https://www.freedesktop.org/wiki/Software/PulseAudio/): the
       default audio daemon; provides `pactl`, which is used for controlling the
