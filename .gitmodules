@@ -13,3 +13,6 @@
 [submodule "sourcecode/subprojects/hugo.el"]
 	path = sourcecode/subprojects/hugo.el
 	url = git@github.com:aaronbieber/hugo.el.git
+[submodule "sourcecode/subprojects/fuzzypkg"]
+	path = sourcecode/subprojects/fuzzypkg
+	url = git@github.com:zdykstra/fuzzypkg.git
