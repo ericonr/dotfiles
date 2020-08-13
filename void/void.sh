@@ -31,7 +31,7 @@ assemble_list() {
 	done
 }
 
-base="chrony elogind iwd vsv"
+base="chrony elogind iwd vsv socklog-void doas"
 base_desc="$(print_item base) Install base system utilities."
 
 luks="cryptsetup"
@@ -49,7 +49,7 @@ su_disk_tools_desc="$(print_item su_disk_tools) Install AutoFS and hdparm"
 refind="refind"
 refind_desc="$(print_item refind) Install the rEFInd boot manager."
 
-zfs="zfs zfsbootmenu linux-headers"
+zfs="zfs zfsbootmenu zfs-auto-snapshot"
 zfs_desc="$(print_item zfs) Install support for ZFS."
 
 security="apparmor"
@@ -65,9 +65,10 @@ _net="curl git gnupg2 aerc asciinema"
 _shell="fish-shell lolcat-c starship tmux"
 _tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow"
 _void="vsv xtools graphviz"
-_info="man-pages-devel"
+_info="man-pages-devel man-pages-posix"
+_fortune="cowsay fortune-mod-void"
 term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}
- ${_info}"
+ ${_info} ${_fortune}"
 term_desc="$(print_item term) Install basic terminal utilities."
 
 ssh="fuse-sshfs rsync"
@@ -94,7 +95,7 @@ wm="Waybar alacritty brightnessctl fzf grim jq mako redshift slurp sway swayidle
  swaylock wl-clipboard nwg-launchers go"
 wm_desc="$(print_item wm) Install SwayWM and supporting packages. Depends on fonts and themes."
 
-wayland="wf-recorder wayfire wf-shell cage waypipe"
+wayland="wf-recorder wayfire wf-shell wcm wayfire-plugins-extra cage waypipe"
 wayland_desc="$(print_item wayland) Install Wayfire and Cage."
 
 xorg="xfce4 xorg"
@@ -124,6 +125,9 @@ qt5_desc="$(print_item qt5) Install Qt5 for Wayland, Konversation and qt5ct."
 mozilla="firefox thunderbird"
 mozilla_desc="$(print_item mozilla) Install Firefox and Thunderbird."
 
+gemini="castor"
+gemini_desc="$(print_item gemini) Install castor."
+
 office="libreoffice libreoffice-i18n-en-US libreoffice-i18n-pt-BR"
 office_desc="$(print_item office) Install Libreoffice."
 
@@ -134,13 +138,14 @@ flatpak="flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-use
 flatpak_desc="$(print_item flatpak) Install Flatpak and supporting packages."
 
 embedded="arduino-cli cross-arm-none-eabi cross-arm-none-eabi-gdb
- python3-pyserial openocd screen sdcc"
+ python3-pyserial openocd screen sdcc ugdb"
 embedded_desc="$(print_item embedded) Install embedded toolchain and programmer/debugger software."
 
 qemu="qemu proot qemu-user-static"
 qemu_desc="$(print_item qemu) Install QEMU, proot."
 
-kicad="kicad kicad-footprints kicad-library kicad-packages3D kicad-symbols kicad-templates"
+kicad="kicad kicad-footprints kicad-library kicad-packages3D kicad-symbols
+ kicad-templates"
 kicad_desc="$(print_item kicad) Install KiCad EDA and its resource packages."
 
 ate="tcc gtk+3-devel vte3-devel pkgconf"
@@ -163,7 +168,7 @@ current_system_desc="$(print_item current_system) $current_system_desc"
 
 all_list="$base_env_list luks uefi_bundle disk_tools refind zfs dev office
  flatpak embedded kicad ate void_docs xbps_devel xorg nvidia graphics qt5 audio
- wayland"
+ wayland gemini"
 all="$(assemble_list "$all_desc")"
 all_desc="$(print_item all) $all_list"
 
@@ -199,6 +204,8 @@ $(print_item sent) presentation thingy
 $(print_item sl) choo-choo
 $(print_item aria2) multi-downloader
 $(print_item arp-scan) network scanner
+$(print_item freerouting) auto-router for kicad
+$(print_item kstars) KStars
 
 $(print_bold "Environment variables:")
 - ADDITIONAL_PACKAGES: env variable for individual packages

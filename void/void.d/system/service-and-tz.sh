@@ -10,7 +10,8 @@ fi
 
 echo "Installing services"
 for service in \
-	bluetoothd boltd chronyd dbus dhcpcd elogind iwd popcorn snooze-daily
+	bluetoothd boltd chronyd dbus dhcpcd elogind iwd popcorn \
+	snooze-{hourly,daily,weekly,monthly} socklog-unix nanoklogd
 do
 	if [ -r "$MOUNTDIR/etc/sv/${service}" ] ; then
 		ln -s "/etc/sv/${service}" "$SERVICES"
