@@ -1,0 +1,13 @@
+#!/bin/sh
+file="${OTP_ACCOUNTS:-$HOME/.local/share/otp_accounts}"
+json="$(cbc-file unlock "$file")"
+label="$(printf %s "$json" | jq '.[].label' | fzf --cycle)"
+secret="$(printf %s "$json" |
+	jq ".[] | select (.label | contains($label))" |
+	jq --raw-output .secret)"
+token="$(oathtool --totp -b -d 6 "$secret")"
+printf %s $token
+
+if [ "$WAYLAND_DISPLAY" ]; then
+	printf %s $token | wl-copy
+fi
