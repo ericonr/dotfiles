@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+background
+{ $@ }
+exit
+# disowns something

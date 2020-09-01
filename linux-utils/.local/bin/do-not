@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+foreground
+{ $@ }
+notify-send "Done with: $@"
+# do and notify it's done

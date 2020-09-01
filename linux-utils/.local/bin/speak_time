@@ -1,3 +1,5 @@
-#!/bin/sh
-
-mimic_time "$(date +'%H:%M')"
+#!/bin/execlineb -P
+backtick -n TIME
+{ date +"%H:%M" }
+importas TIME TIME
+mimic_time $TIME
