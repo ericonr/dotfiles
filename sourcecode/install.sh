@@ -4,6 +4,7 @@ set -eu
 
 GOINSTALL=
 SSHFS=
+CBC=
 SUBPROJECTS=
 MPV=
 
@@ -13,9 +14,11 @@ while [ $# -gt 0 ]; do
 			 SSHFS=1
 			 SUBPROJECTS=1
 			 MPV=1
+			 CBC=1
 			 ;;
 		go) GOINSTALL=1 ;;
 		sshfs) SSHFS=1 ;;
+		cbc) CBC=1 ;;
 		sub) SUBPROJECTS=1 ;;
 		mpv) MPV=1;;
 	esac
@@ -35,6 +38,10 @@ fi
 
 if [ "$SSHFS" ]; then
 	make install -C sshfs-map
+fi
+
+if [ "$CBC" ]; then
+	make install -C cbc-file
 fi
 
 if [ "$SUBPROJECTS" ]; then
