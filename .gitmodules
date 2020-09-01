@@ -16,3 +16,6 @@
 [submodule "sourcecode/subprojects/fuzzypkg"]
 	path = sourcecode/subprojects/fuzzypkg
 	url = git@github.com:zdykstra/fuzzypkg.git
+[submodule "sourcecode/subprojects/totp.sh"]
+	path = sourcecode/subprojects/totp.sh
+	url = git@github.com:richfelker/totp.sh.git

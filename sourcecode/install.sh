@@ -48,6 +48,7 @@ if [ "$SUBPROJECTS" ]; then
 	ln -sf "$PWD/subprojects/git-merge-pr/git-merge-pr" "$HOME/.local/bin/"
 	ln -sf "$PWD/subprojects/hugo.el/hugo.el" "$HOME/.config/doom/"
 	ln -sf "$PWD/subprojects/fuzzypkg/fuzzypkg" "$HOME/.local/bin"
+	ln -sf "$PWD/subprojects/totp.sh/totp.sh" "$HOME/.local/bin"
 fi
 
 if [ "$MPV" ]; then
