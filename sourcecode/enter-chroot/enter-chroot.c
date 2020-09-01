@@ -67,7 +67,7 @@ int main(int argc, char * const argv[])
 		int chrooted_rv = 0;
 		struct stat chrooted_stat = {0};
 		strncpy(chrooted, mntpoint, PATH_MAX);
-		strncat(chrooted, "/chrooted", PATH_MAX - 1);
+		strlcat(chrooted, "/chrooted", PATH_MAX);
 		fprintf(stderr, "checking file in '%s'\n", chrooted);
 
 		chrooted_rv = stat(chrooted, &chrooted_stat);
