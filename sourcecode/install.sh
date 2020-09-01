@@ -24,6 +24,7 @@ done
 
 # create local dirs
 mkdir -p "$HOME/.local/bin" "$HOME/.local/share" "$HOME/.config"
+export PREFIX="$HOME/.local"
 
 if [ "$GOINSTALL" ]; then
 	GOTMPDIR="$(go env GOTMPDIR)"
@@ -33,7 +34,7 @@ if [ "$GOINSTALL" ]; then
 fi
 
 if [ "$SSHFS" ]; then
-	make install PREFIX="$HOME/.local" -C sshfs-map
+	make install -C sshfs-map
 fi
 
 if [ "$SUBPROJECTS" ]; then

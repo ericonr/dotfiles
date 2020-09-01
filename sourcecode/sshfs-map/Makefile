@@ -1,19 +1,8 @@
-SRC = sshfs-map.c
-OBJ = sshfs-map
-UOBJ = sshfs-unmap
+EXE = sshfs-map sshfs-unmap
 
-CFLAGS = -g3 -ggdb -O2
+include ../install.mk
 
-DESTDIR ?= /
-PREFIX ?= usr/local
-
-all: $(OBJ)
-
-install: all
-	install -m0755 $(OBJ) $(DESTDIR)/$(PREFIX)/bin/$(OBJ)
-	ln -sf $(PREFIX)/bin/$(OBJ) $(PREFIX)/bin/$(UOBJ)
+sshfs-unmap:
+	ln -s sshfs-map sshfs-unmap
 
 doc: sshfs-map.7
-
-clean:
-	rm -f $(OBJ)
