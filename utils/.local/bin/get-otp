@@ -1,10 +1,13 @@
 #!/bin/sh
 file="${OTP_ACCOUNTS:-$HOME/.local/share/otp_accounts}"
 json="$(cbc-file unlock "$file")"
-label="$(printf %s "$json" | jq '.[].label' | fzf --cycle)"
+label="$(printf %s "$json" |
+	jq '.[].label' |
+	fzf --cycle -1 ${1:+--query "$1"}
+	)"
 secret="$(printf %s "$json" |
-	jq ".[] | select (.label | contains($label))" |
-	jq --raw-output .secret)"
+	jq --raw-output ".[] | select (.label | contains($label)) | .secret"
+	)"
 token="$(oathtool --totp -b -d 6 "$secret")"
 printf %s $token
 

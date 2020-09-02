@@ -1,4 +1,5 @@
 #!/bin/execlineb -P
+doas
 pipeline
 { dmesg --color=always }
 less -R
