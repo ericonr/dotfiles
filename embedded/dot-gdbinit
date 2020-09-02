@@ -19,7 +19,7 @@ end
 
 # para conectar ao microcontrolador
 define loco
-	target remote localhost:3333
+	target extended-remote localhost:3333
 end
 
 define semihosting

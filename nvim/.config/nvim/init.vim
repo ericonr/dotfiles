@@ -19,7 +19,7 @@ set smartcase
 :imap kj <Esc>
 
 " Shortcuts for pasting and yanking from the system clipboard
-:nmap wp "+p
+:nmap mp "+p
 :vmap wy "+y
 
 " Shortcuts for working with tabs
