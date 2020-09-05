@@ -8,70 +8,31 @@ default `.stowrc` file is setup for my home directory, and for adopting files
 
 In order to link the usual files, use
 
-```````
+```
 $ ./stow-linux.sh
-```````
+```
 
 otherwise, for specific folders, use
 
-```````
+```
 $ stow <folder>
-```````
+```
 
 It's also recommended to create the `~/.local/bin` and `~/.local/share`
 directories before stowing the repository.
 
-## Sway + Waybar
+## Window manager
 
-This setup, which can be found inside `wayland/`, requires mostly the
+This setup, dotfiles for which can be found inside `wayland/`, requires the
 dependencies listed under `wm` and `wayland` in `void/void.sh`.
 
-- Basic setup:
-   - [`sway`](https://swaywm.org/): the Wayland compositor and tiling window
-      manager.
-   - [`Wayfire`](https://wayfire.org/)
-- Default applications:
-   - [`fish`](https://fishshell.com/): the default shell.
-   - [`alacritty`](https://github.com/jwilm/alacritty): the default terminal
-      emulator (because it's pretty, fast, and it has the `dimensions` option).
-      - [`tmux`](https://github.com/tmux/tmux): the Meta+T shortcut launches
-         `tmux` for multiple terminals in the same screen.
-   - [`emacs`](https://www.gnu.org/software/emacs/): the back to default text
-      editor (unfortunately, it has to run through Xwayland).
-   - [`neovim`](https://neovim.io/): the default CLI text editor.
-   - [`fzf`](https://github.com/junegunn/fzf): a wonderful fuzzy searcher,
-      required by the self-built launcher.
-   - [`ranger`](https://ranger.github.io/): a VIM-like TUI file manager, for
-      playing music.
-- Applications needed for media keys:
-   - [`pulseaudio`](https://www.freedesktop.org/wiki/Software/PulseAudio/): the
-      default audio daemon; provides `pactl`, which is used for controlling the
-      volume.
-   - [`brightnessctl`](https://github.com/Hummer12007/brightnessctl): the
-      default brightness controller; it's used for setting the backlight.
-   - [`playerctl`](https://github.com/altdesktop/playerctl): player control from
-      media keys.
-   - [`grim`](https://wayland.emersion.fr/grim/): screenshots on wayland.
-      - [`slurp`](https://wayland.emersion.fr/slurp/): select a geometry on a
-         wayland screen.
-- Media applications:
-   - [`spotify-tui`](https://github.com/Rigellute/spotify-tui): a Spotify TUI.
-      - [`spotifyd`](https://github.com/Spotifyd/spotifyd): a Spotify daemon.
-   - [`mpv`](https://mpv.io/): great player for everything.
-      - [`mpv-mpris`](https://github.com/hoyon/mpv-mpris): MPV plugin to allow
-         it to be controlled from playerctl.
-      - [`youtube-dl`](https://youtube-dl.org/): allows MPV to stream YouTube
-         videos.
-- Applications needed for AppPauser keys:
-   - [`AppPauser`](https://github.com/ericonr/AppPauser): is used for making
-      pausing the execution of any application that's started by it possible.
 - Theming:
    - [Liberation font](https://en.wikipedia.org/wiki/Liberation_fonts) (Sans).
    - [IBM Plex font](https://www.ibm.com/plex/).
    - [Breeze_Snow](https://github.com/KDE/breeze) cursor theme.
 
 **Obs.:** This configuration requires some executables that can be obtained from
-the `sourcecode/` directory.
+the [sourcecode/](#sourcecode) directory.
 
 ### Wallpaper
 
@@ -86,18 +47,6 @@ available here as a convenience, but still under their license. You can find
 other versions of it at their
 [repo](https://gitlab.com/Kreneker/the-grand-canyon).
 
-## sourcecode/
-
-To install the executables inside this directory, it is necessary to run
-
-````````
-./install.sh
-````````
-
-inside it.
-
-Programs here use [Go](https://golang.org/) and C.
-
 ## neovim plugins
 
 Neovim now uses git submodules to store some plugins:
@@ -107,19 +56,16 @@ Neovim now uses git submodules to store some plugins:
 
 If you want to use these plugins, you can download them using:
 
-````````
-git clone --recursive https://github.com/ericonr/dotfiles.git
-````````
+```
+$ git clone --recursive https://github.com/ericonr/dotfiles.git
+```
 
 ## Embedded development
 
 This setup for embedded development, especially on the arm-none-eabi platform,
-can be found on `embedded/`. It requires the following dependencies:
+can be found on `embedded/`. It requires the dependencies listed under
+`embedded` in `void/void.sh`, and the following others:
 
-- [`arm-none-eabi-gcc/gdb/newlib`](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads):
-   the arm-none-eabi compiler, debugger and libc.
-- [`openocd`](http://openocd.org/): the debugger/programmer software used in
-   most cases.
 - [STM32CubeProg](https://www.st.com/en/development-tools/stm32cubeprog.html):
    the programmer for cases when OpenOCD doesn't work.
 - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): the
