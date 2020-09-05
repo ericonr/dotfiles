@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+pipeline -d
+{ sndioctl -m -n output.level }
+sed -r "s/output\\.level=([[:digit:]]\\.[[:digit:]]+).*/\\1/"

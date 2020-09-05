@@ -1,10 +1,9 @@
 #!/bin/sh
-
+# we need to generate a 256 byte random key
+# for using the aes-256-cbc cipher
 key="$(openssl rand -hex 32)"
-
-url="$(openssl enc -aes-256-cbc -K ${key} -iv 00000000000000000000000000000000 -e -base64 -A < ${1:-/dev/stdin} | purr)"
-
-website="${url%\/*}/paste.html#${url##*\/}_${key}"
-echo $website
-
-[ "$WAYLAND_DISPLAY" ] && echo -n $website | wl-copy
+iv="$(openssl rand -hex 12)"
+# calculate its encryption and upload it
+url="$(openssl enc -aes-256-cbc -K ${key} -iv ${iv} -e -base64 -A < ${1:-/dev/stdin} | purr)"
+printf '%s\n' "${url%\/*}/paste.html#${url##*\/}_${key}_${iv}"
+[ "$WAYLAND_DISPLAY" ] && printf '%s' "${url%\/*}/paste.html#${url##*\/}_${key}_${iv}" | wl-copy

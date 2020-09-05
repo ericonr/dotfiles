@@ -1,5 +1,8 @@
 #!/bin/execlineb -S1
 foreground
 { $@ }
-notify-send "Done with: $@"
+backtick -n OUT
+{ echo $@ }
+importas -u OUT OUT
+notify-send "Done with:" "$OUT"
 # do and notify it's done

@@ -1,6 +1,5 @@
 #!/bin/sh
-
-website="$(curl --silent --data-binary "@${1:-/dev/stdin}" bsd.ac:42069)"
+website="$(curl --silent ${DEBUG:+--trace-ascii "%"} --data-binary "@${1:-/dev/stdin}" bsd.ac:42069)"
 echo $website
 
 [ "$WAYLAND_DISPLAY" ] && echo -n $website | wl-copy

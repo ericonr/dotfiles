@@ -7,26 +7,29 @@ SSHFS=
 CBC=
 SUBPROJECTS=
 MPV=
+THEMES=
 
 while [ $# -gt 0 ]; do
 	case $1 in
 		all) GOINSTALL=1
 			 SSHFS=1
+			 CBC=1
 			 SUBPROJECTS=1
 			 MPV=1
-			 CBC=1
+			 THEMES=1
 			 ;;
 		go) GOINSTALL=1 ;;
 		sshfs) SSHFS=1 ;;
 		cbc) CBC=1 ;;
 		sub) SUBPROJECTS=1 ;;
 		mpv) MPV=1;;
+		theme) THEMES=1;;
 	esac
 	shift
 done
 
 # create local dirs
-mkdir -p "$HOME/.local/bin" "$HOME/.local/share" "$HOME/.config"
+mkdir -p "$HOME/.local/bin" "$HOME/.local/share/themes" "$HOME/.config"
 export PREFIX="$HOME/.local"
 
 if [ "$GOINSTALL" ]; then
@@ -54,4 +57,18 @@ fi
 if [ "$MPV" ]; then
 	mkdir -p "$HOME/.config/mpv/scripts/"
 	ln -sf /usr/lib/mpv-mpris/mpris.so "$HOME/.config/mpv/scripts"
+fi
+
+if [ "$THEMES" ]; then
+	TMPDIR="$(mktemp -d /tmp/ericonr.XXXXXX)"
+	# TODO: host in a better place
+	# theme from https://www.pling.com/s/Gnome/p/1231025/
+	xbps-fetch -o ${TMPDIR}/cdetheme.tar.gz -s "https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1MjU3Mzc1MTAiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6ImUyYjAyNTFmYzNhZTRjODYzODFhNzczMjYxYzJjMzZiYWU4YTYwYzdhOTAxOTVkMWYzYTUyMmY5MzRiMDFjMWY0ZWUxNjRmYjUwZjZjZjM3Y2NlMmI0Y2QxNWZhNWI1ZmQ5OGY2NjllYTUyYjMzMGZlYWFhNWYwZmExYTdiZjY5IiwidCI6MTU5OTI3OTQ2MCwic3RmcCI6ImVhYjUyMGMyNTJjZjYwZDFlZjhkZTU5ODZjZWM3MThkIiwic3RpcCI6IjE3Ny4xOTQuNjQuMjE1In0.5p8c_SVhRQC7ANItSMK8fqjw3AItLXYFc1Y8TK8UP4c/cdetheme1.3.tar.gz"
+	if [ "858d9cfc2962034e577db968667d9ce1ef4e0b76a109dd15ca2c065e3009f499" = "$(xbps-digest ${TMPDIR}/cdetheme.tar.gz)" ]; then
+		bsdtar xvf ${TMPDIR}/cdetheme.tar.gz -C $HOME/.local/share/themes
+		ln -s cdetheme1.3/cdetheme $HOME/.local/share/themes/cdetheme
+		ln -s cdetheme1.3/cdetheme-solaris $HOME/.local/share/themes/cdetheme-solaris
+	else
+		echo "error when downloading"
+	fi
 fi
