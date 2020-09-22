@@ -6,13 +6,16 @@
 	url = https://github.com/vim-airline/vim-airline.git
 [submodule "void/subprojects/git-merge-pr"]
 	path = sourcecode/subprojects/git-merge-pr
-	url = git@github.com:leahneukirchen/git-merge-pr.git
+	url = https://github.com/leahneukirchen/git-merge-pr.git
 [submodule "sourcecode/subprojects/hugo.el"]
 	path = sourcecode/subprojects/hugo.el
-	url = git@github.com:aaronbieber/hugo.el.git
+	url = https://github.com/aaronbieber/hugo.el.git
 [submodule "sourcecode/subprojects/fuzzypkg"]
 	path = sourcecode/subprojects/fuzzypkg
-	url = git@github.com:zdykstra/fuzzypkg.git
+	url = https://github.com/zdykstra/fuzzypkg.git
 [submodule "sourcecode/subprojects/totp.sh"]
 	path = sourcecode/subprojects/totp.sh
-	url = git@github.com:richfelker/totp.sh.git
+	url = https://github.com/richfelker/totp.sh.git
+[submodule "sourcecode/subprojects/purr-c"]
+	path = sourcecode/subprojects/purr-c
+	url = https://github.com/ericonr/purr-c.git

@@ -4,6 +4,6 @@
 key="$(openssl rand -hex 32)"
 iv="$(openssl rand -hex 12)"
 # calculate its encryption and upload it
-url="$(openssl enc -aes-256-cbc -K ${key} -iv ${iv} -e -base64 -A < ${1:-/dev/stdin} | purr)"
+url="$(openssl enc -aes-256-cbc -K ${key} -iv ${iv} -e -base64 -A < ${1:-/dev/stdin} | purr-old)"
 printf '%s\n' "${url%\/*}/paste.html#${url##*\/}_${key}_${iv}"
 [ "$WAYLAND_DISPLAY" ] && printf '%s' "${url%\/*}/paste.html#${url##*\/}_${key}_${iv}" | wl-copy

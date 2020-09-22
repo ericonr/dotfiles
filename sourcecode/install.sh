@@ -52,6 +52,7 @@ if [ "$SUBPROJECTS" ]; then
 	ln -sf "$PWD/subprojects/hugo.el/hugo.el" "$HOME/.config/doom/"
 	ln -sf "$PWD/subprojects/fuzzypkg/fuzzypkg" "$HOME/.local/bin"
 	ln -sf "$PWD/subprojects/totp.sh/totp.sh" "$HOME/.local/bin"
+	make -C subprojects/purr-c install PREFIX=$HOME/.local
 fi
 
 if [ "$MPV" ]; then
