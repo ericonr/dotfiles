@@ -31,7 +31,7 @@ assemble_list() {
 	done
 }
 
-base="chrony elogind iwd vsv socklog-void doas"
+base="chrony elogind iwd vsv socklog-void doas font-spleen"
 base_desc="$(print_item base) Install base system utilities."
 
 luks="cryptsetup"

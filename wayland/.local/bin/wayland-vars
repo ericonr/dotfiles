@@ -12,6 +12,9 @@ fi
 # Session
 export XDG_SESSION_TYPE=wayland
 
+# Service directory for non root
+export SVDIR=$HOME/.local/share/wayland-services
+
 # Qt
 export QT_QPA_PLATFORM=wayland-egl
 # Firefox
