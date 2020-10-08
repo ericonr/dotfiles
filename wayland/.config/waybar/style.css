@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: IBM Plex, sans-serif;
+    font-family: IBM Plex Sans, sans-serif;
     font-size: 13px;
     min-height: 0;
 }
@@ -76,7 +76,8 @@ window#waybar.chromium {
 #tray,
 #mode,
 #idle_inhibitor,
-#custom-keyboard_layout {
+#custom-keyboard_layout,
+#sndio {
     padding: 0 10px;
     margin: 0 4px;
     color: #ffffff;
@@ -143,11 +144,13 @@ label:focus {
     background-color: #f53c3c;
 }
 
-#pulseaudio {
+#pulseaudio,
+#sndio {
     background-color: #f1c40f;
     color: #000000;
 }
 
+#sndio.muted,
 #pulseaudio.muted {
     background-color: #90b1b1;
     color: #2a5c45;

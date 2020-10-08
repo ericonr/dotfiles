@@ -1,0 +1,3 @@
+#!/bin/sh
+. ~/.local/bin/wayland-vars
+launch_compositor cage -d -- "$@"

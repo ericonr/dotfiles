@@ -45,6 +45,9 @@ colorscheme slate
 set guifont=IBMPlex\ Mono:h16
 let g:neovide_cursor_vfx_mode = "sonicboom"
 
+" Settings for Void stuff
+autocmd BufNewFile,BufRead template setfiletype sh
+
 
 " FUNCTIONS
 

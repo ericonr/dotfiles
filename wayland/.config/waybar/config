@@ -4,7 +4,7 @@
 	// Choose the order of the modules
 	"modules-left": ["sway/workspaces", "sway/mode", "custom/media", "tray"],
 	"modules-center": ["sway/window"],
-	"modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "custom/keyboard_layout", "clock"],
+	"modules-right": ["idle_inhibitor", "sndio", "network", "cpu", "memory", "temperature", "backlight", "battery", "custom/keyboard_layout", "clock"],
 	// Modules configuration
 
 	"sway/workspaces": {
@@ -104,6 +104,11 @@
 		},
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"on-click-right": "pavucontrol"
+	},
+
+	"sndio": {
+		"format": "{raw_value} 🎜",
+		"scroll-step": 3
 	},
 
 	"custom/media": {

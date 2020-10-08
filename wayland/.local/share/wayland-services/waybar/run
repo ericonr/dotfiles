@@ -1,1 +1,2 @@
-/usr/bin/waybar
+#!/bin/execlineb -P
+waybar
