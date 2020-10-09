@@ -67,7 +67,7 @@ _tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow execline
 _void="vsv xtools graphviz"
 _info="man-pages-devel man-pages-posix"
 _fortune="cowsay fortune-mod-void"
-_otp="bearssl-devel oath-toolkit"
+_otp="bearssl-devel oath-toolkit libargon2-devel"
 term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}
  ${_info} ${_fortune} ${_otp}"
 term_desc="$(print_item term) Install basic terminal utilities."

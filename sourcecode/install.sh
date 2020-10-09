@@ -4,7 +4,6 @@ set -eu
 
 GOINSTALL=
 SSHFS=
-CBC=
 SUBPROJECTS=
 MPV=
 THEMES=
@@ -13,14 +12,12 @@ while [ $# -gt 0 ]; do
 	case $1 in
 		all) GOINSTALL=1
 			 SSHFS=1
-			 CBC=1
 			 SUBPROJECTS=1
 			 MPV=1
 			 THEMES=1
 			 ;;
 		go) GOINSTALL=1 ;;
 		sshfs) SSHFS=1 ;;
-		cbc) CBC=1 ;;
 		sub) SUBPROJECTS=1 ;;
 		mpv) MPV=1;;
 		theme) THEMES=1;;
@@ -43,16 +40,13 @@ if [ "$SSHFS" ]; then
 	make install -C sshfs-map
 fi
 
-if [ "$CBC" ]; then
-	make install -C cbc-file
-fi
-
 if [ "$SUBPROJECTS" ]; then
 	ln -sf "$PWD/subprojects/git-merge-pr/git-merge-pr" "$HOME/.local/bin/"
 	ln -sf "$PWD/subprojects/hugo.el/hugo.el" "$HOME/.config/doom/"
 	ln -sf "$PWD/subprojects/fuzzypkg/fuzzypkg" "$HOME/.local/bin"
 	ln -sf "$PWD/subprojects/totp.sh/totp.sh" "$HOME/.local/bin"
 	make -C subprojects/purr-c install PREFIX=$HOME/.local
+	make -C subprojects/get-otp install PREFIX=$HOME/.local
 fi
 
 if [ "$MPV" ]; then
