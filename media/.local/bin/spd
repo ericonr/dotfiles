@@ -1,4 +1,3 @@
 #!/bin/execlineb -P
-foreground
-{ sv up spotifyd }
-sv reload spotifyd
+importas HOME HOME
+s6-svc -r ${HOME}/services/spotifyd

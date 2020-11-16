@@ -1,0 +1,5 @@
+#!/bin/execlineb -P
+importas HOME HOME
+foreground
+{ s6-svscanctl -t ${HOME}/services }
+wayland-logout

@@ -1,0 +1,3 @@
+#!/bin/execlineb -S0
+trap -x { SIGINT { importas pid ! kill -SIGTERM $pid } } setsid s6-svscan $@
+# useful for running s6-svscan on a terminal
