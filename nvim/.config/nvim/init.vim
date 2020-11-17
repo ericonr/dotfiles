@@ -11,6 +11,8 @@
 set ignorecase
 set smartcase
 
+" Fix context delay - gets laggy with smaller key delays
+let g:context_nvim_no_redraw = 1
 
 " SHORTCUTS
 
@@ -27,6 +29,13 @@ set smartcase
 :nmap tl :tabl<cr>
 :nmap tp :tabp<cr>
 :nmap tn :tabn<cr>
+:nmap TN :tabnew<cr>
+
+" Shortcuts for fzf
+:nmap <space><space> :FZF<cr>
+:nmap <space>f :FZF!<cr>
+:nmap <space>n :call fzf#run({'sink': 'tabedit'})<cr>
+:nmap <space>g :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'options': '--tac'})<cr>
 
 
 " APPEARANCE
@@ -40,10 +49,6 @@ set number rnu
 
 " Pretty color scheme that works well with the one chosen for alacritty
 colorscheme slate
-
-" Settings for neovide
-set guifont=IBMPlex\ Mono:h16
-let g:neovide_cursor_vfx_mode = "sonicboom"
 
 " Settings for Void stuff
 autocmd BufNewFile,BufRead template setfiletype sh

@@ -49,10 +49,8 @@ other versions of it at their
 
 ## neovim plugins
 
-Neovim now uses git submodules to store some plugins:
-
-- [vim-airline](https://github.com/vim-airline/vim-airline)
-- [kotlin-vim](https://github.com/udalov/kotlin-vim)
+The Neovim config uses git submodules to store some plugins, which can be found
+under `nvim/.config/nvim/pack/plugins/start/`.
 
 If you want to use these plugins, you can download them using:
 
