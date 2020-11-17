@@ -58,16 +58,16 @@ security_desc="$(print_item security) Install security related packages."
 popcorn="PopCorn"
 popcorn_desc="$(print_item popcorn) Install PopCorn usage statistics."
 
-_browser="ncdu ranger"
+_browser="ncdu ranger fzf"
 _device="usbutils"
 _monitor="bmon htop"
 _net="curl git gnupg2 aerc asciinema lynx weechat"
 _shell="fish-shell lolcat-c starship tmux"
-_tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow execline"
+_tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow execline s6"
 _void="vsv xtools graphviz"
 _info="man-pages-devel man-pages-posix"
 _fortune="cowsay fortune-mod-void"
-_otp="bearssl-devel oath-toolkit libargon2-devel"
+_otp="bearssl-devel oath-toolkit libargon2-devel jq"
 term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}
  ${_info} ${_fortune} ${_otp}"
 term_desc="$(print_item term) Install basic terminal utilities."
@@ -92,12 +92,13 @@ fonts_desc="$(print_item fonts) Basic fonts necessary for browsing the web and n
 themes="breeze-snow-cursor-theme breeze-amber-cursor-theme"
 themes_desc="$(print_item themes) Color and mouse themes for a good color setup."
 
-wm="Waybar alacritty brightnessctl fzf grim jq mako redshift slurp sway swayidle
- swaylock wl-clipboard nwg-launchers go"
-wm_desc="$(print_item wm) Install SwayWM and supporting packages. Depends on fonts and themes."
+_util="brightnessctl grim slurp swayidle swaylock wl-clipboard gammastep"
+_gui="Waybar alacritty nwg-launchers mako"
+wm="${_util} ${gui} wayfire wf-shell wcm wayfire-plugins-extra"
+wm_desc="$(print_item wm) Install Wayfire and supporting packages. Depends on fonts and themes."
 
-wayland="wf-recorder wayfire wf-shell wcm wayfire-plugins-extra cage waypipe"
-wayland_desc="$(print_item wayland) Install Wayfire and Cage."
+wayland="wf-recorder cage sway waypipe"
+wayland_desc="$(print_item wayland) Install other Wayland compositors and tools."
 
 xorg="xfce4 xorg"
 xorg_desc="$(print_item xorg) Install XFCE4 and Xorg."
@@ -111,8 +112,11 @@ sndio_desc="$(print_item sndio) Install sndio."
 media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv ImageMagick"
 media_desc="$(print_item media) Install mpv, imv and spotify CLI programs."
 
-dev="clang cmake make meson ninja rustup tokei valgrind gdb strace"
-dev_desc="$(print_item dev) Install the CLang compiler, some build systems and rustup."
+dev="cmake make meson ninja rustup valgrind gdb strace go"
+dev_desc="$(print_item dev) Install build systems, debug tools, rustup and Go."
+
+containers="podman fuse-overlayfs"
+containers_desc="$(print_item containers) Install Podman and other tools."
 
 emacs="emacs-gtk3 hunspell hunspell-en_US hunspell-pt_BR shellcheck zstd"
 emacs_desc="$(print_item emacs) Install the GUI version of Emacs."
@@ -139,7 +143,7 @@ flatpak="flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-use
 flatpak_desc="$(print_item flatpak) Install Flatpak and supporting packages."
 
 embedded="arduino-cli cross-arm-none-eabi cross-arm-none-eabi-gdb
- python3-pyserial openocd screen sdcc ugdb"
+ python3-pyserial openocd screen sdcc ugdb gef"
 embedded_desc="$(print_item embedded) Install embedded toolchain and programmer/debugger software."
 
 qemu="qemu proot qemu-user-static"
@@ -149,9 +153,6 @@ kicad="kicad kicad-footprints kicad-library kicad-packages3D kicad-symbols
  kicad-templates"
 kicad_desc="$(print_item kicad) Install KiCad EDA and its resource packages."
 
-ate="tcc gtk+3-devel vte3-devel pkgconf"
-ate_desc="$(print_item ate) Install the packages necessary to use ate compiled by TinyCC."
-
 void_docs="mdBook mdbook-linkcheck pandoc vmdfmt"
 void_docs_desc="$(print_item void_docs) Install development tools for Void Docs."
 
@@ -160,17 +161,17 @@ xbps_devel_desc="$(print_item xbps_devel) Install development dependencies for X
 
 base_env_list="base term ssh intel fonts themes wm sndio media qute popcorn
  mozilla pdf emacs security su_disk_tools"
-base_env="$(assemble_list "$base_env_desc")"
+base_env="$(assemble_list "$base_env_list")"
 base_env_desc="$(print_item base_env) $base_env_list"
 
-current_system_desc="base_env zfs wayland uefi_bundle"
-current_system="$(assemble_list "$current_system_desc")"
+current_system_list="base_env_list zfs wayland uefi_bundle"
+current_system="$(assemble_list "$current_system_list")"
 current_system_desc="$(print_item current_system) $current_system_desc"
 
 all_list="$base_env_list luks uefi_bundle disk_tools refind zfs dev office
  flatpak embedded kicad ate void_docs xbps_devel xorg nvidia graphics qt5 audio
- wayland gemini"
-all="$(assemble_list "$all_desc")"
+ wayland gemini containers"
+all="$(assemble_list "$all_list")"
 all_desc="$(print_item all) $all_list"
 
 print_all_descs() {
