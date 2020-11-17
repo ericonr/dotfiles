@@ -12,3 +12,4 @@ for i in ~/.local/bin ~/.cargo/bin ~/.emacs.d/bin
     end
 end
 
+set -x LANG pt_BR.UTF-8

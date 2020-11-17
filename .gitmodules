@@ -13,9 +13,6 @@
 [submodule "sourcecode/subprojects/fuzzypkg"]
 	path = sourcecode/subprojects/fuzzypkg
 	url = https://github.com/zdykstra/fuzzypkg.git
-[submodule "sourcecode/subprojects/totp.sh"]
-	path = sourcecode/subprojects/totp.sh
-	url = https://github.com/richfelker/totp.sh.git
 [submodule "sourcecode/subprojects/purr-c"]
 	path = sourcecode/subprojects/purr-c
 	url = https://github.com/ericonr/purr-c.git

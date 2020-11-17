@@ -25,3 +25,5 @@ end
 define semihosting
 	monitor arm semihosting enable
 end
+
+source /usr/share/gef/gef.py
