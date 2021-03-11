@@ -19,6 +19,3 @@
 [submodule "sourcecode/subprojects/get-otp"]
 	path = sourcecode/subprojects/get-otp
 	url = https://github.com/ericonr/get-otp.git
-[submodule "nvim/.config/nvim/pack/plugins/start/context.vim"]
-	path = nvim/.config/nvim/pack/plugins/start/context.vim
-	url = https://github.com/wellle/context.vim.git

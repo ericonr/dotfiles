@@ -11,9 +11,6 @@
 set ignorecase
 set smartcase
 
-" Fix context delay - gets laggy with smaller key delays
-let g:context_nvim_no_redraw = 1
-
 " SHORTCUTS
 
 " Shortcuts for quickly going back to normal mode
