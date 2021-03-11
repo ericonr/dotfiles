@@ -21,7 +21,7 @@ $ stow <folder>
 It's also recommended to create the `~/.local/bin` and `~/.local/share`
 directories before stowing the repository.
 
-## Window manager
+## Wayfire or Sway
 
 This setup, dotfiles for which can be found inside `wayland/`, requires the
 dependencies listed under `wm` and `wayland` in `void/void.sh`.
