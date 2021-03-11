@@ -1,0 +1,3 @@
+# prefer HDMI audio out, otherwise use normal speakers
+# HDMI doesn't support recording
+OPTS="-m play -f rsnd/0,8 -m play,rec -F rsnd/0"

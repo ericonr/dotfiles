@@ -1,0 +1,2 @@
+#!/bin/execlineb -P
+kmscon --vt=tty3 --switch-vt
