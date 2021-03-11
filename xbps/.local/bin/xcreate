@@ -1,0 +1,6 @@
+#!/bin/sh
+MASTERDIR=masterdir
+[ "$1" ] && MASTERDIR=${1:+masterdir-$1}
+mktmpdir $MASTERDIR
+mkdir $MASTERDIR/tmp
+./xbps-src -m $MASTERDIR binary-bootstrap $2

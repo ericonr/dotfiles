@@ -1,0 +1,12 @@
+#!/bin/sh
+set +x
+
+PKGLIST="$(xbps-query -l | awk '{print $2}' | xargs -l1 xbps-uhelper getpkgname)"
+curl -LO https://a-hel-fi.m.voidlinux.org/void-updates/void-updates.txt
+
+for pkg in $PKGLIST
+do
+	rg "^$pkg " void-updates.txt
+done
+
+rg -C 10 ericonr void-updates.txt

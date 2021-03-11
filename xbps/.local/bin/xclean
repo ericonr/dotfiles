@@ -1,0 +1,4 @@
+#!/bin/sh
+MASTERDIR=${1:-masterdir}
+rm -fr $MASTERDIR/ &&
+rm $MASTERDIR

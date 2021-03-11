@@ -1,0 +1,3 @@
+#!/bin/sh
+MASTERDIR=${1:-masterdir}
+rm -rf $MASTERDIR/destdir $MASTERDIR/builddir
