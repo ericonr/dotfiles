@@ -13,3 +13,5 @@ for i in ~/.local/bin ~/.cargo/bin ~/.emacs.d/bin
 end
 
 set -x LANG pt_BR.UTF-8
+set -x DEBUGINFOD_URLS "https://debuginfod.s.voidlinux.org http://localhost:8002"
+set -x DEBUGINFOD_TIMEOUT "5"
