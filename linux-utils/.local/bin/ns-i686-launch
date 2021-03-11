@@ -1,0 +1,2 @@
+#!/bin/sh
+exec xbps-uunshare -b /tmp:/tmp -b /home/ericonr:/home/ericonr -b /run/user/1000:/run/user/1000 /home/ericonr/extern/i686-musl/ "$@"

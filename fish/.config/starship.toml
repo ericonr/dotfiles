@@ -19,7 +19,6 @@ $git_state\
 $hg_branch\
 $docker_context\
 $package\
-$cmake\
 $dart\
 $dotnet\
 $elixir\
@@ -79,12 +78,20 @@ show_sync_count = true
 style="bright-green"
 
 [golang]
-symbol="Go "
+format="$symbol"
 style="bold yellow"
 
+[java]
+format="$symbol"
+
+[perl]
+format="$symbol"
+
+[python]
+format="$symbol"
+
 [rust]
-symbol="Rust "
-style="bold red"
+format="$symbol"
 
 [line_break]
 disabled = true

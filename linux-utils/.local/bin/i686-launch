@@ -1,0 +1,6 @@
+#!/bin/sh
+loc="/home/ericonr/extern/i686-musl"
+PATH="$loc/usr/libexec/wine:$loc/usr/bin:$PATH" WINEPREFIX="$loc/home/ericonr/.wine" exec fish
+
+#__EGL_VENDOR_LIBRARY_FILENAMES="$loc/usr/share/glvnd/egl_vendor.d/50_mesa.json"
+#LIBGL_DRIVERS_PATH="$loc/usr/lib/dri"
