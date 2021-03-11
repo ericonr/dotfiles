@@ -294,6 +294,7 @@ for_window [app_id="mpv"] floating enable
 for_window [app_id="krunner"] floating enable
 for_window [app_id="konsole"] floating enable
 for_window [app_id=".* KDE Connect Daemon"] floating enable
+for_window [title="Copying — Dolphin"] floating enable
 for_window [app_id="polkit"] focus, floating enable, border pixel 4
 # Firefox
 for_window [title="Firefox - Sharing Indicator"] floating enable

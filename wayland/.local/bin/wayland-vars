@@ -11,12 +11,14 @@ fi
 
 # Session
 export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
 
 # Service directory for non root
 export SVDIR=$HOME/.local/share/wayland-services
 
 # Qt
 export QT_QPA_PLATFORM=wayland-egl
+export QT_STYLE_OVERRIDE=breeze
 # Firefox
 export MOZ_ENABLE_WAYLAND=1
 # Java

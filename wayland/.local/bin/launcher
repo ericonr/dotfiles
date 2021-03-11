@@ -1,3 +1,5 @@
 #!/bin/execlineb -P
 # ericonr's script for launching applications
 generic-launcher /bin/bash -c "compgen -c | sort -u | fzf --border | xargs lnch"
+# in part inspired by
+# https://medium.com/njiuko/using-fzf-instead-of-dmenu-2780d184753f

@@ -1,0 +1,2 @@
+#!/bin/execlineb -P
+pulseaudio --daemonize=no --exit-idle-time=-1
