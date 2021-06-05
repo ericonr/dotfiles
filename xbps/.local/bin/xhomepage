@@ -1,0 +1,4 @@
+#!/bin/bash
+pkgname="$1"
+source srcpkgs/$pkgname/template 2>/dev/null
+xdg-open "$homepage"

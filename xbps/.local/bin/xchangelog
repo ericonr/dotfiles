@@ -1,0 +1,6 @@
+#!/bin/bash
+pkgname="$1"
+source srcpkgs/$pkgname/template 2>/dev/null
+if [ -n "$changelog" ]; then
+	xdg-open "$changelog"
+fi

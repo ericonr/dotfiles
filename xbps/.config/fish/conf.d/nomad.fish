@@ -9,6 +9,6 @@ function vault-login
 end
 
 function nomad-token
-	set -x NOMAD_TOKEN (vault read -field secret_id nomad/creds/apps-admin)
+	set -xg NOMAD_TOKEN (vault read -field secret_id nomad/creds/apps-admin)
 	#expires in one hour
 end

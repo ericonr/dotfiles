@@ -3,10 +3,9 @@ set +x
 
 PKGLIST="$(xbps-query -l | awk '{print $2}' | xargs -l1 xbps-uhelper getpkgname)"
 curl -LO https://a-hel-fi.m.voidlinux.org/void-updates/void-updates.txt
+curl -Lo void-updates.txt.mine https://a-hel-fi.m.voidlinux.org/void-updates/void-updates/updates_ericonr@disroot.org.txt
 
 for pkg in $PKGLIST
 do
-	rg "^$pkg " void-updates.txt
-done
-
-rg -C 10 ericonr void-updates.txt
+	grep "^$pkg " void-updates.txt
+done > void-updates.txt.sel
