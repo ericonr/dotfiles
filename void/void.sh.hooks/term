@@ -2,3 +2,5 @@
 
 echo "Linking bsdtar to tar"
 ln -s /usr/bin/bsdtar ${ROOTDIR}/usr/local/bin/tar
+echo "Linking toybox.static to su"
+ln -s /usr/bin/toybox.static ${ROOTDIR}/usr/local/bin/su

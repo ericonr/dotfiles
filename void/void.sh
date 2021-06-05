@@ -63,13 +63,14 @@ _device="usbutils"
 _monitor="bmon htop"
 _net="curl git gnupg2 aerc asciinema lynx weechat"
 _shell="fish-shell lolcat-c tmux"
-_tools="bat bsdtar dos2unix fd mdcat neovim p7zip parallel ripgrep stow execline s6"
+_tools="bsdtar fd lowdown neovim p7zip parallel ripgrep stow execline s6"
+_boxes="toybox toybox.static busybox"
 _void="vsv xtools graphviz"
 _info="man-pages-devel man-pages-posix"
 _fortune="cowsay fortune-mod-void"
 _otp="bearssl-devel oath-toolkit libargon2-devel jq"
-term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools} ${_void}
- ${_info} ${_fortune} ${_otp}"
+term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools}
+ ${_boxes} ${_void} ${_info} ${_fortune} ${_otp}"
 term_desc="$(print_item term) Install basic terminal utilities."
 
 ssh="fuse-sshfs rsync"

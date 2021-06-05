@@ -15,6 +15,11 @@ alias clem='emacsclient -n'
 alias temacs="emacs -nw"
 
 function mdbat --argument-names file
-    mdcat $file | bat -p
+    lowdown -Tterm $file | less -R
 end
 
+if not command -sq mdcat
+	function mdcat --argument-names file
+		lowdown -Tterm $file
+	end
+end
