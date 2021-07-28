@@ -30,7 +30,16 @@ alias pre='cd ../'
 alias weather='curl wttr.in/'
 
 ## Aliases for quick grepping
-alias rgmod='lsmod | rg -i'
+alias rgmod='lsmod | grep -i'
+alias rug='ug --ignore-files --sort -r'
+
+function watchps --description "Watch process(es)"
+	set _p (pgrep -f "$argv[1]")
+	[ -z "$_p" ]
+	and return 1
+
+	watch -n.1 ps -o pid,%cpu,nlwp,vsz,sz $_p
+end
 
 function randpw -a digits \
     --description "Generates a random password with the specified number of digits, and copies it into the Wayland buffer."

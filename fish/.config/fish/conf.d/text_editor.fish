@@ -14,6 +14,10 @@ alias clem='emacsclient -n'
 
 alias temacs="emacs -nw"
 
+function spell
+	aspell -a | sed '1d;$d'
+end
+
 function mdbat --argument-names file
     lowdown -Tterm $file | less -R
 end
@@ -22,4 +26,8 @@ if not command -sq mdcat
 	function mdcat --argument-names file
 		lowdown -Tterm $file
 	end
+end
+
+function manp
+	MANPAGER=zathura man -Tpdf $argv
 end
