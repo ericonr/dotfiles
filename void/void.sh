@@ -53,7 +53,7 @@ zfs="zfs zfsbootmenu zfs-auto-snapshot"
 zfs_desc="$(print_item zfs) Install support for ZFS."
 
 security="apparmor"
-security_desc="$(print_item security) Install security related packages."
+security_desc="$(print_item security) Install AppArmor related packages."
 
 popcorn="PopCorn"
 popcorn_desc="$(print_item popcorn) Install PopCorn usage statistics."
@@ -104,8 +104,8 @@ wayland_desc="$(print_item wayland) Install other Wayland compositors and tools.
 xorg="xfce4 xorg"
 xorg_desc="$(print_item xorg) Install XFCE4 and Xorg."
 
-audio="alsa-utils playerctl pulseaudio pavucontrol"
-audio_desc="$(print_item audio) Install PulseAudio and alsa."
+audio="alsa-utils playerctl pipewire pavucontrol"
+audio_desc="$(print_item audio) Install PipeWire and ALSA."
 
 sndio="sndio aucatctl alsa-sndio"
 sndio_desc="$(print_item sndio) Install sndio."
@@ -113,11 +113,11 @@ sndio_desc="$(print_item sndio) Install sndio."
 media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv ImageMagick"
 media_desc="$(print_item media) Install mpv, imv and spotify CLI programs."
 
-dev="cmake make meson ninja rustup valgrind gdb strace go"
-dev_desc="$(print_item dev) Install build systems, debug tools, rustup and Go."
+dev="cmake make meson ninja valgrind gdb strace go"
+dev_desc="$(print_item dev) Install build systems, debug tools, Go."
 
-containers="podman fuse-overlayfs"
-containers_desc="$(print_item containers) Install Podman and other tools."
+containers="podman"
+containers_desc="$(print_item containers) Install Podman."
 
 emacs="emacs-gtk3 hunspell hunspell-en_US hunspell-pt_BR shellcheck zstd"
 emacs_desc="$(print_item emacs) Install the GUI version of Emacs."
@@ -125,8 +125,8 @@ emacs_desc="$(print_item emacs) Install the GUI version of Emacs."
 qute="qt5-wayland qutebrowser pdf.js"
 qute_desc="$(print_item qute) Install Qt5 for Wayland and Qutebrowser."
 
-qt5="qt5-wayland qt5ct konversation"
-qt5_desc="$(print_item qt5) Install Qt5 for Wayland, Konversation and qt5ct."
+qt5="qt5-wayland qbittorrent"
+qt5_desc="$(print_item qt5) Install Qt5 for Wayland and qBittorrent."
 
 mozilla="firefox thunderbird"
 mozilla_desc="$(print_item mozilla) Install Firefox and Thunderbird."
