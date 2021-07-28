@@ -3,7 +3,7 @@
 set -eu
 
 GOINSTALL=
-SSHFS=
+UTILITIES=
 SUBPROJECTS=
 MPV=
 THEMES=
@@ -11,13 +11,13 @@ THEMES=
 while [ $# -gt 0 ]; do
 	case $1 in
 		all) GOINSTALL=1
-			 SSHFS=1
+			 UTILITIES=1
 			 SUBPROJECTS=1
 			 MPV=1
 			 THEMES=1
 			 ;;
 		go) GOINSTALL=1 ;;
-		sshfs) SSHFS=1 ;;
+		utilities) UTILITIES=1 ;;
 		sub) SUBPROJECTS=1 ;;
 		mpv) MPV=1;;
 		theme) THEMES=1;;
@@ -36,8 +36,9 @@ if [ "$GOINSTALL" ]; then
 	go install ./keyboard_layout_switcher
 fi
 
-if [ "$SSHFS" ]; then
+if [ "$UTILITIES" ]; then
 	make install -C sshfs-map
+	make install -C battmux
 fi
 
 if [ "$SUBPROJECTS" ]; then
