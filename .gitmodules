@@ -19,3 +19,6 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/nvim-lspconfig"]
 	path = nvim/.config/nvim/pack/plugins/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "sourcecode/subprojects/ep"]
+	path = sourcecode/subprojects/ep
+	url = https://github.com/ericonr/ep.git
