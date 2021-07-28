@@ -10,9 +10,6 @@
 [submodule "sourcecode/subprojects/hugo.el"]
 	path = sourcecode/subprojects/hugo.el
 	url = https://github.com/aaronbieber/hugo.el.git
-[submodule "sourcecode/subprojects/fuzzypkg"]
-	path = sourcecode/subprojects/fuzzypkg
-	url = https://github.com/zdykstra/fuzzypkg.git
 [submodule "sourcecode/subprojects/purr-c"]
 	path = sourcecode/subprojects/purr-c
 	url = https://github.com/ericonr/purr-c.git
