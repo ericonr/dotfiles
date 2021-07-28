@@ -44,7 +44,6 @@ fi
 if [ "$SUBPROJECTS" ]; then
 	ln -sf "$PWD/subprojects/git-merge-pr/git-merge-pr" "$HOME/.local/bin/"
 	ln -sf "$PWD/subprojects/hugo.el/hugo.el" "$HOME/.config/doom/"
-	make -C subprojects/purr-c install PREFIX=$HOME/.local
 	make -C subprojects/get-otp install PREFIX=$HOME/.local
 	make -C subprojects/ep install CC=cc PREFIX=$HOME/.local
 fi
