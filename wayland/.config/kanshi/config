@@ -1,11 +1,16 @@
 profile home_desk {
 	output "LG HDR WFHD" enable mode 2560x1080 position 0,0
-	output eDP-1 enable scale 1.1 position 0,1080
+	output eDP-1 enable scale 1.0 position 0,1080
 }
 
 profile only_external {
 	output "LG HDR WFHD" enable mode 2560x1080 position 0,0
 	output eDP-1 disable
+}
+
+profile only_internal {
+	output "LG HDR WFHD" disable
+	output eDP-1 enable scale 1.0 position 0,0
 }
 
 profile out_and_about {

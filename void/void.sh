@@ -93,7 +93,7 @@ fonts_desc="$(print_item fonts) Basic fonts necessary for browsing the web and n
 themes="breeze-snow-cursor-theme breeze-amber-cursor-theme"
 themes_desc="$(print_item themes) Color and mouse themes for a good color setup."
 
-_util="brightnessctl grim slurp swayidle swaylock wl-clipboard gammastep"
+_util="brightnessctl grim slurp swayidle swaylock wl-clipboard gammastep poweralertd"
 _gui="Waybar foot fuzzel nwg-launchers mako kanshi"
 wm="${_util} ${gui} wayfire wf-shell wcm wayfire-plugins-extra"
 wm_desc="$(print_item wm) Install Wayfire and supporting packages. Depends on fonts and themes."
