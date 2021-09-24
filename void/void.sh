@@ -98,7 +98,7 @@ _gui="Waybar foot fuzzel nwg-launchers mako kanshi"
 wm="${_util} ${gui} wayfire wf-shell wcm wayfire-plugins-extra"
 wm_desc="$(print_item wm) Install Wayfire and supporting packages. Depends on fonts and themes."
 
-wayland="wf-recorder cage sway waypipe"
+wayland="wf-recorder cage sway waypipe xdg-desktop-portal-wlr"
 wayland_desc="$(print_item wayland) Install other Wayland compositors and tools."
 
 xorg="xfce4 xorg"
