@@ -19,7 +19,7 @@ function conf-display --argument-names width height interface
     eval xrandr --addmode $interface $RESOL_REFRESH
     eval xrandr --output $interface --mode $RESOL_REFRESH
 
-    if $status
+    if test "$status" -eq 0
         echo "Succesfully configured $interface for displaying $width x $height video!"
     else
         echo "There was an error!"

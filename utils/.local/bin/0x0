@@ -1,6 +1,6 @@
 #!/bin/sh
 
-website="$(curl -F"file=@${1:--}" https://0x0.st)"
+website="$(curl -F"file=@${1:--}" ${WEBSITE:-https://0x0.st})"
 echo $website
 
 [ "$WAYLAND_DISPLAY" ] && echo -n $website | wl-copy

@@ -3,6 +3,6 @@ pipeline
 {
     pipeline
     { ps aux }
-    rg -i $@
+    grep -i $@
 }
-rg -v "(rg -i)|(rgps)"
+grep -v "grep -i"

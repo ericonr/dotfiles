@@ -1,0 +1,17 @@
+#!/bin/sh
+# convert .cbr files to .cbz
+set -e
+bdir="$PWD"
+for arg
+do
+	file="$(realpath "$arg")"
+	[ -z "$file"] && false
+	dir="$(mktemp -d)"
+
+	cd "$dir"
+	unrar e "$file"
+	tar acf "$file".zip ./
+	mv "$file".zip "$file".cbz
+	cd "$bdir"
+	rm -rf "$dir"
+done
