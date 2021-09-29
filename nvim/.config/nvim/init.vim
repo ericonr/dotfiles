@@ -13,6 +13,10 @@ set smartcase
 
 " SHORTCUTS
 
+" Shortcuts for paragraph nagivation
+:nmap j gj
+:nmap k gk
+
 " Shortcuts for quickly going back to normal mode
 :imap jk <Esc>
 :imap kj <Esc>

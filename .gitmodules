@@ -19,3 +19,6 @@
 [submodule "sourcecode/subprojects/ep"]
 	path = sourcecode/subprojects/ep
 	url = https://github.com/ericonr/ep.git
+[submodule "nvim/.config/nvim/pack/plugins/start/goyo.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
