@@ -1,0 +1,4 @@
+#!/bin/sh
+
+n="$1"
+cp ~/.local/share/template.tex "$n"
