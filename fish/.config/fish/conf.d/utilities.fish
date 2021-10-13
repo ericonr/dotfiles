@@ -31,7 +31,7 @@ alias weather='curl wttr.in/'
 
 ## Aliases for quick grepping
 alias rgmod='lsmod | grep -i'
-alias rug='ug --ignore-files --sort -r'
+alias rug='ug --ignore-files --sort -nr'
 
 function watchps --description "Watch process(es)"
 	set _p (pgrep -f "$argv[1]")

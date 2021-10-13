@@ -22,6 +22,8 @@ alias cargotmp='env CARGO_TARGET_DIR=/tmp/cargo/(basename (pwd)) cargo'
 
 alias rebase-up='git pull upstream master --rebase --autostash'
 
+alias gg='git grep'
+
 function statusgit --argument show \
     --description "Show git status for all directories in the current directory. Requires omf."
     if test -z $show
