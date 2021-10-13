@@ -31,7 +31,7 @@ assemble_list() {
 	done
 }
 
-base="chrony elogind iwd wireguard-tools openresolv vsv socklog-void doas font-spleen"
+base="chrony elogind iwd wireguard-tools openresolv unbound vsv socklog-void doas font-spleen"
 base_desc="$(print_item base) Install base system utilities."
 
 luks="cryptsetup"
