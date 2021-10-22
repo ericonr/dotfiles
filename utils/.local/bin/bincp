@@ -1,0 +1,3 @@
+#!/bin/sh
+file="$1"
+exec install -m755 $file ~/.local/bin
