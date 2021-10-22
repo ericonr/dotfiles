@@ -16,3 +16,4 @@ set -x LANG pt_BR.UTF-8
 set -x DEBUGINFOD_URLS "https://debuginfod.s.voidlinux.org http://localhost:8002"
 set -x DEBUGINFOD_TIMEOUT "5"
 set -x TMUX_TMPDIR ~/.config
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh/agent

@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+importas -i dir XDG_RUNTIME_DIR
+foreground { mkdir -p ${dir}/ssh }
+ssh-agent -a ${dir}/ssh/agent -D
