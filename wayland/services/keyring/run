@@ -1,0 +1,2 @@
+#!/bin/execlineb -P
+gnome-keyring-daemon --foreground --components=pkcs11,secrets

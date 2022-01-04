@@ -142,6 +142,9 @@ mozilla_desc="$(print_item mozilla) Install Firefox and Thunderbird."
 gemini="castor lagrange python3-md2gemini"
 gemini_desc="$(print_item gemini) Install Gemini related software."
 
+matrix="nheko gnome-keyring"
+matrix_desc="$(print_item matrix) Install nheko for Matrix."
+
 office="libreoffice libreoffice-i18n-en-US libreoffice-i18n-pt-BR"
 office_desc="$(print_item office) Install Libreoffice."
 
@@ -179,7 +182,7 @@ current_system_desc="$(print_item current_system) $current_system_desc"
 
 all_list="$base_env_list luks uefi_bundle disk_tools refind zfs dev further_dev office
  flatpak embedded kicad ate void_docs xbps_devel xorg nvidia graphics qt5 audio
- wayland gemini containers spotify"
+ wayland gemini containers spotify matrix"
 all="$(assemble_list "$all_list")"
 all_desc="$(print_item all) $all_list"
 
