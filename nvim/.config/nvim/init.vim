@@ -54,6 +54,10 @@ colorscheme slate
 " Settings for Void stuff
 autocmd BufNewFile,BufRead template setfiletype sh
 
+" Rainbow Parentheses
+let g:rainbow_active = 1
+let g:rainbow_conf = { 'ctermfgs': ['darkblue', 'darkred', 'darkgreen', 'darkmagenta', 'darkcyan'] }
+
 
 " LANGUAGE SERVER
 

@@ -22,3 +22,6 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/goyo.vim"]
 	path = nvim/.config/nvim/pack/plugins/start/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/rainbow"]
+	path = nvim/.config/nvim/pack/plugins/start/rainbow
+	url = https://github.com/luochen1990/rainbow.git
