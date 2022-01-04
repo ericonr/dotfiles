@@ -87,7 +87,7 @@ graphics="Vulkan-Tools clinfo mesa-demos"
 graphics_desc="$(print_item graphics) Install graphics stack testing tools."
 
 fonts="font-awesome5 font-fira-ttf font-ibm-plex-ttf liberation-fonts-ttf
- noto-fonts-ttf noto-fonts-emoji ttf-bitstream-vera"
+ noto-fonts-ttf noto-fonts-emoji ttf-bitstream-vera font-cozette"
 fonts_desc="$(print_item fonts) Basic fonts necessary for browsing the web and normal GUIs."
 
 themes="breeze-snow-cursor-theme breeze-amber-cursor-theme"

@@ -1,6 +1,6 @@
 #!/bin/execlineb -S0
 # generic launcher for floating alacritty with size WIDTH X LENGTH
 ifte
-{ alacritty --class generic-launcher }
-{ alacritty --class generic-launcher --command $@ }
+{ foot }
+{ foot $@ }
 test -z "$@"

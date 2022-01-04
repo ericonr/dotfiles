@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-gammastep -l -22.9:-47.1 -m wayland -t 4500:4500
+gammastep -l -22.9:-47.1 -m wayland -t 4000:4000
