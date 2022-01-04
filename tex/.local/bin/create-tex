@@ -1,4 +1,6 @@
 #!/bin/sh
 
+[ -n "$SLIDE" ] && SLIDE=-slide
+
 n="$1"
-cp ~/.local/share/template.tex "$n"
+cp ~/.local/share/template${SLIDE}.tex "$n"
