@@ -6,7 +6,7 @@
 #                                           
 
 # taken from https://fishshell.com/docs/current/commands.html#contains
-for i in ~/.local/bin ~/.cargo/bin ~/.emacs.d/bin
+for i in ~/.local/bin ~/.emacs.d/bin
     if not contains $i $PATH
         set PATH $PATH $i
     end
