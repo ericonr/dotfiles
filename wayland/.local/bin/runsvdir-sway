@@ -1,3 +1,4 @@
 #!/bin/execlineb -P
+foreground { dbus-update-activation-environment WAYLAND_DISPLAY }
 importas HOME HOME
 s6-svscan ${HOME}/services

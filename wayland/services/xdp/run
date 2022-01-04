@@ -1,4 +1,2 @@
 #!/bin/execlineb -P
-# wait on xdpw
-foreground { sleep 4 }
 /usr/libexec/xdg-desktop-portal -r
