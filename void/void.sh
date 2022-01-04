@@ -61,15 +61,16 @@ popcorn_desc="$(print_item popcorn) Install PopCorn usage statistics."
 _browser="ncdu ranger fzf"
 _device="usbutils"
 _monitor="bmon htop"
-_net="curl git gnupg2 aerc asciinema lynx weechat"
-_shell="fish-shell lolcat-c tmux"
-_tools="bsdtar fd lowdown neovim p7zip parallel ripgrep stow execline s6"
+_net="curl wget git aerc asciinema lynx weechat"
+_crypto="gnupg2 outils minisign"
+_shell="fish-shell lolcat-c tmux xxd neovim"
+_tools="bsdtar fd lowdown p7zip parallel ripgrep ugrep stow execline s6 fswatch moreutils"
 _boxes="toybox toybox.static busybox"
 _void="vsv xtools fuzzypkg graphviz"
 _info="man-pages-devel man-pages-posix"
 _fortune="cowsay fortune-mod-void"
 _otp="bearssl-devel oath-toolkit libargon2-devel jq"
-term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_shell} ${_tools}
+term="python3 ${_browser} ${_device} ${_monitor} ${_net} ${_crypto} ${_shell} ${_tools}
  ${_boxes} ${_void} ${_info} ${_fortune} ${_otp}"
 term_desc="$(print_item term) Install basic terminal utilities."
 
@@ -111,11 +112,17 @@ audio_desc="$(print_item audio) Install PipeWire and ALSA."
 sndio="sndio aucatctl alsa-sndio"
 sndio_desc="$(print_item sndio) Install sndio."
 
-media="bluez mpv mpv-mpris youtube-dl spotifyd spotify-tui imv ImageMagick"
-media_desc="$(print_item media) Install mpv, imv and spotify CLI programs."
+media="bluez mpv mpv-mpris yt-dlp imv ImageMagick exiftool wildmidi droidcam"
+media_desc="$(print_item media) Install media software."
 
-dev="cmake make meson ninja valgrind gdb strace go"
+spotify="spotifyd spotify-tui"
+spotify_desc="$(print_item spotify) Install spotify CLI programs."
+
+dev="cmake make meson ninja valgrind gdb strace extrace go github-cli"
 dev_desc="$(print_item dev) Install build systems, debug tools, Go."
+
+further_dev="racket zeal"
+further_dev_desc="$(print_item further_dev) Install references and more languages."
 
 containers="podman"
 containers_desc="$(print_item containers) Install Podman."
@@ -132,13 +139,13 @@ qt5_desc="$(print_item qt5) Install Qt5 for Wayland and qBittorrent."
 mozilla="firefox thunderbird"
 mozilla_desc="$(print_item mozilla) Install Firefox and Thunderbird."
 
-gemini="castor"
-gemini_desc="$(print_item gemini) Install castor."
+gemini="castor lagrange python3-md2gemini"
+gemini_desc="$(print_item gemini) Install Gemini related software."
 
 office="libreoffice libreoffice-i18n-en-US libreoffice-i18n-pt-BR"
 office_desc="$(print_item office) Install Libreoffice."
 
-pdf="zathura zathura-pdf-poppler"
+pdf="zathura zathura-pdf-poppler zathura-cb"
 pdf_desc="$(print_item pdf) Install Zathura."
 
 flatpak="flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils"
@@ -170,9 +177,9 @@ current_system_list="base_env_list zfs wayland uefi_bundle"
 current_system="$(assemble_list "$current_system_list")"
 current_system_desc="$(print_item current_system) $current_system_desc"
 
-all_list="$base_env_list luks uefi_bundle disk_tools refind zfs dev office
+all_list="$base_env_list luks uefi_bundle disk_tools refind zfs dev further_dev office
  flatpak embedded kicad ate void_docs xbps_devel xorg nvidia graphics qt5 audio
- wayland gemini containers"
+ wayland gemini containers spotify"
 all="$(assemble_list "$all_list")"
 all_desc="$(print_item all) $all_list"
 
