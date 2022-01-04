@@ -104,7 +104,8 @@ wayland_desc="$(print_item wayland) Install other Wayland compositors and tools.
 xorg="xfce4 xorg"
 xorg_desc="$(print_item xorg) Install XFCE4 and Xorg."
 
-audio="alsa-utils playerctl pipewire pavucontrol"
+_pipewire="pipewire wireplumber libspa-bluetooth alsa-pipewire libjack-pipewire"
+audio="alsa-utils playerctl pulseaudio-utils pavucontrol ${_pipewire}"
 audio_desc="$(print_item audio) Install PipeWire and ALSA."
 
 sndio="sndio aucatctl alsa-sndio"

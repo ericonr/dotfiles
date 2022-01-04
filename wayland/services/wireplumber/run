@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+tryexec
+{ wireplumber }
+pipewire-media-session
