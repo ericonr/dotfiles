@@ -67,6 +67,17 @@ require('telescope').load_extension('fzf')
 EOF
 
 
+" TREE-SITTER
+
+" Use tree-sitter to highlight Latex, it's considerably less laggy
+fu! LatexUseTS()
+	:syntax clear
+	:TSEnableAll highlight
+	:TSBufEnable highlight
+endfunction
+autocmd BufNewFile,BufRead *.tex :call LatexUseTS()
+
+
 " LANGUAGE SERVER
 
 " Partly from https://github.com/neovim/nvim-lspconfig/blob/master/README.md

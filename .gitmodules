@@ -34,3 +34,6 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/telescope-fzf-native.nvim"]
 	path = nvim/.config/nvim/pack/plugins/start/telescope-fzf-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/nvim-treesitter"]
+	path = nvim/.config/nvim/pack/plugins/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
