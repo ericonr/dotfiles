@@ -25,3 +25,12 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/rainbow"]
 	path = nvim/.config/nvim/pack/plugins/start/rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "nvim/.config/nvim/pack/plugins/start/telescope.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/plenary.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/telescope-fzf-native.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/telescope-fzf-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim.git

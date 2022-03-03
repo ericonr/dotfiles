@@ -59,6 +59,14 @@ let g:rainbow_active = 1
 let g:rainbow_conf = { 'ctermfgs': ['darkblue', 'darkred', 'darkgreen', 'darkmagenta', 'darkcyan'] }
 
 
+" TELESCOPE
+
+" Set up fzf for telescope (requires running make in the fzf directory)
+lua << EOF
+require('telescope').load_extension('fzf')
+EOF
+
+
 " LANGUAGE SERVER
 
 " Partly from https://github.com/neovim/nvim-lspconfig/blob/master/README.md
