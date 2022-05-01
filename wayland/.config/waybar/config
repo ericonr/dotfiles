@@ -2,20 +2,16 @@
 	"layer": "top", // Waybar at top layer
 	"height": 25, // Waybar height (to be removed for auto height)
 	// Choose the order of the modules
-	"modules-left": ["sway/workspaces", "sway/mode", "custom/media", "tray"],
+	"modules-left": ["custom/media", "tray", "wlr/taskbar"],
 	"modules-center": ["sway/window"],
 	"modules-right": ["idle_inhibitor", "sndio",
 		"pulseaudio",
 		"network", "cpu", "memory", "temperature", "backlight", "battery", "custom/keyboard_layout", "clock"],
 	// Modules configuration
 
-	"sway/workspaces": {
-		"disable-scroll": false,
-		"all-outputs": true
-	},
-
-	"sway/mode": {
-		"format": "<span style=\"italic\">{}</span>"
+	"wlr/taskbar" : {
+		"on-click": "activate",
+		"on-click-middle": "close"
 	},
 
 	"idle_inhibitor": {

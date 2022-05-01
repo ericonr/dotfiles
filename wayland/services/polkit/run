@@ -1,4 +1,6 @@
 #!/bin/execlineb -P
 tryexec
+{ /usr/libexec/polkit-gnome-authentication-agent-1 }
+tryexec
 { /usr/lib/libexec/polkit-kde-authentication-agent-1 }
 sleep 100
