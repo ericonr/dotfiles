@@ -1,0 +1,2 @@
+#!/bin/execlineb -P
+/usr/libexec/xdg-document-portal -r
