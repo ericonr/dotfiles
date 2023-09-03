@@ -48,8 +48,8 @@ set shiftwidth=3
 " Show relative line numbers
 set number rnu
 
-" Pretty color scheme that works well with the one chosen for alacritty
-colorscheme slate
+" Pretty color scheme
+colorscheme peachpuff
 
 " Settings for Void stuff
 autocmd BufNewFile,BufRead template setfiletype sh
@@ -72,7 +72,7 @@ EOF
 " Use tree-sitter to highlight Latex, it's considerably less laggy
 fu! LatexUseTS()
 	:syntax clear
-	:TSEnableAll highlight
+	:TSEnable highlight
 	:TSBufEnable highlight
 endfunction
 autocmd BufNewFile,BufRead *.tex :call LatexUseTS()
