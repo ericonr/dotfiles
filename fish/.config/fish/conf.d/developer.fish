@@ -24,6 +24,8 @@ alias rebase-up='git pull upstream master --rebase --autostash'
 
 alias gg='git grep'
 
+alias podman-i='podman run --rm --detach-keys="ctrl-a,d" -t -a stdin -a stdout -a stderr --mount type=bind,source=$PWD,destination=$PWD --workdir=$PWD'
+
 function statusgit --argument show \
     --description "Show git status for all directories in the current directory. Requires omf."
     if test -z $show
