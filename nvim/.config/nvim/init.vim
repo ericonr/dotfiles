@@ -59,14 +59,6 @@ let g:rainbow_active = 1
 let g:rainbow_conf = { 'ctermfgs': ['darkblue', 'darkred', 'darkgreen', 'darkmagenta', 'darkcyan'] }
 
 
-" TELESCOPE
-
-" Set up fzf for telescope (requires running make in the fzf directory)
-lua << EOF
-require('telescope').load_extension('fzf')
-EOF
-
-
 " TREE-SITTER
 
 " Use tree-sitter to highlight Latex, it's considerably less laggy
@@ -76,6 +68,13 @@ fu! LatexUseTS()
 	:TSBufEnable highlight
 endfunction
 autocmd BufNewFile,BufRead *.tex :call LatexUseTS()
+
+
+" GUESS IDENT
+
+lua << EOF
+require('guess-indent').setup {}
+EOF
 
 
 " LANGUAGE SERVER

@@ -28,9 +28,12 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/plenary.nvim"]
 	path = nvim/.config/nvim/pack/plugins/start/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
-[submodule "nvim/.config/nvim/pack/plugins/start/telescope-fzf-native.nvim"]
-	path = nvim/.config/nvim/pack/plugins/start/telescope-fzf-native.nvim
-	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim.git
 [submodule "nvim/.config/nvim/pack/plugins/start/nvim-treesitter"]
 	path = nvim/.config/nvim/pack/plugins/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim/.config/nvim/pack/plugins/start/epics.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/epics.vim
+	url = https://github.com/NickeZ/epics.vim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/guess-indent.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/guess-indent.nvim
+	url = https://github.com/NMAC427/guess-indent.nvim.git
