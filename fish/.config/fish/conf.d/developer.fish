@@ -23,6 +23,7 @@ alias cargotmp='env CARGO_TARGET_DIR=/tmp/cargo/(basename (pwd)) cargo'
 alias rebase-up='git pull upstream master --rebase --autostash'
 
 alias gg='git grep'
+alias gls='git grep --cached -l ""'
 
 alias podman-i='podman run --rm --detach-keys="ctrl-a,d" -t -a stdin -a stdout -a stderr --mount type=bind,source=$PWD,destination=$PWD --workdir=$PWD'
 
