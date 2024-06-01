@@ -1,0 +1,2 @@
+#!/bin/execlineb -P
+openconnect --protocol=fortinet --script-tun --script "vpnns --attach" vpn.cnpem.br
