@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chrt -Rrap 40 $(pgrep wayfire)
